@@ -205,7 +205,7 @@ JSON;
         $includedOneAttributesGender = $includedOne->getAttribute('gender');
         $includedOneAttributesNull = $includedOne->getAttribute('invalid');
 
-        $includedById = $included->find(4);
+        $includedById = $included->find('people', 4);
         $includedOneType = $includedById->getType();
         $includedByIdId = $includedById->getId();
         $includedByIdAttributes = $includedById->getAttributes();
@@ -215,7 +215,7 @@ JSON;
         $includedByIdAttributesNull = $includedById->getAttribute('invalid');
 
         $dataFindNull = $data->find(342);
-        $includedFindNull = $included->find(876);
+        $includedFindNull = $included->find('people', 876);
 
         $this->validationTest(get_defined_vars());
     }
