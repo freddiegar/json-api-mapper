@@ -29,7 +29,9 @@ class ResponseMapperTest extends TestCase
         $this->assertInstanceOf(DataMapperInterface::class, $response->getData());
         $this->assertInstanceOf(ErrorsMapperInterface::class, $response->getErrors());
         $this->assertInstanceOf(MetaMapperInterface::class, $response->getMeta());
-        $this->assertInstanceOf(LinksMapperInterface::class, $response->getlinks());
+        $this->assertInstanceOf(JsonApiMapperInterface::class, $response->getJsonApi());
+        $this->assertInstanceOf(LinksMapperInterface::class, $response->getLinks());
+        $this->assertInstanceOf(IncludedMapperInterface::class, $response->getIncluded());
     }
 
     public function testResponseMapperInvalid()

@@ -27,6 +27,11 @@ class LinksMapper extends LoaderMapper implements LinksMapperInterface
         return Helper::getFromArray($this->current(), DocumentInterface::KEYWORD_SELF, null);
     }
 
+    public function getHref(): ?string
+    {
+        return Helper::getFromArray($this->current(), DocumentInterface::KEYWORD_HREF, null);
+    }
+
     public function getFirst(): ?string
     {
         return Helper::getFromArray($this->current(), DocumentInterface::KEYWORD_FIRST, null);

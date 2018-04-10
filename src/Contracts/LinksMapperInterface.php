@@ -15,6 +15,11 @@ interface LinksMapperInterface extends LoaderMapperInterface
     public function getSelf(): ?string;
 
     /**
+     * @return null|string
+     */
+    public function getHref(): ?string;
+
+    /**
      *
      * @return null|string
      */

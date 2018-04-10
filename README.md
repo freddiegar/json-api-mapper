@@ -12,7 +12,7 @@ use PlacetoPay\JsonApiMapper\Mapper;
 $mapper = new Mapper($jsonApi);
 
 $data = $mapper->getData();
-$included = $mapper->getIncluded(); 
+$included = $mapper->getIncluded();
 ```
 
 By example, get data resource
@@ -27,8 +27,8 @@ echo $data->getAttribute('description'); // If not exist, return: null
 
 echo $data->getRelationships(); // ['author' => ['id' => '1', 'type' => 'people']]
 echo $data->getRelationship('author'); // ['id' => '1', 'type' => 'people']
-echo $data->getRelationship('author.id'); // 1
-echo $data->getRelationship('author.type'); // people
+echo $data->getRelationship('author')->getType(); // people
+echo $data->getRelationship('author')->getId(); // 1
 ```
 
 By example, get included
