@@ -5,6 +5,12 @@ namespace PlacetoPay\JsonApiMapper\Contracts;
 interface IncludedMapperInterface extends LoaderMapperInterface
 {
     /**
+     * @param int $id
+     * @return null|DataMapperInterface
+     */
+    public function find(int $id): ?DataMapperInterface;
+
+    /**
      * @return IncludedMapperInterface
      */
     public function get(): IncludedMapperInterface;

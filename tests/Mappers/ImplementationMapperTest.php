@@ -2,10 +2,7 @@
 
 namespace PlacetoPay\JsonApiMapper\Tests\Mappers;
 
-use Exception;
 use PlacetoPay\JsonApiMapper\Contracts\DataMapperInterface;
-use PlacetoPay\JsonApiMapper\Contracts\ErrorsMapperInterface;
-use PlacetoPay\JsonApiMapper\Contracts\IncludedMapperInterface;
 use PlacetoPay\JsonApiMapper\Contracts\JsonApiMapperInterface;
 use PlacetoPay\JsonApiMapper\Contracts\LinksMapperInterface;
 use PlacetoPay\JsonApiMapper\Contracts\MetaMapperInterface;
@@ -217,6 +214,9 @@ JSON;
         $includedByIdAttributesGender = $includedById->getAttribute('gender');
         $includedByIdAttributesNull = $includedById->getAttribute('invalid');
 
+        $dataFindNull = $data->find(342);
+        $includedFindNull = $included->find(876);
+
         $this->validationTest(get_defined_vars());
     }
 
@@ -297,6 +297,11 @@ JSON;
         $includedByIdAttributesAge = $includedById->attribute('age');
         $includedByIdAttributesGender = $includedById->attribute('gender');
         $includedByIdAttributesNull = $includedById->attribute('invalid');
+
+        $dataFindNull = $data->find(342);
+        $includedFindNull = $included->find(876);
+
+        $this->validationTest(get_defined_vars());
     }
 
     public function _testImplementationMapperMethodWithoutAttributesAndRelationshipAccessors()
@@ -376,6 +381,11 @@ JSON;
         $includedByIdAttributesAge = $includedById->age();
         $includedByIdAttributesGender = $includedById->gender();
         $includedByIdAttributesNull = $includedById->invalid();
+
+        $dataFindNull = $data->find(342);
+        $includedFindNull = $included->find(876);
+
+        $this->validationTest(get_defined_vars());
     }
 
     public function _testImplementationMapperPropertyMagic()
@@ -455,6 +465,11 @@ JSON;
         $includedByIdAttributesAge = $includedById->attribute->age;
         $includedByIdAttributesGender = $includedById->attribute->gender;
         $includedByIdAttributesNull = $includedById->attribute->invalid;
+
+        $dataFindNull = $data->find(342);
+        $includedFindNull = $included->find(876);
+
+        $this->validationTest(get_defined_vars());
     }
 
     public function _testImplementationMapperPropertyWithoutAttributesAndRelationshipAccessors()
@@ -534,11 +549,16 @@ JSON;
         $includedByIdAttributesAge = $includedById->age;
         $includedByIdAttributesGender = $includedById->gender;
         $includedByIdAttributesNull = $includedById->invalid;
+
+        $dataFindNull = $data->find(342);
+        $includedFindNull = $included->find(876);
+
+        $this->validationTest(get_defined_vars());
     }
 
     private function validationTest(array $dataTest)
     {
-        var_export($dataTest);
+        extract($dataTest);
 
         $this->assertInstanceOf(ResponseMapperInterface::class, $mapper);
 
@@ -616,5 +636,8 @@ JSON;
         $this->assertEquals(30, $includedByIdAttributesAge);
         $this->assertEquals('female', $includedByIdAttributesGender);
         $this->assertEquals(null, $includedByIdAttributesNull);
+
+        $this->assertEquals(null, $dataFindNull);
+        $this->assertEquals(null, $includedFindNull);
     }
 }
