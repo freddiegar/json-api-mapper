@@ -2,8 +2,9 @@
 
 namespace PlacetoPay\JsonApiMapper\Mappers;
 
-use PlacetoPay\JsonApiMapper\Contracts\DocumentInterface;
 use PlacetoPay\JsonApiMapper\Contracts\DataMapperInterface;
+use PlacetoPay\JsonApiMapper\Contracts\DocumentInterface;
+use PlacetoPay\JsonApiMapper\Contracts\IncludedMapperInterface;
 use PlacetoPay\JsonApiMapper\Helper;
 use PlacetoPay\JsonApiMapper\Traits\LinksMapperTrait;
 use PlacetoPay\JsonApiMapper\Traits\MetaMapperTrait;
@@ -17,12 +18,20 @@ class DataMapper extends LoaderMapper implements DataMapperInterface
     use LinksMapperTrait,
         MetaMapperTrait;
 
+    /**
+     * @var IncludedMapperInterface
+     */
+    private $included;
+
     public function load($input, ?string $tag = DocumentInterface::KEYWORD_DATA)
     {
+        //Verify if exist included in input to add attributes in relationships data
+        $this->included = new IncludedMapper($input);
+
         return parent::load($input, $tag);
     }
 
-    public function find(int $id): ?DataMapperInterface
+    public function find(string $id): ?DataMapperInterface
     {
         foreach ($this->original() as $index => $data) {
             if ($data[DocumentInterface::KEYWORD_ID] == $id) {
@@ -73,9 +82,17 @@ class DataMapper extends LoaderMapper implements DataMapperInterface
 
     public function getRelationship(string $relationName): ?DataMapperInterface
     {
-        return isset($this->getRelationships()[$relationName])
-            ? new DataMapper($this->getRelationships()[$relationName])
-            : null;
+        $data = null;
+
+        if (isset($this->getRelationships()[$relationName])) {
+            $data = new DataMapper($this->getRelationships()[$relationName]);
+
+            if ($data && $dataWithAttributes = $this->included->find($data->getType(), $data->getId())) {
+                $data = $dataWithAttributes;
+            }
+        }
+
+        return $data;
     }
 
 //    public function getResource($withAttributes = true): array

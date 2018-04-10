@@ -3,6 +3,7 @@
 namespace PlacetoPay\JsonApiMapper\Tests\Mappers;
 
 use PlacetoPay\JsonApiMapper\Contracts\DataMapperInterface;
+use PlacetoPay\JsonApiMapper\Contracts\IncludedMapperInterface;
 use PlacetoPay\JsonApiMapper\Contracts\JsonApiMapperInterface;
 use PlacetoPay\JsonApiMapper\Contracts\LinksMapperInterface;
 use PlacetoPay\JsonApiMapper\Contracts\MetaMapperInterface;
@@ -607,7 +608,7 @@ JSON;
         $this->assertTrue(is_array($dataLinkRelatedMeta));
         $this->assertEquals(10, $dataLinkRelatedMetaCount);
 
-        $this->assertEquals(DataMapperInterface::class, $dataById);
+        $this->assertInstanceOf(DataMapperInterface::class, $dataById);
         $this->assertEquals('articles', $dataByIdType);
         $this->assertEquals(25, $dataByIdId);
         $this->assertTrue(is_array($dataByIdAttributes));
@@ -618,12 +619,12 @@ JSON;
 
         $this->assertEquals(null, $dataByIdNull);
 
-        $this->assertInstanceOf(ResponseMapperInterface::class, $included);
+        $this->assertInstanceOf(IncludedMapperInterface::class, $included);
         $this->assertInstanceOf(DataMapperInterface::class, $includedOne);
         $this->assertEquals('people', $includedOneType);
         $this->assertEquals(42, $includedOneId);
         $this->assertTrue(is_array($includedOneAttributes));
-        $this->assertEquals('Jhon', $includedOneAttributesName);
+        $this->assertEquals('John', $includedOneAttributesName);
         $this->assertEquals(80, $includedOneAttributesAge);
         $this->assertEquals('male', $includedOneAttributesGender);
         $this->assertEquals(null, $includedOneAttributesNull);
