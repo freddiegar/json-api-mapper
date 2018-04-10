@@ -10,7 +10,7 @@ use FreddieGar\JsonApiMapper\Helper;
  * Class LinksMapper
  * @package FreddieGar\JsonApiMapper\Mappers
  */
-class LinksMapper extends LoaderMapper implements LinksMapperInterface
+class LinksMapper extends Loader implements LinksMapperInterface
 {
     public function load($input, ?string $tag = DocumentInterface::KEYWORD_LINKS)
     {

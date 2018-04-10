@@ -2,7 +2,7 @@
 
 namespace FreddieGar\JsonApiMapper\Contracts;
 
-interface LinksMapperInterface extends LoaderMapperInterface
+interface LinksMapperInterface extends LoaderInterface
 {
     /**
      * @return LinksMapperInterface

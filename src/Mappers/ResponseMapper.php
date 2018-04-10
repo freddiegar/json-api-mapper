@@ -16,7 +16,7 @@ use FreddieGar\JsonApiMapper\Contracts\ResponseMapperInterface;
  * Class ResponseMapper
  * @package FreddieGar\JsonApiMapper\Mappers
  */
-class ResponseMapper extends LoaderMapper implements ResponseMapperInterface
+class ResponseMapper extends Loader implements ResponseMapperInterface
 {
     /**
      * @var null

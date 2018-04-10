@@ -13,7 +13,7 @@ use FreddieGar\JsonApiMapper\Traits\MetaMapperTrait;
  * Class DataMapper
  * @package FreddieGar\JsonApiMapper\Mappers
  */
-class DataMapper extends LoaderMapper implements DataMapperInterface
+class DataMapper extends Loader implements DataMapperInterface
 {
     use LinksMapperTrait,
         MetaMapperTrait;

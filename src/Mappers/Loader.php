@@ -2,9 +2,9 @@
 
 namespace FreddieGar\JsonApiMapper\Mappers;
 
-use FreddieGar\JsonApiMapper\Contracts\LoaderMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\LoaderInterface;
 
-abstract class LoaderMapper implements LoaderMapperInterface
+abstract class Loader implements LoaderInterface
 {
     /**
      * @var array

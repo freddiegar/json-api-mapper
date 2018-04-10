@@ -10,7 +10,7 @@ use FreddieGar\JsonApiMapper\Contracts\IncludedMapperInterface;
  * Class IncludedMapper
  * @package FreddieGar\JsonApiMapper\Mappers
  */
-class IncludedMapper extends LoaderMapper implements IncludedMapperInterface
+class IncludedMapper extends Loader implements IncludedMapperInterface
 {
 
     public function load($input, ?string $tag = DocumentInterface::KEYWORD_INCLUDED)

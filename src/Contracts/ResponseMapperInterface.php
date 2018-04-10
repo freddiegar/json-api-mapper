@@ -2,7 +2,7 @@
 
 namespace FreddieGar\JsonApiMapper\Contracts;
 
-interface ResponseMapperInterface extends LoaderMapperInterface
+interface ResponseMapperInterface extends LoaderInterface
 {
     /**
      * @param int|null $index

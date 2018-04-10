@@ -10,7 +10,7 @@ use FreddieGar\JsonApiMapper\Helper;
  * Class MetaMapper
  * @package FreddieGar\JsonApiMapper\Mappers
  */
-class MetaMapper extends LoaderMapper implements MetaMapperInterface
+class MetaMapper extends Loader implements MetaMapperInterface
 {
     public function load($input, ?string $tag = DocumentInterface::KEYWORD_META)
     {

@@ -10,7 +10,7 @@ use FreddieGar\JsonApiMapper\Helper;
  * Class JsonApiMapper
  * @package FreddieGar\JsonApiMapper\Mappers
  */
-class JsonApiMapper extends LoaderMapper implements JsonApiMapperInterface
+class JsonApiMapper extends Loader implements JsonApiMapperInterface
 {
     public function load($input, ?string $tag = DocumentInterface::KEYWORD_JSON_API)
     {

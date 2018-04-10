@@ -8,7 +8,7 @@ use FreddieGar\JsonApiMapper\Helper;
 use FreddieGar\JsonApiMapper\Traits\LinksMapperTrait;
 use FreddieGar\JsonApiMapper\Traits\MetaMapperTrait;
 
-class ErrorsMapper extends LoaderMapper implements ErrorsMapperInterface
+class ErrorsMapper extends Loader implements ErrorsMapperInterface
 {
     use LinksMapperTrait,
         MetaMapperTrait;
