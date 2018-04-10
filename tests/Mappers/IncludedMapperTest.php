@@ -59,8 +59,8 @@ class IncludedMapperTest extends TestCase
         $this->assertEquals('Gebhardt', $data->getAttribute('last-name'));
         $this->assertEquals('dgeb', $data->getAttribute('twitter'));
         $this->assertInstanceOf(LinksMapperInterface::class, $data->getLinks());
-        $this->assertEquals('http://example.com/people/9', $data->getLinkSelf());
-        $this->assertEquals(null, $data->getLinkRelated());
+        $this->assertEquals('http://example.com/people/9', $data->getLinks()->getSelf());
+        $this->assertEquals(null, $data->getLinks()->getRelated());
 
         $this->assertEquals(null, $data->getAttribute('attribute-invalid'));
         $this->assertEquals(null, $data->getRelationship('relationship-invalid'));
@@ -76,7 +76,7 @@ class IncludedMapperTest extends TestCase
         $this->assertEquals('people', $data->getRelationship('author')->getType());
         $this->assertEquals(2, $data->getRelationship('author')->getId());
         $this->assertInstanceOf(LinksMapperInterface::class, $data->getLinks());
-        $this->assertEquals('http://example.com/comments/5', $data->getLinkSelf());
+        $this->assertEquals('http://example.com/comments/5', $data->getLinks()->getSelf());
 
         $data = $included->getIncluded(2);
         $this->assertInstanceOf(DataMapperInterface::class, $data);
@@ -89,7 +89,7 @@ class IncludedMapperTest extends TestCase
         $this->assertEquals('people', $data->getRelationship('author')->getType());
         $this->assertEquals(9, $data->getRelationship('author')->getId());
         $this->assertInstanceOf(LinksMapperInterface::class, $data->getLinks());
-        $this->assertEquals('http://example.com/comments/12', $data->getLinkSelf());
+        $this->assertEquals('http://example.com/comments/12', $data->getLinks()->getSelf());
 
         $data = $included->getIncluded(3);
         $this->assertEquals(null, $data);

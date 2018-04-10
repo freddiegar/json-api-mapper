@@ -26,4 +26,9 @@ class JsonApiMapper extends Loader implements JsonApiMapperInterface
     {
         return Helper::getFromArray($this->current(), DocumentInterface::KEYWORD_VERSION, null);
     }
+
+    public function version(): ?string
+    {
+        return $this->getVersion();
+    }
 }

@@ -13,4 +13,8 @@ interface JsonApiMapperInterface extends LoaderInterface
      * @return null|string
      */
     public function getVersion(): ?string;
+
+    // Alias
+
+    public function version(): ?string;
 }

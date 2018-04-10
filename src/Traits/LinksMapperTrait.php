@@ -18,14 +18,4 @@ trait LinksMapperTrait
             ? new LinksMapper($this->current())
             : null;
     }
-
-    public function getLinkSelf(): ?string
-    {
-        return $this->getLinks()->getSelf();
-    }
-
-    public function getLinkRelated(): ?array
-    {
-        return $this->getLinks()->getRelated();
-    }
 }

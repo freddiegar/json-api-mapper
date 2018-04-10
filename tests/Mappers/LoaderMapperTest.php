@@ -49,8 +49,8 @@ class LoaderMapperTest extends TestCase
         $this->assertEquals('2018-02-14T17:05:35.000Z', $data->getAttribute('updated-at'));
         $this->assertInstanceOf(DataMapperInterface::class, $data->getRelationship('language'));
         $this->assertInstanceOf(LinksMapperInterface::class, $data->getLinks());
-        $this->assertEquals('http://example.com/posts/1449216560', $data->getLinkSelf());
-        $this->assertTrue(is_array($data->getLinkRelated()));
+        $this->assertEquals('http://example.com/posts/1449216560', $data->getLinks()->getSelf());
+        $this->assertTrue(is_array($data->getLinks()->getRelated()));
 
         $this->assertEquals(null, $data->getAttribute('attribute-invalid'));
         $this->assertEquals(null,$data->getRelationship('relationship-invalid'));

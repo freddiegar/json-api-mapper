@@ -26,4 +26,9 @@ class MetaMapper extends Loader implements MetaMapperInterface
     {
         return Helper::getFromArray($this->current(), $path, null);
     }
+
+    public function meta(string $path)
+    {
+        return $this->getMeta($path);
+    }
 }

@@ -50,4 +50,22 @@ interface LinksMapperInterface extends LoaderInterface
      * @return null|string|array
      */
     public function getRelated(?string $path = null);
+
+    // Alias
+
+    public function self(): ?string;
+
+    public function href(): ?string;
+
+    public function first(): ?string;
+
+    public function prev(): ?string;
+
+    public function next(): ?string;
+
+    public function last(): ?string;
+
+    public function about(): ?string;
+
+    public function related(?string $path = null);
 }

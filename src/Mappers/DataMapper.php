@@ -5,6 +5,7 @@ namespace FreddieGar\JsonApiMapper\Mappers;
 use FreddieGar\JsonApiMapper\Contracts\DataMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\DocumentInterface;
 use FreddieGar\JsonApiMapper\Contracts\IncludedMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\LinksMapperInterface;
 use FreddieGar\JsonApiMapper\Helper;
 use FreddieGar\JsonApiMapper\Traits\LinksMapperTrait;
 use FreddieGar\JsonApiMapper\Traits\MetaMapperTrait;
@@ -106,4 +107,44 @@ class DataMapper extends Loader implements DataMapperInterface
 //            ? $resource + $this->getAttributes()
 //            : $resource;
 //    }
+
+    public function id(): ?string
+    {
+        return $this->getId();
+    }
+
+    public function type(): ?string
+    {
+        return $this->getType();
+    }
+
+    public function attributes(): array
+    {
+        return $this->getAttributes();
+    }
+
+    public function relationships(): array
+    {
+        return $this->getRelationships();
+    }
+
+    public function attribute(string $attributeName, $default = null): ?string
+    {
+        return $this->getAttribute($attributeName, $default);
+    }
+
+    public function relationship(string $relationName): ?DataMapperInterface
+    {
+        return $this->getRelationship($relationName);
+    }
+
+    public function meta(?string $path = null)
+    {
+        return $this->getMeta($path);
+    }
+
+    public function links(): ?LinksMapperInterface
+    {
+        return $this->getLinks();
+    }
 }

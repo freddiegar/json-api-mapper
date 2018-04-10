@@ -55,14 +55,4 @@ interface ErrorsMapperInterface extends LoaderInterface
      * @return null|LinksMapperInterface
      */
     public function getLinks(): ?LinksMapperInterface;
-
-    /**
-     * @return null|string
-     */
-    public function getLinkSelf(): ?string;
-
-    /**
-     * @return array
-     */
-    public function getLinkRelated(): ?array;
 }

@@ -67,4 +67,44 @@ class LinksMapper extends Loader implements LinksMapperInterface
 
         return $related;
     }
+
+    public function self(): ?string
+    {
+        return $this->getSelf();
+    }
+
+    public function href(): ?string
+    {
+        return $this->getHref();
+    }
+
+    public function first(): ?string
+    {
+        return $this->getFirst();
+    }
+
+    public function prev(): ?string
+    {
+        return $this->getPrev();
+    }
+
+    public function next(): ?string
+    {
+        return $this->getNext();
+    }
+
+    public function last(): ?string
+    {
+        return $this->getLast();
+    }
+
+    public function about(): ?string
+    {
+        return $this->getAbout();
+    }
+
+    public function related(?string $path = null)
+    {
+        return $this->getRelated($path);
+    }
 }

@@ -60,13 +60,21 @@ interface DataMapperInterface extends LoaderInterface
      */
     public function getLinks(): ?LinksMapperInterface;
 
-    /**
-     * @return null|string
-     */
-    public function getLinkSelf(): ?string;
+    // Alias
 
-    /**
-     * @return array
-     */
-    public function getLinkRelated(): ?array;
+    public function id(): ?string;
+
+    public function type(): ?string;
+
+    public function attributes(): array;
+
+    public function relationships(): array;
+
+    public function attribute(string $attributeName, $default = null): ?string;
+
+    public function relationship(string $relationName): ?DataMapperInterface;
+
+    public function meta(?string $path = null);
+
+    public function links(): ?LinksMapperInterface;
 }

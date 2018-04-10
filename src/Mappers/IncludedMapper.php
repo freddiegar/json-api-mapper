@@ -18,7 +18,7 @@ class IncludedMapper extends Loader implements IncludedMapperInterface
         return parent::load($input, $tag);
     }
 
-    public function find(string $type, string $id = null): ?DataMapperInterface
+    public function find(string $type, string $id): ?DataMapperInterface
     {
         foreach ($this->original() as $index => $data) {
             if ($data[DocumentInterface::KEYWORD_TYPE] == $type
@@ -40,5 +40,10 @@ class IncludedMapper extends Loader implements IncludedMapperInterface
         return isset($this->current()[$index])
             ? new DataMapper([DocumentInterface::KEYWORD_DATA => $this->current()[$index]])
             : null;
+    }
+
+    public function included(int $index): ?DataMapperInterface
+    {
+        return $this->getIncluded($index);
     }
 }

@@ -6,10 +6,10 @@ interface IncludedMapperInterface extends LoaderInterface
 {
     /**
      * @param string $type
-     * @param string|null $id
-     * @return null|DataMapperInterface
+     * @param string $id
+     * @return DataMapperInterface|null
      */
-    public function find(string $type, string $id = null): ?DataMapperInterface;
+    public function find(string $type, string $id): ?DataMapperInterface;
 
     /**
      * @return IncludedMapperInterface
@@ -21,4 +21,8 @@ interface IncludedMapperInterface extends LoaderInterface
      * @return null|DataMapperInterface
      */
     public function getIncluded(int $index): ?DataMapperInterface;
+
+    // Alias
+
+    public function included(int $index): ?DataMapperInterface;
 }

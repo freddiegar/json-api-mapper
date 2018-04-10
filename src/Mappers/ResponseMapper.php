@@ -15,6 +15,7 @@ use FreddieGar\JsonApiMapper\Contracts\ResponseMapperInterface;
 /**
  * Class ResponseMapper
  * @package FreddieGar\JsonApiMapper\Mappers
+ * @inheritdoc
  */
 class ResponseMapper extends Loader implements ResponseMapperInterface
 {
@@ -55,7 +56,7 @@ class ResponseMapper extends Loader implements ResponseMapperInterface
 
     public function load($input, ?string $tag = null)
     {
-        if(is_null($input)){
+        if (is_null($input)) {
             return $this;
         }
 
@@ -113,5 +114,35 @@ class ResponseMapper extends Loader implements ResponseMapperInterface
     public function getIncluded(): IncludedMapperInterface
     {
         return $this->includedMapper->get();
+    }
+
+    public function data(?int $index = null): ?DataMapperInterface
+    {
+        return $this->getData($index);
+    }
+
+    public function errors(?int $index = null): ?ErrorsMapperInterface
+    {
+        return $this->getErrors($index);
+    }
+
+    public function meta(): MetaMapperInterface
+    {
+        return $this->getMeta();
+    }
+
+    public function jsonApi(): JsonApiMapperInterface
+    {
+        return $this->getJsonApi();
+    }
+
+    public function links(): LinksMapperInterface
+    {
+        return $this->getLinks();
+    }
+
+    public function included(): IncludedMapperInterface
+    {
+        return $this->getIncluded();
     }
 }

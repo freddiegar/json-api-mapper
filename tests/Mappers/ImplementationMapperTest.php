@@ -217,17 +217,18 @@ JSON;
 
         $dataFindNull = $data->find(342);
         $includedFindNull = $included->find('people', 876);
+        $includedFindInvalid = $included->find('invalid', 4);
 
         $this->validationTest(get_defined_vars());
     }
 
-    public function _testImplementationMapperMethodMagic()
+    public function testImplementationMapperMethodMagic()
     {
         $mapper = new ResponseMapper($this->dataTest());
 
         $meta = $mapper->meta();
-        $metaTotalCount = $meta->path('total-count');
-        $metaNull = $meta->path('invalid');
+        $metaTotalCount = $meta->meta('total-count');
+        $metaNull = $meta->meta('invalid');
 
         $jsonApi = $mapper->jsonApi();
         $jsonApiVersion = $jsonApi->version();
@@ -242,7 +243,7 @@ JSON;
         $linkHref = $links->href();
         $linkRelated = $links->related();
 
-        $data = $mapper->data();
+        $data = $mapper->data(0);
         $dataType = $data->type();
         $dataId = $data->id();
         $dataAttributes = $data->attributes();
@@ -281,7 +282,7 @@ JSON;
         $dataByIdNull = $dataById->attribute('invalid');
 
         $included = $mapper->included();
-        $includedOne = $included->included(1);
+        $includedOne = $included->included(0);
         $includedOneType = $includedOne->type();
         $includedOneId = $includedOne->id();
         $includedOneAttributes = $includedOne->attributes();
@@ -290,7 +291,7 @@ JSON;
         $includedOneAttributesGender = $includedOne->attribute('gender');
         $includedOneAttributesNull = $includedOne->attribute('invalid');
 
-        $includedById = $included->find(4);
+        $includedById = $included->find('people', 4);
         $includedOneType = $includedById->type();
         $includedByIdId = $includedById->id();
         $includedByIdAttributes = $includedById->attributes();
@@ -300,7 +301,8 @@ JSON;
         $includedByIdAttributesNull = $includedById->attribute('invalid');
 
         $dataFindNull = $data->find(342);
-        $includedFindNull = $included->find(876);
+        $includedFindNull = $included->find('people', 876);
+        $includedFindInvalid = $included->find('invalid', 4);
 
         $this->validationTest(get_defined_vars());
     }
@@ -310,8 +312,8 @@ JSON;
         $mapper = new ResponseMapper($this->dataTest());
 
         $meta = $mapper->meta();
-        $metaTotalCount = $meta->path('total-count');
-        $metaNull = $meta->path('invalid');
+        $metaTotalCount = $meta->meta('total-count');
+        $metaNull = $meta->meta('invalid');
 
         $jsonApi = $mapper->jsonApi();
         $jsonApiVersion = $jsonApi->version();
@@ -326,7 +328,7 @@ JSON;
         $linkHref = $links->href();
         $linkRelated = $links->related();
 
-        $data = $mapper->data();
+        $data = $mapper->data(0);
         $dataType = $data->type();
         $dataId = $data->id();
         $dataAttributes = $data->attributes();
@@ -365,7 +367,7 @@ JSON;
         $dataByIdNull = $dataById->invalid();
 
         $included = $mapper->included();
-        $includedOne = $included->included(1);
+        $includedOne = $included->included(0);
         $includedOneType = $includedOne->type();
         $includedOneId = $includedOne->id();
         $includedOneAttributes = $includedOne->attributes();
@@ -384,7 +386,8 @@ JSON;
         $includedByIdAttributesNull = $includedById->invalid();
 
         $dataFindNull = $data->find(342);
-        $includedFindNull = $included->find(876);
+        $includedFindNull = $included->find('people', 876);
+        $includedFindInvalid = $included->find('invalid', 4);
 
         $this->validationTest(get_defined_vars());
     }
@@ -410,7 +413,7 @@ JSON;
         $linkHref = $links->href;
         $linkRelated = $links->related;
 
-        $data = $mapper->data;
+        $data = $mapper->data(0);
         $dataType = $data->type;
         $dataId = $data->id;
         $dataAttributes = $data->attributes;
@@ -449,7 +452,7 @@ JSON;
         $dataByIdNull = $dataById->attribute->invalid;
 
         $included = $mapper->included;
-        $includedOne = $included->included(1);
+        $includedOne = $included->included(0);
         $includedOneType = $includedOne->type;
         $includedOneId = $includedOne->id;
         $includedOneAttributes = $includedOne->attributes;
@@ -468,8 +471,9 @@ JSON;
         $includedByIdAttributesNull = $includedById->attribute->invalid;
 
         $dataFindNull = $data->find(342);
-        $includedFindNull = $included->find(876);
-
+        $includedFindNull = $included->find('people', 876);
+        $includedFindInvalid = $included->find('invalid', 4);
+        
         $this->validationTest(get_defined_vars());
     }
 
@@ -494,7 +498,7 @@ JSON;
         $linkHref = $links->href;
         $linkRelated = $links->related;
 
-        $data = $mapper->data;
+        $data = $mapper->data(0);
         $dataType = $data->type;
         $dataId = $data->id;
         $dataAttributes = $data->attributes;
@@ -533,7 +537,7 @@ JSON;
         $dataByIdNull = $dataById->invalid;
 
         $included = $mapper->included;
-        $includedOne = $included->included(1);
+        $includedOne = $included->included(0);
         $includedOneType = $includedOne->type;
         $includedOneId = $includedOne->id;
         $includedOneAttributes = $includedOne->attributes;
@@ -552,8 +556,9 @@ JSON;
         $includedByIdAttributesNull = $includedById->invalid;
 
         $dataFindNull = $data->find(342);
-        $includedFindNull = $included->find(876);
-
+        $includedFindNull = $included->find('people', 876);
+        $includedFindInvalid = $included->find('invalid', 4);
+        
         $this->validationTest(get_defined_vars());
     }
 
@@ -640,5 +645,6 @@ JSON;
 
         $this->assertEquals(null, $dataFindNull);
         $this->assertEquals(null, $includedFindNull);
+        $this->assertEquals(null, $includedFindInvalid);
     }
 }
