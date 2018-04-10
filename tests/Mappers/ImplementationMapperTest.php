@@ -38,7 +38,7 @@ class ImplementationMapperTest extends TestCase
                 "title":"JSON API Rules",
                 "body":"Another article.",
                 "created":"2015-06-22T11:58:29.000Z",
-                "updated":"2016-05-22T14:59:02.000Z"
+                "updated-at":"2016-05-22T14:59:02.000Z"
             },
             "relationships":{
                 "author":{
@@ -65,7 +65,7 @@ class ImplementationMapperTest extends TestCase
                 "title":"JSON API paints my bikeshed!",
                 "body":"The shortest article. Ever.",
                 "created":"2015-05-22T14:56:29.000Z",
-                "updated":"2015-05-22T14:56:28.000Z"
+                "updated-at":"2015-05-22T14:56:28.000Z"
             },
             "relationships":{
                 "author":{
@@ -92,7 +92,7 @@ class ImplementationMapperTest extends TestCase
                 "title":"JSON API woow",
                 "body":"The longest article. Ever.",
                 "created":"2018-05-22T14:56:29.000Z",
-                "updated":null
+                "updated-at":null
             },
             "relationships":{
                 "author":{
@@ -165,7 +165,7 @@ JSON;
         $dataTitle = $data->getAttribute('title');
         $dataBody = $data->getAttribute('body');
         $dataCreated = $data->getAttribute('created');
-        $dataUpdated = $data->getAttribute('updated');
+        $dataUpdated = $data->getAttribute('updated-at');
         $dataNull = $data->getAttribute('invalid');
 
         $author = $data->getRelationship('author');
@@ -193,7 +193,7 @@ JSON;
         $dataByIdTitle = $dataById->getAttribute('title');
         $dataByIdBody = $dataById->getAttribute('body');
         $dataByIdCreated = $dataById->getAttribute('created');
-        $dataByIdUpdated = $dataById->getAttribute('updated');
+        $dataByIdUpdated = $dataById->getAttribute('updated-at');
         $dataByIdNull = $dataById->getAttribute('invalid');
 
         $included = $mapper->getIncluded();
@@ -222,7 +222,7 @@ JSON;
         $this->validationTest(get_defined_vars());
     }
 
-    public function testImplementationMapperMethodMagic()
+    public function testImplementationMapperMethodAlias()
     {
         $mapper = new ResponseMapper($this->dataTest());
 
@@ -250,7 +250,7 @@ JSON;
         $dataTitle = $data->attribute('title');
         $dataBody = $data->attribute('body');
         $dataCreated = $data->attribute('created');
-        $dataUpdated = $data->attribute('updated');
+        $dataUpdated = $data->attribute('updated-at');
         $dataNull = $data->attribute('invalid');
 
         $author = $data->relationship('author');
@@ -278,7 +278,7 @@ JSON;
         $dataByIdTitle = $dataById->attribute('title');
         $dataByIdBody = $dataById->attribute('body');
         $dataByIdCreated = $dataById->attribute('created');
-        $dataByIdUpdated = $dataById->attribute('updated');
+        $dataByIdUpdated = $dataById->attribute('updated-at');
         $dataByIdNull = $dataById->attribute('invalid');
 
         $included = $mapper->included();
@@ -307,7 +307,92 @@ JSON;
         $this->validationTest(get_defined_vars());
     }
 
-    public function _testImplementationMapperMethodWithoutAttributesAndRelationshipAccessors()
+    public function testImplementationMapperMethodWithAttributesGetAccessors()
+    {
+        $mapper = new ResponseMapper($this->dataTest());
+
+        $meta = $mapper->meta();
+        $metaTotalCount = $meta->meta('total-count');
+        $metaNull = $meta->meta('invalid');
+
+        $jsonApi = $mapper->jsonApi();
+        $jsonApiVersion = $jsonApi->version();
+
+        $links = $mapper->links();
+        $linkFirst = $links->first();
+        $linkPrev = $links->prev();
+        $linkNext = $links->next();
+        $linkLast = $links->last();
+        $linkSelf = $links->self();
+        $linkAbout = $links->about();
+        $linkHref = $links->href();
+        $linkRelated = $links->related();
+
+        $data = $mapper->data(0);
+        $dataType = $data->type();
+        $dataId = $data->id();
+        $dataAttributes = $data->attributes();
+        $dataTitle = $data->getTitle();
+        $dataBody = $data->getBody();
+        $dataCreated = $data->getCreated();
+        $dataUpdated = $data->getUpdatedAt();
+        $dataNull = $data->getInvalid();
+
+        $author = $data->author();
+        $authorType = $author->type();
+        $authorId = $author->id();
+        $authorAttributes = $author->attributes();
+        $authorName = $author->getName();
+        $authorAge = $author->getAge();
+        $authorGender = $author->getGender();
+        $authorNull = $author->getInvalid();
+
+        $dataRelationshipNull = $data->invalid();
+
+        $dataLinks = $data->links();
+        $dataLinkSelf = $dataLinks->self();
+        $dataLinkRelated = $dataLinks->related();
+        $dataLinkRelatedHref = $dataLinks->related('href');
+        $dataLinkRelatedMeta = $dataLinks->related('meta');
+        $dataLinkRelatedMetaCount = $dataLinks->related('meta.count');
+
+        $dataById = $data->find(25);
+        $dataByIdType = $dataById->getType();
+        $dataByIdId = $dataById->getId();
+        $dataByIdAttributes = $dataById->attributes();
+        $dataByIdTitle = $dataById->getTitle();
+        $dataByIdBody = $dataById->getBody();
+        $dataByIdCreated = $dataById->getCreated();
+        $dataByIdUpdated = $dataById->getUpdatedAt();
+        $dataByIdNull = $dataById->getInvalid();
+
+        $included = $mapper->included();
+        $includedOne = $included->included(0);
+        $includedOneType = $includedOne->type();
+        $includedOneId = $includedOne->id();
+        $includedOneAttributes = $includedOne->attributes();
+        $includedOneAttributesName = $includedOne->getName();
+        $includedOneAttributesAge = $includedOne->getAge();
+        $includedOneAttributesGender = $includedOne->getGender();
+        $includedOneAttributesNull = $includedOne->getInvalid();
+
+        $includedById = $included->find('people', 4);
+        $includedOneType = $includedById->type();
+        $includedByIdId = $includedById->id();
+        $includedByIdAttributes = $includedById->attributes();
+        $includedByIdAttributesName = $includedById->getName();
+        $includedByIdAttributesAge = $includedById->getAge();
+        $includedByIdAttributesGender = $includedById->getGender();
+        $includedByIdAttributesNull = $includedById->getInvalid();
+
+        $dataFindNull = $data->find(342);
+        $includedFindNull = $included->find('people', 876);
+        $includedFindInvalid = $included->find('invalid', 4);
+
+        $this->validationTest(get_defined_vars());
+    }
+
+    public function _testImplementationMapperMethodWithAttributesAndRelationshipAccessorsMagic()
     {
         $mapper = new ResponseMapper($this->dataTest());
 
@@ -335,7 +420,7 @@ JSON;
         $dataTitle = $data->title();
         $dataBody = $data->body();
         $dataCreated = $data->created();
-        $dataUpdated = $data->updated();
+        $dataUpdated = $data->updatedAt();
         $dataNull = $data->invalid();
 
         $author = $data->author();
@@ -363,7 +448,7 @@ JSON;
         $dataByIdTitle = $dataById->title();
         $dataByIdBody = $dataById->body();
         $dataByIdCreated = $dataById->created();
-        $dataByIdUpdated = $dataById->updated();
+        $dataByIdUpdated = $dataById->updatedAt();
         $dataByIdNull = $dataById->invalid();
 
         $included = $mapper->included();
@@ -376,7 +461,7 @@ JSON;
         $includedOneAttributesGender = $includedOne->gender();
         $includedOneAttributesNull = $includedOne->invalid();
 
-        $includedById = $included->find(4);
+        $includedById = $included->find('people', 4);
         $includedOneType = $includedById->type();
         $includedByIdId = $includedById->id();
         $includedByIdAttributes = $includedById->attributes();
@@ -392,7 +477,7 @@ JSON;
         $this->validationTest(get_defined_vars());
     }
 
-    public function _testImplementationMapperPropertyMagic()
+    public function _testImplementationMapperPropertySnakeAccessors()
     {
         $mapper = new ResponseMapper($this->dataTest());
 
@@ -420,7 +505,7 @@ JSON;
         $dataTitle = $data->attribute->title;
         $dataBody = $data->attribute->body;
         $dataCreated = $data->attribute->created;
-        $dataUpdated = $data->attribute->updated;
+        $dataUpdated = $data->attribute->updated_at;
         $dataNull = $data->attribute->invalid;
 
         $author = $data->relationship->author;
@@ -448,7 +533,7 @@ JSON;
         $dataByIdTitle = $dataById->attribute->title;
         $dataByIdBody = $dataById->attribute->body;
         $dataByIdCreated = $dataById->attribute->created;
-        $dataByIdUpdated = $dataById->attribute->updated;
+        $dataByIdUpdated = $dataById->attribute->updated_at;
         $dataByIdNull = $dataById->attribute->invalid;
 
         $included = $mapper->included;
@@ -461,7 +546,7 @@ JSON;
         $includedOneAttributesGender = $includedOne->attribute->gender;
         $includedOneAttributesNull = $includedOne->attribute->invalid;
 
-        $includedById = $included->find(4);
+        $includedById = $included->find('people', 4);
         $includedOneType = $includedById->type;
         $includedByIdId = $includedById->id;
         $includedByIdAttributes = $includedById->attributes;
@@ -473,11 +558,11 @@ JSON;
         $dataFindNull = $data->find(342);
         $includedFindNull = $included->find('people', 876);
         $includedFindInvalid = $included->find('invalid', 4);
-        
+
         $this->validationTest(get_defined_vars());
     }
 
-    public function _testImplementationMapperPropertyWithoutAttributesAndRelationshipAccessors()
+    public function _testImplementationMapperPropertyCamelAccessors()
     {
         $mapper = new ResponseMapper($this->dataTest());
 
@@ -505,7 +590,7 @@ JSON;
         $dataTitle = $data->title;
         $dataBody = $data->body;
         $dataCreated = $data->created;
-        $dataUpdated = $data->updated;
+        $dataUpdated = $data->updatedAt;
         $dataNull = $data->invalid;
 
         $author = $data->author;
@@ -533,7 +618,7 @@ JSON;
         $dataByIdTitle = $dataById->title;
         $dataByIdBody = $dataById->body;
         $dataByIdCreated = $dataById->created;
-        $dataByIdUpdated = $dataById->updated;
+        $dataByIdUpdated = $dataById->updatedAt;
         $dataByIdNull = $dataById->invalid;
 
         $included = $mapper->included;
@@ -546,7 +631,7 @@ JSON;
         $includedOneAttributesGender = $includedOne->gender;
         $includedOneAttributesNull = $includedOne->invalid;
 
-        $includedById = $included->find(4);
+        $includedById = $included->find('people', 4);
         $includedOneType = $includedById->type;
         $includedByIdId = $includedById->id;
         $includedByIdAttributes = $includedById->attributes;
@@ -558,7 +643,7 @@ JSON;
         $dataFindNull = $data->find(342);
         $includedFindNull = $included->find('people', 876);
         $includedFindInvalid = $included->find('invalid', 4);
-        
+
         $this->validationTest(get_defined_vars());
     }
 
