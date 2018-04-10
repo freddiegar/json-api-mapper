@@ -1,0 +1,20 @@
+{
+    "name": "placetopay/json-api-mapper",
+    "description": "It is a mapper in PHP from response json-api",
+    "type": "library",
+    "require": {
+        "php": ">=7.1.3",
+        "dflydev/dot-access-data": "v2.0.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "PlacetoPay\\JsonApiMapper\\": "src/",
+            "PlacetoPay\\JsonApiMapper\\Tests\\": "tests/"
+        }
+    },
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "require-dev": {
+        "phpunit/phpunit": "^7.1"
+    }
+}
