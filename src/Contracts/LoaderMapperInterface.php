@@ -18,16 +18,6 @@ interface LoaderMapperInterface
     public function load($input, ?string $tag = null);
 
     /**
-     * @return array
-     */
-    public function original(): array;
-
-    /**
-     * @return array
-     */
-    public function current(): array;
-
-    /**
      * @return int
      */
     public function count(): int;

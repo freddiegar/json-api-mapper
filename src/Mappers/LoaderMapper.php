@@ -42,12 +42,12 @@ abstract class LoaderMapper implements LoaderMapperInterface
         return $this;
     }
 
-    public function original(): array
+    protected function original(): array
     {
         return $this->original;
     }
 
-    public function current(): array
+    protected function current(): array
     {
         return $this->current;
     }
