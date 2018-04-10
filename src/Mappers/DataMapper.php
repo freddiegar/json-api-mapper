@@ -22,6 +22,17 @@ class DataMapper extends LoaderMapper implements DataMapperInterface
         return parent::load($input, $tag);
     }
 
+    public function find(int $id): ?DataMapperInterface
+    {
+        foreach ($this->original() as $index => $data) {
+            if ($data[DocumentInterface::KEYWORD_ID] == $id) {
+                return $this->get($index);
+            }
+        }
+
+        return null;
+    }
+
     public function get(?int $index = null): ?DataMapperInterface
     {
         if (!is_null($index)) {
