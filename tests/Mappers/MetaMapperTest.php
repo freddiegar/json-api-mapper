@@ -48,14 +48,14 @@ class MetaMapperTest extends TestCase
     {
         $meta = $this->metaMapper($this->instanceMeta());
 
-        $this->assertEquals('Copyright 2015 Example Corp.', $meta->getPath('copyright'));
-        $this->assertTrue(is_array($meta->getPath('authors')));
-        $this->assertEquals('Yehuda Katz', $meta->getPath('authors.0'));
-        $this->assertEquals('Steve Klabnik', $meta->getPath('authors.1'));
-        $this->assertEquals('Dan Gebhardt', $meta->getPath('authors.2'));
-        $this->assertEquals('Tyler Kellen', $meta->getPath('authors.3'));
+        $this->assertEquals('Copyright 2015 Example Corp.', $meta->getMeta('copyright'));
+        $this->assertTrue(is_array($meta->getMeta('authors')));
+        $this->assertEquals('Yehuda Katz', $meta->getMeta('authors.0'));
+        $this->assertEquals('Steve Klabnik', $meta->getMeta('authors.1'));
+        $this->assertEquals('Dan Gebhardt', $meta->getMeta('authors.2'));
+        $this->assertEquals('Tyler Kellen', $meta->getMeta('authors.3'));
 
-        $this->assertEquals(null, $meta->getPath('authors.4'));
-        $this->assertEquals(null, $meta->getPath('notExists'));
+        $this->assertEquals(null, $meta->getMeta('authors.4'));
+        $this->assertEquals(null, $meta->getMeta('notExists'));
     }
 }

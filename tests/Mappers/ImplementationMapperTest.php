@@ -142,8 +142,8 @@ JSON;
         $mapper = new ResponseMapper($this->dataTest());
 
         $meta = $mapper->getMeta();
-        $metaTotalCount = $meta->getPath('total-count');
-        $metaNull = $meta->getPath('invalid');
+        $metaTotalCount = $meta->getMeta('total-count');
+        $metaNull = $meta->getMeta('invalid');
 
         $jsonApi = $mapper->getJsonApi();
         $jsonApiVersion = $jsonApi->getVersion();

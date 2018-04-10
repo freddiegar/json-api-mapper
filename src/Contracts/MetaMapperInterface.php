@@ -13,5 +13,5 @@ interface MetaMapperInterface extends LoaderMapperInterface
      * @param string $path
      * @return null|string|array
      */
-    public function getPath(string $path);
+    public function getMeta(string $path);
 }
