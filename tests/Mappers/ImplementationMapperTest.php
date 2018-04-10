@@ -392,7 +392,7 @@ JSON;
         $this->validationTest(get_defined_vars());
     }
 
-    public function _testImplementationMapperMethodWithAttributesAndRelationshipAccessorsMagic()
+    public function testImplementationMapperMethodWithAttributesAndRelationshipAccessorsMagic()
     {
         $mapper = new ResponseMapper($this->dataTest());
 
