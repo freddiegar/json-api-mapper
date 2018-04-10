@@ -1,6 +1,6 @@
 <?php
 
-namespace PlacetoPay\JsonApiMapper\Tests;
+namespace FreddieGar\JsonApiMapper\Tests;
 
 use PHPUnit\Framework\TestCase as BaseTestCase;
 

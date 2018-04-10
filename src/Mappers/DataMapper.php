@@ -1,17 +1,17 @@
 <?php
 
-namespace PlacetoPay\JsonApiMapper\Mappers;
+namespace FreddieGar\JsonApiMapper\Mappers;
 
-use PlacetoPay\JsonApiMapper\Contracts\DataMapperInterface;
-use PlacetoPay\JsonApiMapper\Contracts\DocumentInterface;
-use PlacetoPay\JsonApiMapper\Contracts\IncludedMapperInterface;
-use PlacetoPay\JsonApiMapper\Helper;
-use PlacetoPay\JsonApiMapper\Traits\LinksMapperTrait;
-use PlacetoPay\JsonApiMapper\Traits\MetaMapperTrait;
+use FreddieGar\JsonApiMapper\Contracts\DataMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\DocumentInterface;
+use FreddieGar\JsonApiMapper\Contracts\IncludedMapperInterface;
+use FreddieGar\JsonApiMapper\Helper;
+use FreddieGar\JsonApiMapper\Traits\LinksMapperTrait;
+use FreddieGar\JsonApiMapper\Traits\MetaMapperTrait;
 
 /**
  * Class DataMapper
- * @package PlacetoPay\JsonApiMapper\Mappers
+ * @package FreddieGar\JsonApiMapper\Mappers
  */
 class DataMapper extends LoaderMapper implements DataMapperInterface
 {

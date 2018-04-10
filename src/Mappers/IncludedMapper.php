@@ -1,14 +1,14 @@
 <?php
 
-namespace PlacetoPay\JsonApiMapper\Mappers;
+namespace FreddieGar\JsonApiMapper\Mappers;
 
-use PlacetoPay\JsonApiMapper\Contracts\DataMapperInterface;
-use PlacetoPay\JsonApiMapper\Contracts\DocumentInterface;
-use PlacetoPay\JsonApiMapper\Contracts\IncludedMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\DataMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\DocumentInterface;
+use FreddieGar\JsonApiMapper\Contracts\IncludedMapperInterface;
 
 /**
  * Class IncludedMapper
- * @package PlacetoPay\JsonApiMapper\Mappers
+ * @package FreddieGar\JsonApiMapper\Mappers
  */
 class IncludedMapper extends LoaderMapper implements IncludedMapperInterface
 {

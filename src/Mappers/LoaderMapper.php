@@ -1,8 +1,8 @@
 <?php
 
-namespace PlacetoPay\JsonApiMapper\Mappers;
+namespace FreddieGar\JsonApiMapper\Mappers;
 
-use PlacetoPay\JsonApiMapper\Contracts\LoaderMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\LoaderMapperInterface;
 
 abstract class LoaderMapper implements LoaderMapperInterface
 {

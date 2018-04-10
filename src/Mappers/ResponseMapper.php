@@ -1,20 +1,20 @@
 <?php
 
-namespace PlacetoPay\JsonApiMapper\Mappers;
+namespace FreddieGar\JsonApiMapper\Mappers;
 
 use Exception;
 use InvalidArgumentException;
-use PlacetoPay\JsonApiMapper\Contracts\DataMapperInterface;
-use PlacetoPay\JsonApiMapper\Contracts\ErrorsMapperInterface;
-use PlacetoPay\JsonApiMapper\Contracts\IncludedMapperInterface;
-use PlacetoPay\JsonApiMapper\Contracts\JsonApiMapperInterface;
-use PlacetoPay\JsonApiMapper\Contracts\LinksMapperInterface;
-use PlacetoPay\JsonApiMapper\Contracts\MetaMapperInterface;
-use PlacetoPay\JsonApiMapper\Contracts\ResponseMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\DataMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\ErrorsMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\IncludedMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\JsonApiMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\LinksMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\MetaMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\ResponseMapperInterface;
 
 /**
  * Class ResponseMapper
- * @package PlacetoPay\JsonApiMapper\Mappers
+ * @package FreddieGar\JsonApiMapper\Mappers
  */
 class ResponseMapper extends LoaderMapper implements ResponseMapperInterface
 {

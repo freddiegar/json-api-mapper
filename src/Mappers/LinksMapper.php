@@ -1,14 +1,14 @@
 <?php
 
-namespace PlacetoPay\JsonApiMapper\Mappers;
+namespace FreddieGar\JsonApiMapper\Mappers;
 
-use PlacetoPay\JsonApiMapper\Contracts\DocumentInterface;
-use PlacetoPay\JsonApiMapper\Contracts\LinksMapperInterface;
-use PlacetoPay\JsonApiMapper\Helper;
+use FreddieGar\JsonApiMapper\Contracts\DocumentInterface;
+use FreddieGar\JsonApiMapper\Contracts\LinksMapperInterface;
+use FreddieGar\JsonApiMapper\Helper;
 
 /**
  * Class LinksMapper
- * @package PlacetoPay\JsonApiMapper\Mappers
+ * @package FreddieGar\JsonApiMapper\Mappers
  */
 class LinksMapper extends LoaderMapper implements LinksMapperInterface
 {

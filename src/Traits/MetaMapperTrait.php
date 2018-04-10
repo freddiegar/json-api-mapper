@@ -1,13 +1,13 @@
 <?php
 
-namespace PlacetoPay\JsonApiMapper\Traits;
+namespace FreddieGar\JsonApiMapper\Traits;
 
-use PlacetoPay\JsonApiMapper\Contracts\DocumentInterface;
-use PlacetoPay\JsonApiMapper\Helper;
+use FreddieGar\JsonApiMapper\Contracts\DocumentInterface;
+use FreddieGar\JsonApiMapper\Helper;
 
 /**
  * Trait MetaMapperTrait
- * @package PlacetoPay\JsonApiMapper\Traits
+ * @package FreddieGar\JsonApiMapper\Traits
  */
 trait MetaMapperTrait
 {

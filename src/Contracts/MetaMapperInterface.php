@@ -1,6 +1,6 @@
 <?php
 
-namespace PlacetoPay\JsonApiMapper\Contracts;
+namespace FreddieGar\JsonApiMapper\Contracts;
 
 interface MetaMapperInterface extends LoaderMapperInterface
 {

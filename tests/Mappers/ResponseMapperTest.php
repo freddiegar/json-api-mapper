@@ -1,17 +1,17 @@
 <?php
 
-namespace PlacetoPay\JsonApiMapper\Tests\Mappers;
+namespace FreddieGar\JsonApiMapper\Tests\Mappers;
 
 use Exception;
-use PlacetoPay\JsonApiMapper\Contracts\DataMapperInterface;
-use PlacetoPay\JsonApiMapper\Contracts\ErrorsMapperInterface;
-use PlacetoPay\JsonApiMapper\Contracts\IncludedMapperInterface;
-use PlacetoPay\JsonApiMapper\Contracts\JsonApiMapperInterface;
-use PlacetoPay\JsonApiMapper\Contracts\LinksMapperInterface;
-use PlacetoPay\JsonApiMapper\Contracts\MetaMapperInterface;
-use PlacetoPay\JsonApiMapper\Contracts\ResponseMapperInterface;
-use PlacetoPay\JsonApiMapper\Mappers\ResponseMapper;
-use PlacetoPay\JsonApiMapper\Tests\TestCase;
+use FreddieGar\JsonApiMapper\Contracts\DataMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\ErrorsMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\IncludedMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\JsonApiMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\LinksMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\MetaMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\ResponseMapperInterface;
+use FreddieGar\JsonApiMapper\Mappers\ResponseMapper;
+use FreddieGar\JsonApiMapper\Tests\TestCase;
 
 class ResponseMapperTest extends TestCase
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace PlacetoPay\JsonApiMapper\Tests\Mappers;
+namespace FreddieGar\JsonApiMapper\Tests\Mappers;
 
 use Exception;
-use PlacetoPay\JsonApiMapper\Contracts\LinksMapperInterface;
-use PlacetoPay\JsonApiMapper\Mappers\LinksMapper;
-use PlacetoPay\JsonApiMapper\Tests\TestCase;
+use FreddieGar\JsonApiMapper\Contracts\LinksMapperInterface;
+use FreddieGar\JsonApiMapper\Mappers\LinksMapper;
+use FreddieGar\JsonApiMapper\Tests\TestCase;
 
 class LinksMapperTest extends TestCase
 {

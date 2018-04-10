@@ -1,12 +1,12 @@
 <?php
 
-namespace PlacetoPay\JsonApiMapper;
+namespace FreddieGar\JsonApiMapper;
 
 use Dflydev\DotAccessData\Data;
 
 /**
  * Class Helper
- * @package PlacetoPay\JsonApiMapper
+ * @package FreddieGar\JsonApiMapper
  */
 class Helper
 {

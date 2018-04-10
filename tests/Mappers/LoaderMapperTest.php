@@ -1,14 +1,14 @@
 <?php
 
-namespace PlacetoPay\JsonApiMapper\Tests\Mappers;
+namespace FreddieGar\JsonApiMapper\Tests\Mappers;
 
-use PlacetoPay\JsonApiMapper\Contracts\DataMapperInterface;
-use PlacetoPay\JsonApiMapper\Contracts\LinksMapperInterface;
-use PlacetoPay\JsonApiMapper\Contracts\ResponseMapperInterface;
-use PlacetoPay\JsonApiMapper\Mapper;
-use PlacetoPay\JsonApiMapper\Mappers\DataMapper;
-use PlacetoPay\JsonApiMapper\Mappers\ResponseMapper;
-use PlacetoPay\JsonApiMapper\Tests\TestCase;
+use FreddieGar\JsonApiMapper\Contracts\DataMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\LinksMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\ResponseMapperInterface;
+use FreddieGar\JsonApiMapper\Mapper;
+use FreddieGar\JsonApiMapper\Mappers\DataMapper;
+use FreddieGar\JsonApiMapper\Mappers\ResponseMapper;
+use FreddieGar\JsonApiMapper\Tests\TestCase;
 
 class LoaderMapperTest extends TestCase
 {

@@ -1,5 +1,5 @@
 {
-    "name": "placetopay/json-api-mapper",
+    "name": "freddiegar/json-api-mapper",
     "description": "It is a mapper in PHP from response json-api",
     "type": "library",
     "require": {
@@ -8,8 +8,8 @@
     },
     "autoload": {
         "psr-4": {
-            "PlacetoPay\\JsonApiMapper\\": "src/",
-            "PlacetoPay\\JsonApiMapper\\Tests\\": "tests/"
+            "FreddieGar\\JsonApiMapper\\": "src/",
+            "FreddieGar\\JsonApiMapper\\Tests\\": "tests/"
         }
     },
     "license": "MIT",

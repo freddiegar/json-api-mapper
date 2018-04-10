@@ -1,12 +1,12 @@
 <?php
 
-namespace PlacetoPay\JsonApiMapper\Exceptions;
+namespace FreddieGar\JsonApiMapper\Exceptions;
 
 use Exception;
 
 /**
  * Class JsonApiMapperException
- * @package PlacetoPay\JsonApiMapper\Exceptions
+ * @package FreddieGar\JsonApiMapper\Exceptions
  */
 class JsonApiMapperException extends Exception
 {

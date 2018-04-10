@@ -1,8 +1,8 @@
 <?php
 
-namespace PlacetoPay\JsonApiMapper;
+namespace FreddieGar\JsonApiMapper;
 
-use PlacetoPay\JsonApiMapper\Mappers\ResponseMapper;
+use FreddieGar\JsonApiMapper\Mappers\ResponseMapper;
 
 class Mapper extends ResponseMapper
 {

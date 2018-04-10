@@ -1,14 +1,14 @@
 <?php
 
-namespace PlacetoPay\JsonApiMapper\Traits;
+namespace FreddieGar\JsonApiMapper\Traits;
 
-use PlacetoPay\JsonApiMapper\Contracts\DocumentInterface;
-use PlacetoPay\JsonApiMapper\Contracts\LinksMapperInterface;
-use PlacetoPay\JsonApiMapper\Mappers\LinksMapper;
+use FreddieGar\JsonApiMapper\Contracts\DocumentInterface;
+use FreddieGar\JsonApiMapper\Contracts\LinksMapperInterface;
+use FreddieGar\JsonApiMapper\Mappers\LinksMapper;
 
 /**
  * Trait LinksMapperTrait
- * @package PlacetoPay\JsonApiMapper\Traits
+ * @package FreddieGar\JsonApiMapper\Traits
  */
 trait LinksMapperTrait
 {

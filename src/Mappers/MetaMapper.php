@@ -1,14 +1,14 @@
 <?php
 
-namespace PlacetoPay\JsonApiMapper\Mappers;
+namespace FreddieGar\JsonApiMapper\Mappers;
 
-use PlacetoPay\JsonApiMapper\Contracts\DocumentInterface;
-use PlacetoPay\JsonApiMapper\Contracts\MetaMapperInterface;
-use PlacetoPay\JsonApiMapper\Helper;
+use FreddieGar\JsonApiMapper\Contracts\DocumentInterface;
+use FreddieGar\JsonApiMapper\Contracts\MetaMapperInterface;
+use FreddieGar\JsonApiMapper\Helper;
 
 /**
  * Class MetaMapper
- * @package PlacetoPay\JsonApiMapper\Mappers
+ * @package FreddieGar\JsonApiMapper\Mappers
  */
 class MetaMapper extends LoaderMapper implements MetaMapperInterface
 {

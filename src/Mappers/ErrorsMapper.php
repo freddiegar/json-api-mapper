@@ -1,12 +1,12 @@
 <?php
 
-namespace PlacetoPay\JsonApiMapper\Mappers;
+namespace FreddieGar\JsonApiMapper\Mappers;
 
-use PlacetoPay\JsonApiMapper\Contracts\DocumentInterface;
-use PlacetoPay\JsonApiMapper\Contracts\ErrorsMapperInterface;
-use PlacetoPay\JsonApiMapper\Helper;
-use PlacetoPay\JsonApiMapper\Traits\LinksMapperTrait;
-use PlacetoPay\JsonApiMapper\Traits\MetaMapperTrait;
+use FreddieGar\JsonApiMapper\Contracts\DocumentInterface;
+use FreddieGar\JsonApiMapper\Contracts\ErrorsMapperInterface;
+use FreddieGar\JsonApiMapper\Helper;
+use FreddieGar\JsonApiMapper\Traits\LinksMapperTrait;
+use FreddieGar\JsonApiMapper\Traits\MetaMapperTrait;
 
 class ErrorsMapper extends LoaderMapper implements ErrorsMapperInterface
 {
