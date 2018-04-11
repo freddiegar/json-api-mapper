@@ -48,6 +48,7 @@ class MetaMapperTest extends TestCase
     {
         $meta = $this->metaMapper($this->instanceMeta());
 
+        $this->assertInstanceOf(MetaMapperInterface::class, $meta);
         $this->assertEquals('Copyright 2015 Example Corp.', $meta->getMeta('copyright'));
         $this->assertTrue(is_array($meta->getMeta('authors')));
         $this->assertEquals('Yehuda Katz', $meta->getMeta('authors.0'));

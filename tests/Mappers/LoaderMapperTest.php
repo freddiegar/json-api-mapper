@@ -4,8 +4,9 @@ namespace FreddieGar\JsonApiMapper\Tests\Mappers;
 
 use FreddieGar\JsonApiMapper\Contracts\DataMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\LinksMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\RelatedMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\ResponseMapperInterface;
-use FreddieGar\JsonApiMapper\Mapper;
+use FreddieGar\JsonApiMapper\JsonApiResponse;
 use FreddieGar\JsonApiMapper\Mappers\DataMapper;
 use FreddieGar\JsonApiMapper\Mappers\ResponseMapper;
 use FreddieGar\JsonApiMapper\Tests\TestCase;
@@ -50,7 +51,10 @@ class LoaderMapperTest extends TestCase
         $this->assertInstanceOf(DataMapperInterface::class, $data->getRelationship('language'));
         $this->assertInstanceOf(LinksMapperInterface::class, $data->getLinks());
         $this->assertEquals('http://example.com/posts/1449216560', $data->getLinks()->getSelf());
-        $this->assertTrue(is_array($data->getLinks()->getRelated()));
+        $this->assertInstanceOf(RelatedMapperInterface::class, $data->getLinks()->getRelated());
+        $this->assertEquals('http://example.com/posts/1449216560/comments', $data->getLinks()->getRelated()->getHref());
+        $this->assertTrue(is_array($data->getLinks()->getRelated()->getMeta()));
+        $this->assertEquals(10, $data->getLinks()->getRelated()->getMeta('count'));
 
         $this->assertEquals(null, $data->getAttribute('attribute-invalid'));
         $this->assertEquals(null,$data->getRelationship('relationship-invalid'));
@@ -58,14 +62,14 @@ class LoaderMapperTest extends TestCase
 
     public function testLoaderMapperFromConstructor()
     {
-        $loader = new Mapper('{}');
+        $loader = new JsonApiResponse('{}');
 
         $this->assertInstanceOf(ResponseMapperInterface::class, $loader);
     }
 
     public function testLoaderMapperFromLoad()
     {
-        $loader = (new Mapper())->load('{}');
+        $loader = (new JsonApiResponse())->load('{}');
 
         $this->assertInstanceOf(ResponseMapperInterface::class, $loader);
     }
@@ -73,7 +77,7 @@ class LoaderMapperTest extends TestCase
 
     public function testLoaderMapperWithString()
     {
-        $loader = new Mapper($this->getDataHow('string'));
+        $loader = new JsonApiResponse($this->getDataHow('string'));
 
         $this->assertInstanceOf(ResponseMapperInterface::class, $loader);
         $this->runTestOn($loader->getData());
@@ -81,7 +85,7 @@ class LoaderMapperTest extends TestCase
 
     public function testLoaderMapperWithObject()
     {
-        $loader = new Mapper($this->getDataHow('object'));
+        $loader = new JsonApiResponse($this->getDataHow('object'));
 
         $this->assertInstanceOf(ResponseMapperInterface::class, $loader);
         $this->runTestOn($loader->getData());
@@ -89,7 +93,7 @@ class LoaderMapperTest extends TestCase
 
     public function testLoaderMapperWithArray()
     {
-        $loader = new Mapper($this->getDataHow('array'));
+        $loader = new JsonApiResponse($this->getDataHow('array'));
 
         $this->assertInstanceOf(ResponseMapperInterface::class, $loader);
         $this->runTestOn($loader->getData());

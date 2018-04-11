@@ -18,4 +18,11 @@ trait LinksMapperTrait
             ? new LinksMapper($this->current())
             : null;
     }
+
+    // Alias
+
+    public function links(): ?LinksMapperInterface
+    {
+        return $this->getLinks();
+    }
 }

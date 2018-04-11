@@ -46,12 +46,18 @@ abstract class Loader implements LoaderInterface
         return $this;
     }
 
-    protected function original(): ?array
+    /**
+     * @return string|array|null
+     */
+    protected function original()
     {
         return $this->original;
     }
 
-    protected function current(): ?array
+    /**
+     * @return string|array|null
+     */
+    protected function current()
     {
         return $this->current;
     }
@@ -61,6 +67,13 @@ abstract class Loader implements LoaderInterface
         return is_array($this->original())
             ? count($this->original())
             : 0;
+    }
+
+    public function all(): array
+    {
+        return $this->count() > 0
+            ? $this->original()
+            : [];
     }
 
     public function __call($name, $arguments)

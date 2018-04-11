@@ -18,7 +18,7 @@ class JsonApiMapperTest extends TestCase
         return new JsonApiMapper($input);
     }
 
-    public function testMetaMapperInvalid()
+    public function testJsonApiMapperInvalid()
     {
         foreach (['', null, false, true, 'data', []] as $input) {
             try {
@@ -30,28 +30,28 @@ class JsonApiMapperTest extends TestCase
         }
     }
 
-    public function testMetaMapperFromConstructor()
+    public function testJsonApiMapperFromConstructor()
     {
         $jsonApi = $this->jsonApiMapper('{}');
 
         $this->assertInstanceOf(JsonApiMapperInterface::class, $jsonApi);
     }
 
-    public function testMetaMapperFromLoad()
+    public function testJsonApiMapperFromLoad()
     {
         $jsonApi = $this->jsonApiMapper()->load('{}');
 
         $this->assertInstanceOf(JsonApiMapperInterface::class, $jsonApi);
     }
 
-    public function testMetaMapperSimpleOk()
+    public function testJsonApiMapperSimpleOk()
     {
         $meta = $this->jsonApiMapper($this->instanceJsonApi());
 
         $this->assertEquals('1.0', $meta->getVersion());
     }
 
-    public function testMetaMapperSimpleBad()
+    public function testJsonApiMapperSimpleBad()
     {
         $meta = $this->jsonApiMapper('{}');
 

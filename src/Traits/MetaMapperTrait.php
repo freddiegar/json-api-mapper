@@ -21,4 +21,11 @@ trait MetaMapperTrait
 
         return $meta;
     }
+
+    // Alias
+
+    public function meta(?string $path = null)
+    {
+        return $this->getMeta($path);
+    }
 }

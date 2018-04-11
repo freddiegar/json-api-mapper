@@ -21,4 +21,9 @@ interface LoaderInterface
      * @return int
      */
     public function count(): int;
+
+    /**
+     * @return array
+     */
+    public function all(): array;
 }

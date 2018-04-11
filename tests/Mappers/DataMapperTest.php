@@ -5,6 +5,7 @@ namespace FreddieGar\JsonApiMapper\Tests\Mappers;
 use Exception;
 use FreddieGar\JsonApiMapper\Contracts\DataMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\LinksMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\RelatedMapperInterface;
 use FreddieGar\JsonApiMapper\Mappers\DataMapper;
 use FreddieGar\JsonApiMapper\Tests\TestCase;
 
@@ -61,7 +62,10 @@ class DataMapperTest extends TestCase
         $this->assertInstanceOf(DataMapperInterface::class, $data->getRelationship('language'));
         $this->assertInstanceOf(LinksMapperInterface::class, $data->getLinks());
         $this->assertEquals('http://example.com/posts/1449216560', $data->getLinks()->getSelf());
-        $this->assertTrue(is_array($data->getLinks()->getRelated()));
+        $this->assertInstanceOf(RelatedMapperInterface::class, $data->getLinks()->getRelated());
+        $this->assertEquals('http://example.com/posts/1449216560/comments', $data->getLinks()->getRelated()->getHref());
+        $this->assertTrue(is_array($data->getLinks()->getRelated()->getMeta()));
+        $this->assertEquals(10, $data->getLinks()->getRelated()->getMeta('count'));
 
         $this->assertEquals(null, $data->getAttribute('attribute-invalid'));
         $this->assertEquals(null, $data->getRelationship('relationship-invalid'));

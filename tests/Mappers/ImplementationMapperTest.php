@@ -7,6 +7,7 @@ use FreddieGar\JsonApiMapper\Contracts\IncludedMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\JsonApiMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\LinksMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\MetaMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\RelatedMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\ResponseMapperInterface;
 use FreddieGar\JsonApiMapper\Mappers\ResponseMapper;
 use FreddieGar\JsonApiMapper\Tests\TestCase;
@@ -24,7 +25,6 @@ class ImplementationMapperTest extends TestCase
         "version":"1.0"
     },
     "links":{
-        "href":"http://example.com/articles?filter[body][like]=json",
         "first":"http://example.com/articles?page[number]=1&page[size]=1",
         "prev":"http://example.com/articles?page[number]=2&page[size]=1",
         "next":"http://example.com/articles?page[number]=4&page[size]=1",
@@ -78,12 +78,7 @@ class ImplementationMapperTest extends TestCase
             },
             "links":{
                 "self":"http://example.com/articles/20",
-                "related":{
-                    "href":"http://example.com/articles/20/comments",
-                    "meta":{
-                        "count":2
-                    }
-                }
+                "related":null
             }
         },
         {
@@ -156,7 +151,6 @@ JSON;
         $linkLast = $links->getLast();
         $linkSelf = $links->getSelf();
         $linkAbout = $links->getAbout();
-        $linkHref = $links->getHref();
         $linkRelated = $links->getRelated();
 
         $data = $mapper->getData(0);
@@ -183,9 +177,9 @@ JSON;
         $dataLinks = $data->getLinks();
         $dataLinkSelf = $dataLinks->getSelf();
         $dataLinkRelated = $dataLinks->getRelated();
-        $dataLinkRelatedHref = $dataLinks->getRelated('href');
-        $dataLinkRelatedMeta = $dataLinks->getRelated('meta');
-        $dataLinkRelatedMetaCount = $dataLinks->getRelated('meta.count');
+        $dataLinkRelatedHref = $dataLinks->getRelated()->getHref();
+        $dataLinkRelatedMeta = $dataLinks->getRelated()->getMeta();
+        $dataLinkRelatedMetaCount = $dataLinks->getRelated()->getMeta('count');
 
         $dataById = $data->find(25);
         $dataByIdType = $dataById->getType();
@@ -196,6 +190,10 @@ JSON;
         $dataByIdCreated = $dataById->getAttribute('created');
         $dataByIdUpdated = $dataById->getAttribute('updated-at');
         $dataByIdNull = $dataById->getAttribute('invalid');
+
+        $dataLinksTwo = $data->find(20)->getLinks();
+        $dataLinkSelfTwo = $dataLinksTwo->getSelf();
+        $dataLinkRelatedTwo = $dataLinksTwo->getRelated();
 
         $included = $mapper->getIncluded();
         $includedOne = $included->getIncluded(0);
@@ -241,7 +239,6 @@ JSON;
         $linkLast = $links->last();
         $linkSelf = $links->self();
         $linkAbout = $links->about();
-        $linkHref = $links->href();
         $linkRelated = $links->related();
 
         $data = $mapper->data(0);
@@ -268,9 +265,9 @@ JSON;
         $dataLinks = $data->links();
         $dataLinkSelf = $dataLinks->self();
         $dataLinkRelated = $dataLinks->related();
-        $dataLinkRelatedHref = $dataLinks->related('href');
-        $dataLinkRelatedMeta = $dataLinks->related('meta');
-        $dataLinkRelatedMetaCount = $dataLinks->related('meta.count');
+        $dataLinkRelatedHref = $dataLinks->related()->href();
+        $dataLinkRelatedMeta = $dataLinks->related()->meta();
+        $dataLinkRelatedMetaCount = $dataLinks->related()->meta('count');
 
         $dataById = $data->find(25);
         $dataByIdType = $dataById->type();
@@ -281,6 +278,10 @@ JSON;
         $dataByIdCreated = $dataById->attribute('created');
         $dataByIdUpdated = $dataById->attribute('updated-at');
         $dataByIdNull = $dataById->attribute('invalid');
+
+        $dataLinksTwo = $data->find(20)->links();
+        $dataLinkSelfTwo = $dataLinksTwo->self();
+        $dataLinkRelatedTwo = $dataLinksTwo->related();
 
         $included = $mapper->included();
         $includedOne = $included->included(0);
@@ -326,7 +327,6 @@ JSON;
         $linkLast = $links->last();
         $linkSelf = $links->self();
         $linkAbout = $links->about();
-        $linkHref = $links->href();
         $linkRelated = $links->related();
 
         $data = $mapper->data(0);
@@ -353,9 +353,9 @@ JSON;
         $dataLinks = $data->links();
         $dataLinkSelf = $dataLinks->self();
         $dataLinkRelated = $dataLinks->related();
-        $dataLinkRelatedHref = $dataLinks->related('href');
-        $dataLinkRelatedMeta = $dataLinks->related('meta');
-        $dataLinkRelatedMetaCount = $dataLinks->related('meta.count');
+        $dataLinkRelatedHref = $dataLinks->related()->href();
+        $dataLinkRelatedMeta = $dataLinks->related()->meta();
+        $dataLinkRelatedMetaCount = $dataLinks->related()->meta('count');
 
         $dataById = $data->find(25);
         $dataByIdType = $dataById->getType();
@@ -366,6 +366,11 @@ JSON;
         $dataByIdCreated = $dataById->getCreated();
         $dataByIdUpdated = $dataById->getUpdatedAt();
         $dataByIdNull = $dataById->getInvalid();
+
+        $dataLinksTwo = $data->find(20)->links();
+        $dataLinkSelfTwo = $dataLinksTwo->self();
+        $dataLinkRelatedTwo = $dataLinksTwo->related();
+
 
         $included = $mapper->included();
         $includedOne = $included->included(0);
@@ -393,7 +398,7 @@ JSON;
         $this->validationTest(get_defined_vars());
     }
 
-    public function testImplementationMapperMethodWithAttributesAndRelationshipAccessorsMagic()
+    public function testImplementationMapperMethodWithoutAttributesAndRelationshipAccessorsMagic()
     {
         $mapper = new ResponseMapper($this->dataTest());
 
@@ -411,7 +416,6 @@ JSON;
         $linkLast = $links->last();
         $linkSelf = $links->self();
         $linkAbout = $links->about();
-        $linkHref = $links->href();
         $linkRelated = $links->related();
 
         $data = $mapper->data(0);
@@ -438,9 +442,9 @@ JSON;
         $dataLinks = $data->links();
         $dataLinkSelf = $dataLinks->self();
         $dataLinkRelated = $dataLinks->related();
-        $dataLinkRelatedHref = $dataLinks->related('href');
-        $dataLinkRelatedMeta = $dataLinks->related('meta');
-        $dataLinkRelatedMetaCount = $dataLinks->related('meta.count');
+        $dataLinkRelatedHref = $dataLinks->related()->href();
+        $dataLinkRelatedMeta = $dataLinks->related()->meta();
+        $dataLinkRelatedMetaCount = $dataLinks->related()->meta('count');
 
         $dataById = $data->find(25);
         $dataByIdType = $dataById->type();
@@ -451,6 +455,10 @@ JSON;
         $dataByIdCreated = $dataById->created();
         $dataByIdUpdated = $dataById->updatedAt();
         $dataByIdNull = $dataById->invalid();
+
+        $dataLinksTwo = $data->find(20)->links();
+        $dataLinkSelfTwo = $dataLinksTwo->self();
+        $dataLinkRelatedTwo = $dataLinksTwo->related();
 
         $included = $mapper->included();
         $includedOne = $included->included(0);
@@ -496,7 +504,6 @@ JSON;
         $linkLast = $links->last;
         $linkSelf = $links->self;
         $linkAbout = $links->about;
-        $linkHref = $links->href;
         $linkRelated = $links->related;
 
         $data = $mapper->data(0);
@@ -525,7 +532,7 @@ JSON;
         $dataLinkRelated = $dataLinks->related;
         $dataLinkRelatedHref = $dataLinks->related->href;
         $dataLinkRelatedMeta = $dataLinks->related->meta;
-        $dataLinkRelatedMetaCount = $dataLinks->related('meta.count');
+        $dataLinkRelatedMetaCount = $dataLinks->related->meta('count');
 
         $dataById = $data->find(25);
         $dataByIdType = $dataById->type;
@@ -536,6 +543,10 @@ JSON;
         $dataByIdCreated = $dataById->attribute->created;
         $dataByIdUpdated = $dataById->attribute->updated_at;
         $dataByIdNull = $dataById->attribute->invalid;
+
+        $dataLinksTwo = $data->find(20)->links;
+        $dataLinkSelfTwo = $dataLinksTwo->self;
+        $dataLinkRelatedTwo = $dataLinksTwo->related;
 
         $included = $mapper->included;
         $includedOne = $included->included(0);
@@ -563,7 +574,7 @@ JSON;
         $this->validationTest(get_defined_vars());
     }
 
-    public function _testImplementationMapperPropertyCamelAccessors()
+    public function testImplementationMapperPropertyCamelAccessors()
     {
         $mapper = new ResponseMapper($this->dataTest());
 
@@ -581,7 +592,6 @@ JSON;
         $linkLast = $links->last;
         $linkSelf = $links->self;
         $linkAbout = $links->about;
-        $linkHref = $links->href;
         $linkRelated = $links->related;
 
         $data = $mapper->data(0);
@@ -610,7 +620,7 @@ JSON;
         $dataLinkRelated = $dataLinks->related;
         $dataLinkRelatedHref = $dataLinks->related->href;
         $dataLinkRelatedMeta = $dataLinks->related->meta;
-        $dataLinkRelatedMetaCount = $dataLinks->related->meta->count;
+        $dataLinkRelatedMetaCount = $dataLinks->related->meta('count');
 
         $dataById = $data->find(25);
         $dataByIdType = $dataById->type;
@@ -621,6 +631,10 @@ JSON;
         $dataByIdCreated = $dataById->attribute->created;
         $dataByIdUpdated = $dataById->attribute->updatedAt;
         $dataByIdNull = $dataById->attribute->invalid;
+
+        $dataLinksTwo = $data->find(20)->links;
+        $dataLinkSelfTwo = $dataLinksTwo->self;
+        $dataLinkRelatedTwo = $dataLinksTwo->related;
 
         $included = $mapper->included;
         $includedOne = $included->included(0);
@@ -648,12 +662,12 @@ JSON;
         $this->validationTest(get_defined_vars());
     }
 
-    public function _testImplementationMapperPropertyWithoutAttributesAndRelationshipsSnakeAccessors()
+    public function testImplementationMapperPropertyWithoutAttributesAndRelationshipsSnakeAccessors()
     {
         $mapper = new ResponseMapper($this->dataTest());
 
         $meta = $mapper->meta;
-        $metaTotalCount = $meta->tota_count;
+        $metaTotalCount = $meta->total_count;
         $metaNull = $meta->invalid;
 
         $jsonApi = $mapper->jsonapi;
@@ -666,7 +680,6 @@ JSON;
         $linkLast = $links->last;
         $linkSelf = $links->self;
         $linkAbout = $links->about;
-        $linkHref = $links->href;
         $linkRelated = $links->related;
 
         $data = $mapper->data(0);
@@ -695,7 +708,7 @@ JSON;
         $dataLinkRelated = $dataLinks->related;
         $dataLinkRelatedHref = $dataLinks->related->href;
         $dataLinkRelatedMeta = $dataLinks->related->meta;
-        $dataLinkRelatedMetaCount = $dataLinks->related->meta->count;
+        $dataLinkRelatedMetaCount = $dataLinks->related->meta('count');
 
         $dataById = $data->find(25);
         $dataByIdType = $dataById->type;
@@ -706,6 +719,10 @@ JSON;
         $dataByIdCreated = $dataById->created;
         $dataByIdUpdated = $dataById->updated_at;
         $dataByIdNull = $dataById->invalid;
+
+        $dataLinksTwo = $data->find(20)->links;
+        $dataLinkSelfTwo = $dataLinksTwo->self;
+        $dataLinkRelatedTwo = $dataLinksTwo->related;
 
         $included = $mapper->included;
         $includedOne = $included->included(0);
@@ -733,7 +750,7 @@ JSON;
         $this->validationTest(get_defined_vars());
     }
 
-    public function _testImplementationMapperPropertyWithoutAttributesAndRelationshipsCamelAccessors()
+    public function testImplementationMapperPropertyWithoutAttributesAndRelationshipsCamelAccessors()
     {
         $mapper = new ResponseMapper($this->dataTest());
 
@@ -751,7 +768,6 @@ JSON;
         $linkLast = $links->last;
         $linkSelf = $links->self;
         $linkAbout = $links->about;
-        $linkHref = $links->href;
         $linkRelated = $links->related;
 
         $data = $mapper->data(0);
@@ -780,7 +796,7 @@ JSON;
         $dataLinkRelated = $dataLinks->related;
         $dataLinkRelatedHref = $dataLinks->related->href;
         $dataLinkRelatedMeta = $dataLinks->related->meta;
-        $dataLinkRelatedMetaCount = $dataLinks->related->meta->count;
+        $dataLinkRelatedMetaCount = $dataLinks->related->meta('count');
 
         $dataById = $data->find(25);
         $dataByIdType = $dataById->type;
@@ -791,6 +807,10 @@ JSON;
         $dataByIdCreated = $dataById->created;
         $dataByIdUpdated = $dataById->updatedAt;
         $dataByIdNull = $dataById->invalid;
+
+        $dataLinksTwo = $data->find(20)->links;
+        $dataLinkSelfTwo = $dataLinksTwo->self;
+        $dataLinkRelatedTwo = $dataLinksTwo->related;
 
         $included = $mapper->included;
         $includedOne = $included->included(0);
@@ -834,7 +854,6 @@ JSON;
          * @var $linkLast
          * @var $linkSelf
          * @var $linkAbout
-         * @var $linkHref
          * @var $linkRelated
          * @var $data
          * @var $dataType
@@ -869,6 +888,9 @@ JSON;
          * @var $dataByIdCreated
          * @var $dataByIdUpdated
          * @var $dataByIdNull
+         * @var $dataLinksTwo
+         * @var $dataLinkSelfTwo
+         * @var $dataLinkRelatedTwo
          * @var $included
          * @var $includedOne
          * @var $includedOneType
@@ -908,7 +930,6 @@ JSON;
         $this->assertEquals('http://example.com/articles?page[number]=13&page[size]=1', $linkLast);
         $this->assertEquals(null, $linkSelf);
         $this->assertEquals(null, $linkAbout);
-        $this->assertEquals('http://example.com/articles?filter[body][like]=json', $linkHref);
         $this->assertEquals('http://example.com/comments', $linkRelated);
 
         $this->assertInstanceOf(DataMapperInterface::class, $data);
@@ -934,7 +955,7 @@ JSON;
 
         $this->assertInstanceOf(LinksMapperInterface::class, $dataLinks);
         $this->assertEquals('http://example.com/articles/10', $dataLinkSelf);
-        $this->assertTrue(is_array($dataLinkRelated));
+        $this->assertInstanceOf(RelatedMapperInterface::class, $dataLinkRelated);
         $this->assertEquals('http://example.com/articles/10/comments', $dataLinkRelatedHref);
         $this->assertTrue(is_array($dataLinkRelatedMeta));
         $this->assertEquals(10, $dataLinkRelatedMetaCount);
@@ -949,6 +970,10 @@ JSON;
         $this->assertEquals(null, $dataByIdUpdated);
 
         $this->assertEquals(null, $dataByIdNull);
+
+        $this->assertInstanceOf(LinksMapperInterface::class, $dataLinksTwo);
+        $this->assertEquals('http://example.com/articles/20', $dataLinkSelfTwo);
+        $this->assertEquals(null, $dataLinkRelatedTwo);
 
         $this->assertInstanceOf(IncludedMapperInterface::class, $included);
         $this->assertInstanceOf(DataMapperInterface::class, $includedOne);

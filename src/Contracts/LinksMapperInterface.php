@@ -15,11 +15,6 @@ interface LinksMapperInterface extends LoaderInterface
     public function getSelf(): ?string;
 
     /**
-     * @return null|string
-     */
-    public function getHref(): ?string;
-
-    /**
      *
      * @return null|string
      */
@@ -46,16 +41,13 @@ interface LinksMapperInterface extends LoaderInterface
     public function getAbout(): ?string;
 
     /**
-     * @param string $path
-     * @return null|string|array
+     * @return null|string|RelatedMapperInterface
      */
-    public function getRelated(?string $path = null);
+    public function getRelated();
 
     // Alias
 
     public function self(): ?string;
-
-    public function href(): ?string;
 
     public function first(): ?string;
 
@@ -67,5 +59,8 @@ interface LinksMapperInterface extends LoaderInterface
 
     public function about(): ?string;
 
-    public function related(?string $path = null);
+    /**
+     * @return null|string|RelatedMapperInterface
+     */
+    public function related();
 }

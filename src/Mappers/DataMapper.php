@@ -34,11 +34,9 @@ class DataMapper extends Loader implements DataMapperInterface
 
     public function find(string $id): ?DataMapperInterface
     {
-        if (is_array($this->original())) {
-            foreach ($this->original() as $index => $data) {
-                if ($data[DocumentInterface::KEYWORD_ID] == $id) {
-                    return $this->get($index);
-                }
+        foreach ($this->all() as $index => $data) {
+            if ($data[DocumentInterface::KEYWORD_ID] == $id) {
+                return $this->get($index);
             }
         }
 
@@ -145,16 +143,6 @@ class DataMapper extends Loader implements DataMapperInterface
         return $this->getRelationship($relationName);
     }
 
-    public function meta(?string $path = null)
-    {
-        return $this->getMeta($path);
-    }
-
-    public function links(): ?LinksMapperInterface
-    {
-        return $this->getLinks();
-    }
-
     /**
      * @param $name
      * @param $arguments
@@ -162,14 +150,14 @@ class DataMapper extends Loader implements DataMapperInterface
      */
     public function __call($name, $arguments)
     {
-        $needle = $this->_sanitizeName($name);
+        $name = $this->_sanitizeName($name);
 
-        if ($needle && array_key_exists($needle, $this->getRelationships())) {
-            return $this->getRelationship($needle);
+        if ($property = $this->getRelationship($name)) {
+            return $property;
         }
 
-        if ($needle && array_key_exists($needle, $this->getAttributes())) {
-            return $this->getAttribute($needle);
+        if ($property = $this->getAttribute($name)) {
+            return $property;
         }
 
         return parent::__call($name, $arguments);

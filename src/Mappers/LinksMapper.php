@@ -4,6 +4,7 @@ namespace FreddieGar\JsonApiMapper\Mappers;
 
 use FreddieGar\JsonApiMapper\Contracts\DocumentInterface;
 use FreddieGar\JsonApiMapper\Contracts\LinksMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\RelatedMapperInterface;
 use FreddieGar\JsonApiMapper\Helper;
 
 /**
@@ -25,11 +26,6 @@ class LinksMapper extends Loader implements LinksMapperInterface
     public function getSelf(): ?string
     {
         return Helper::getFromArray($this->current(), DocumentInterface::KEYWORD_SELF, null);
-    }
-
-    public function getHref(): ?string
-    {
-        return Helper::getFromArray($this->current(), DocumentInterface::KEYWORD_HREF, null);
     }
 
     public function getFirst(): ?string
@@ -57,27 +53,24 @@ class LinksMapper extends Loader implements LinksMapperInterface
         return Helper::getFromArray($this->current(), DocumentInterface::KEYWORD_ERRORS_ABOUT, null);
     }
 
-    public function getRelated(?string $path = null)
+    public function getRelated()
     {
-        $related = Helper::getFromArray($this->current(), DocumentInterface::KEYWORD_RELATED, null);
+        if (isset($this->current()[DocumentInterface::KEYWORD_RELATED])) {
+            $related = new RelatedMapper($this->current());
 
-        if (!is_null($path)) {
-            return is_array($related)
-                ? Helper::getFromArray($related, $path, null)
-                : null;
+            if (is_string($related->get())) {
+                return $related->get();
+            }
+
+            return $related;
         }
 
-        return $related;
+        return null;
     }
 
     public function self(): ?string
     {
         return $this->getSelf();
-    }
-
-    public function href(): ?string
-    {
-        return $this->getHref();
     }
 
     public function first(): ?string
@@ -105,28 +98,8 @@ class LinksMapper extends Loader implements LinksMapperInterface
         return $this->getAbout();
     }
 
-    public function related(?string $path = null)
+    public function related()
     {
-        return $this->getRelated($path);
-    }
-
-    public function __get($name)
-    {
-        /**
-         * Getting attributes a related
-         */
-        if (in_array($name, [DocumentInterface::KEYWORD_RELATED])) {
-            return $this->getRelated() && !is_array($this->getRelated())
-                ? $this->getRelated()
-                : $this;
-        }
-
-        $name = $this->_sanitizeName($name);
-
-        if ($property = $this->getRelated($name)) {
-            return $property;
-        }
-
-        return parent::__get($name);
+        return $this->getRelated();
     }
 }
