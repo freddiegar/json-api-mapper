@@ -61,8 +61,10 @@ class LinksMapper extends Loader implements LinksMapperInterface
     {
         $related = Helper::getFromArray($this->current(), DocumentInterface::KEYWORD_RELATED, null);
 
-        if ($related && !is_null($path)) {
-            return Helper::getFromArray($related, $path, null);
+        if (!is_null($path)) {
+            return is_array($related)
+                ? Helper::getFromArray($related, $path, null)
+                : null;
         }
 
         return $related;
@@ -110,13 +112,19 @@ class LinksMapper extends Loader implements LinksMapperInterface
 
     public function __get($name)
     {
-        $name = $this->_sanitizeName($name);
-
         /**
          * Getting attributes a related
          */
         if (in_array($name, [DocumentInterface::KEYWORD_RELATED])) {
-            return $this->getRelated();
+            return $this->getRelated() && !is_array($this->getRelated())
+                ? $this->getRelated()
+                : $this;
+        }
+
+        $name = $this->_sanitizeName($name);
+
+        if ($property = $this->getRelated($name)) {
+            return $property;
         }
 
         return parent::__get($name);

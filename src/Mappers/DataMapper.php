@@ -184,6 +184,8 @@ class DataMapper extends Loader implements DataMapperInterface
             return $this;
         }
 
+        $name = $this->_sanitizeName($name);
+
         if ($property = $this->getRelationship($name)) {
             return $property;
         }
