@@ -6,7 +6,6 @@ use FreddieGar\JsonApiMapper\Contracts\DataMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\DocumentInterface;
 use FreddieGar\JsonApiMapper\Contracts\IncludedMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\LinksMapperInterface;
-use FreddieGar\JsonApiMapper\Exceptions\JsonApiMapperException;
 use FreddieGar\JsonApiMapper\Helper;
 use FreddieGar\JsonApiMapper\Traits\LinksMapperTrait;
 use FreddieGar\JsonApiMapper\Traits\MetaMapperTrait;
@@ -35,23 +34,30 @@ class DataMapper extends Loader implements DataMapperInterface
 
     public function find(string $id): ?DataMapperInterface
     {
-        foreach ($this->original() as $index => $data) {
-            if ($data[DocumentInterface::KEYWORD_ID] == $id) {
-                return $this->get($index);
+        if (is_array($this->original())) {
+            foreach ($this->original() as $index => $data) {
+                if ($data[DocumentInterface::KEYWORD_ID] == $id) {
+                    return $this->get($index);
+                }
             }
         }
 
         return null;
     }
 
-    public function get(?int $index = null): ?DataMapperInterface
+    public function get(?int $index = null)
     {
-        if (!is_null($index)) {
+        if (is_array($this->original()) && !is_null($index)) {
             if (isset($this->original()[$index])) {
                 $this->current = $this->original()[$index];
+                return $this;
             } else {
                 return null;
             }
+        }
+
+        if ($this->count() === 0) {
+            return $this->original();
         }
 
         return $this;
@@ -150,34 +156,13 @@ class DataMapper extends Loader implements DataMapperInterface
     }
 
     /**
-     * @param $call
+     * @param $name
      * @param $arguments
-     * @return mixed
-     * @throws JsonApiMapperException
+     * @return DataMapperInterface|null|string
      */
-    public function __call($call, $arguments)
+    public function __call($name, $arguments)
     {
-        $needle = null;
-        $needle = null;
-        $call = strlen($call) > 3 && substr($call, 0, 3) === 'get'
-            ? substr($call, 3)
-            : $call;
-
-        /**
-         * Use get{Attribute} method to get attributes, by example: getTitle(), getAge();
-         */
-        $temp = strtolower(preg_replace('/(?<!^)[A-Z]/', ' $0', $call));
-
-        if (strpos($temp, '_') !== false) {
-            $temp = preg_replace(['_ ', '_'], ' ', $temp);
-        }
-
-        $needle = $needle = str_replace(' ', '-', $temp);
-
-//        if (!in_array($needle, ['title', 'body', 'created', 'updated-at', 'invalid'])) {
-//            var_dump($call, $needle, $this->getAttributes(), $this->getRelationships());
-//            die;
-//        }
+        $needle = $this->_sanitizeName($name);
 
         if ($needle && array_key_exists($needle, $this->getRelationships())) {
             return $this->getRelationship($needle);
@@ -187,16 +172,26 @@ class DataMapper extends Loader implements DataMapperInterface
             return $this->getAttribute($needle);
         }
 
-//        var_dump(get_defined_vars());
-//        die;
-        if (method_exists($this, $call)) {
-            return $this->{$call}($arguments);
+        return parent::__call($name, $arguments);
+    }
+
+    public function __get($name)
+    {
+        /**
+         * Getting attributes a relationships
+         */
+        if (in_array($name, [DocumentInterface::KEYWORD_ATTRIBUTE, DocumentInterface::KEYWORD_RELATIONSHIP])) {
+            return $this;
         }
 
-        if (method_exists($this, $method = sprintf('get%s', $call))) {
-            return $this->$method($arguments);
+        if ($property = $this->getRelationship($name)) {
+            return $property;
         }
 
-        return null;
+        if ($property = $this->getAttribute($name)) {
+            return $property;
+        }
+
+        return parent::__get($name);
     }
 }

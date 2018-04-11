@@ -12,9 +12,9 @@ interface DataMapperInterface extends LoaderInterface
 
     /**
      * @param int|null $index
-     * @return null|DataMapperInterface
+     * @return null|array|DataMapperInterface
      */
-    public function get(?int $index = null): ?DataMapperInterface;
+    public function get(?int $index = null);
 
     /**
      * @return null|string

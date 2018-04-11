@@ -10,35 +10,35 @@ interface ResponseMapperInterface extends LoaderInterface
 {
     /**
      * @param int|null $index
-     * @return null|DataMapperInterface
+     * @return DataMapperInterface|array|null
      */
-    public function getData(?int $index = null): ?DataMapperInterface;
+    public function getData(?int $index = null);
 
     /**
      * @param int|null $index
-     * @return null|ErrorsMapperInterface
+     * @return ErrorsMapperInterface|null
      */
     public function getErrors(?int $index = null): ?ErrorsMapperInterface;
 
     /**
-     * @return MetaMapperInterface
+     * @return MetaMapperInterface|null
      */
-    public function getMeta(): MetaMapperInterface;
+    public function getMeta(): ?MetaMapperInterface;
 
     /**
-     * @return JsonApiMapperInterface
+     * @return JsonApiMapperInterface|null
      */
-    public function getJsonApi(): JsonApiMapperInterface;
+    public function getJsonApi(): ?JsonApiMapperInterface;
 
     /**
-     * @return LinksMapperInterface
+     * @return LinksMapperInterface|null
      */
-    public function getLinks(): LinksMapperInterface;
+    public function getLinks(): ?LinksMapperInterface;
 
     /**
-     * @return IncludedMapperInterface
+     * @return IncludedMapperInterface|null
      */
-    public function getIncluded(): IncludedMapperInterface;
+    public function getIncluded(): ?IncludedMapperInterface;
 
     // Alias methods
 
@@ -46,11 +46,11 @@ interface ResponseMapperInterface extends LoaderInterface
 
     public function errors(?int $index = null): ?ErrorsMapperInterface;
 
-    public function meta(): MetaMapperInterface;
+    public function meta(): ?MetaMapperInterface;
 
-    public function jsonApi(): JsonApiMapperInterface;
+    public function jsonApi(): ?JsonApiMapperInterface;
 
-    public function links(): LinksMapperInterface;
+    public function links(): ?LinksMapperInterface;
 
-    public function included(): IncludedMapperInterface;
+    public function included(): ?IncludedMapperInterface;
 }

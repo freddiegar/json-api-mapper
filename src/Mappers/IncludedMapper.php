@@ -20,10 +20,12 @@ class IncludedMapper extends Loader implements IncludedMapperInterface
 
     public function find(string $type, string $id): ?DataMapperInterface
     {
-        foreach ($this->original() as $index => $data) {
-            if ($data[DocumentInterface::KEYWORD_TYPE] == $type
-                && $data[DocumentInterface::KEYWORD_ID] == $id) {
-                return $this->getIncluded($index);
+        if (is_array($this->original())) {
+            foreach ($this->original() as $index => $data) {
+                if ($data[DocumentInterface::KEYWORD_TYPE] == $type
+                    && $data[DocumentInterface::KEYWORD_ID] == $id) {
+                    return $this->getIncluded($index);
+                }
             }
         }
 

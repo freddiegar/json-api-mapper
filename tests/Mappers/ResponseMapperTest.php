@@ -26,12 +26,12 @@ class ResponseMapperTest extends TestCase
 
     protected function runTestResponseInstance(ResponseMapperInterface $response)
     {
-        $this->assertInstanceOf(DataMapperInterface::class, $response->getData());
-        $this->assertInstanceOf(ErrorsMapperInterface::class, $response->getErrors());
-        $this->assertInstanceOf(MetaMapperInterface::class, $response->getMeta());
-        $this->assertInstanceOf(JsonApiMapperInterface::class, $response->getJsonApi());
-        $this->assertInstanceOf(LinksMapperInterface::class, $response->getLinks());
-        $this->assertInstanceOf(IncludedMapperInterface::class, $response->getIncluded());
+        $this->assertEquals(null, $response->getData());
+        $this->assertEquals(null, $response->getErrors());
+        $this->assertEquals(null, $response->getMeta());
+        $this->assertEquals(null, $response->getJsonApi());
+        $this->assertEquals(null, $response->getLinks());
+        $this->assertEquals(null, $response->getIncluded());
     }
 
     public function testResponseMapperInvalid()

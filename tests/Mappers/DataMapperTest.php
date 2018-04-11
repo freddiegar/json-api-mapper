@@ -111,4 +111,22 @@ class DataMapperTest extends TestCase
             }
         }
     }
+
+    public function testDataMapperSimpleEmpty()
+    {
+        $data = $this->dataMapper('{"data": null}');
+        $this->assertInstanceOf(DataMapperInterface::class, $data);
+        $this->assertEquals(null, $data->get());
+        $this->assertEquals(null, $data->get(0));
+    }
+
+    public function testDataMapperMultipleEmpty()
+    {
+        $dataMultiple = $this->dataMapper('{"data": []}');
+        $count = $dataMultiple->count();
+        $this->assertInstanceOf(DataMapperInterface::class, $dataMultiple);
+        $this->assertEquals(0, $count);
+        $this->assertEquals([], $dataMultiple->get());
+        $this->assertEquals(null, $dataMultiple->get(0));
+    }
 }

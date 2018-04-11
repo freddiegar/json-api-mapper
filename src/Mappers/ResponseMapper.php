@@ -3,7 +3,6 @@
 namespace FreddieGar\JsonApiMapper\Mappers;
 
 use Exception;
-use InvalidArgumentException;
 use FreddieGar\JsonApiMapper\Contracts\DataMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\ErrorsMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\IncludedMapperInterface;
@@ -11,6 +10,7 @@ use FreddieGar\JsonApiMapper\Contracts\JsonApiMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\LinksMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\MetaMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\ResponseMapperInterface;
+use InvalidArgumentException;
 
 /**
  * Class ResponseMapper
@@ -86,34 +86,46 @@ class ResponseMapper extends Loader implements ResponseMapperInterface
         return $this;
     }
 
-    public function getData(?int $index = null): ?DataMapperInterface
+    public function getData(?int $index = null)
     {
-        return $this->dataMapper->get($index);
+        return $this->dataMapper->count() > 0
+            ? $this->dataMapper->get($index)
+            : $this->original();
     }
 
     public function getErrors(?int $index = null): ?ErrorsMapperInterface
     {
-        return $this->errorsMapper->get($index);
+        return $this->errorsMapper->count() > 0
+            ? $this->errorsMapper->get($index)
+            : null;
     }
 
-    public function getMeta(): MetaMapperInterface
+    public function getMeta(): ?MetaMapperInterface
     {
-        return $this->metaMapper->get();
+        return $this->metaMapper->count() > 0
+            ? $this->metaMapper->get()
+            : null;
     }
 
-    public function getJsonApi(): JsonApiMapperInterface
+    public function getJsonApi(): ?JsonApiMapperInterface
     {
-        return $this->jsonApiMapper->get();
+        return $this->jsonApiMapper->count() > 0
+            ? $this->jsonApiMapper->get()
+            : null;
     }
 
-    public function getLinks(): LinksMapperInterface
+    public function getLinks(): ?LinksMapperInterface
     {
-        return $this->linksMapper->get();
+        return $this->linksMapper->count() > 0
+            ? $this->linksMapper->get()
+            : null;
     }
 
-    public function getIncluded(): IncludedMapperInterface
+    public function getIncluded(): ?IncludedMapperInterface
     {
-        return $this->includedMapper->get();
+        return $this->includedMapper->count()
+            ? $this->includedMapper->get()
+            : null;
     }
 
     public function data(?int $index = null): ?DataMapperInterface

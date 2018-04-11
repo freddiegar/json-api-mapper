@@ -32,4 +32,9 @@ interface DocumentInterface
     const KEYWORD_ERRORS_META = 'meta';
     const KEYWORD_ERRORS_SOURCE = 'source';
     const KEYWORD_ERRORS_ABOUT = 'about';
+
+    // Specials
+    const KEYWORD_ATTRIBUTE = 'attribute';
+    const KEYWORD_RELATIONSHIP = 'relationship';
+
 }
