@@ -15,7 +15,6 @@ use InvalidArgumentException;
 /**
  * Class ResponseMapper
  * @package FreddieGar\JsonApiMapper\Mappers
- * @inheritdoc
  */
 class ResponseMapper extends Loader implements ResponseMapperInterface
 {

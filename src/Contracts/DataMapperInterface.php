@@ -2,6 +2,17 @@
 
 namespace FreddieGar\JsonApiMapper\Contracts;
 
+/**
+ * Interface DataMapperInterface
+ * @package FreddieGar\JsonApiMapper\Contracts
+ * @property string $id Access magic to getId() method
+ * @property string $type Access magic to getType() method
+ * @property array $attributes Access magic to getAttributes() method
+ * @property string|object $attribute Access magic to getAttribute() method
+ * @property array $relationships Access magic to getRelationships() method
+ * @property DataMapperInterface|object $relationship Access magic to getRelationship() method
+ * @property LinksMapperInterface $links Access magic to getLinks() method
+ */
 interface DataMapperInterface extends LoaderInterface
 {
     /**

@@ -2,7 +2,6 @@
 
 namespace FreddieGar\JsonApiMapper\Mappers;
 
-use Exception;
 use FreddieGar\JsonApiMapper\Contracts\DocumentInterface;
 use FreddieGar\JsonApiMapper\Contracts\RelatedMapperInterface;
 use FreddieGar\JsonApiMapper\Helper;

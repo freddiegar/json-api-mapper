@@ -5,6 +5,9 @@ namespace FreddieGar\JsonApiMapper\Contracts;
 /**
  * Interface MetaMapperInterface
  * @package FreddieGar\JsonApiMapper\Contracts
+ * @property object $meta
+ * @property JsonApiMapperInterface $jsonapi
+ * @property LinksMapperInterface $links
  */
 interface MetaMapperInterface extends LoaderInterface
 {

@@ -63,7 +63,7 @@ class ImplementationMapperTest extends TestCase
             "type":"articles",
             "id":"20",
             "attributes":{
-                "title":"JSON API paints my bikeshed!",
+                "title":"JSON API paints my head!",
                 "body":"The shortest article. Ever.",
                 "created":"2015-05-22T14:56:29.000Z",
                 "updated-at":"2015-05-22T14:56:28.000Z"
@@ -85,7 +85,7 @@ class ImplementationMapperTest extends TestCase
             "type":"articles",
             "id":"25",
             "attributes":{
-                "title":"JSON API woow",
+                "title":"JSON API yeah",
                 "body":"The longest article. Ever.",
                 "created":"2018-05-22T14:56:29.000Z",
                 "updated-at":null
@@ -964,7 +964,7 @@ JSON;
         $this->assertEquals('articles', $dataByIdType);
         $this->assertEquals(25, $dataByIdId);
         $this->assertTrue(is_array($dataByIdAttributes));
-        $this->assertEquals('JSON API woow', $dataByIdTitle);
+        $this->assertEquals('JSON API yeah', $dataByIdTitle);
         $this->assertEquals('The longest article. Ever.', $dataByIdBody);
         $this->assertEquals('2018-05-22T14:56:29.000Z', $dataByIdCreated);
         $this->assertEquals(null, $dataByIdUpdated);

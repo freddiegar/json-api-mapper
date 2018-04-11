@@ -2,6 +2,12 @@
 
 namespace FreddieGar\JsonApiMapper\Contracts;
 
+/**
+ * Interface RelatedMapperInterface
+ * @package FreddieGar\JsonApiMapper\Contracts
+ * @property string $href Access magic to getHref() method
+ * @property array $meta Access magic to getMeta() method
+ */
 interface RelatedMapperInterface extends LoaderInterface
 {
     /**

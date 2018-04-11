@@ -5,7 +5,6 @@ namespace FreddieGar\JsonApiMapper\Mappers;
 use FreddieGar\JsonApiMapper\Contracts\DocumentInterface;
 use FreddieGar\JsonApiMapper\Contracts\MetaMapperInterface;
 use FreddieGar\JsonApiMapper\Helper;
-use FreddieGar\JsonApiMapper\Traits\MetaMapperTrait;
 
 /**
  * Class MetaMapper
@@ -38,7 +37,7 @@ class MetaMapper extends Loader implements MetaMapperInterface
         /**
          * Getting attributes a meta
          */
-        if (in_array($name, [DocumentInterface::KEYWORD_META])) {
+        if ($name === DocumentInterface::KEYWORD_META) {
             return $this;
         }
 

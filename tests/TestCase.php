@@ -171,9 +171,9 @@ JSON;
     "meta": {
         "copyright": "Copyright 2015 Example Corp.",
         "authors": [
-            "Yehuda Katz",
-            "Steve Klabnik",
-            "Dan Gebhardt",
+            "Frank Kafka",
+            "Steve Apache",
+            "Dan Yamaha",
             "Tyler Kellen"
         ]
     }
@@ -235,8 +235,8 @@ JSON;
             "id":"9",
             "attributes":{
                 "first-name":"Dan",
-                "last-name":"Gebhardt",
-                "twitter":"dgeb"
+                "last-name":"Yamaha",
+                "twitter":"daniel"
             },
             "links":{
                 "self":"http://example.com/people/9"

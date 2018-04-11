@@ -56,8 +56,8 @@ class IncludedMapperTest extends TestCase
         $this->assertEquals(9, $data->getId());
         $this->assertTrue(is_array($data->getAttributes()));
         $this->assertEquals('Dan', $data->getAttribute('first-name'));
-        $this->assertEquals('Gebhardt', $data->getAttribute('last-name'));
-        $this->assertEquals('dgeb', $data->getAttribute('twitter'));
+        $this->assertEquals('Yamaha', $data->getAttribute('last-name'));
+        $this->assertEquals('daniel', $data->getAttribute('twitter'));
         $this->assertInstanceOf(LinksMapperInterface::class, $data->getLinks());
         $this->assertEquals('http://example.com/people/9', $data->getLinks()->getSelf());
         $this->assertEquals(null, $data->getLinks()->getRelated());
