@@ -5,6 +5,7 @@ namespace FreddieGar\JsonApiMapper\Mappers;
 use FreddieGar\JsonApiMapper\Contracts\DataMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\DocumentInterface;
 use FreddieGar\JsonApiMapper\Contracts\IncludedMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\LinksMapperInterface;
 use FreddieGar\JsonApiMapper\Helper;
 use FreddieGar\JsonApiMapper\Traits\LinksMapperTrait;
 use FreddieGar\JsonApiMapper\Traits\MetaMapperTrait;
@@ -12,6 +13,14 @@ use FreddieGar\JsonApiMapper\Traits\MetaMapperTrait;
 /**
  * Class DataMapper
  * @package FreddieGar\JsonApiMapper\Mappers
+ * @method string id() Alias to getId() method
+ * @method string type() Alias to getType() method
+ * @method array  attributes() Alias to getAttributes() method
+ * @method array relationships() Alias to getRelationships() method
+ * @method string attribute(string $attributeName, $default = null) Alias to getAttribute() method
+ * @method DataMapperInterface relationship(string $relationName) ?Alias to getRelationship() method
+ * @method array|string meta(?string $path = null) Alias to getMeta() method
+ * @method LinksMapperInterface links() Alias to getLinks() method
  */
 class DataMapper extends Loader implements DataMapperInterface
 {
@@ -112,36 +121,6 @@ class DataMapper extends Loader implements DataMapperInterface
 //            : $resource;
 //    }
 
-    public function id(): ?string
-    {
-        return $this->getId();
-    }
-
-    public function type(): ?string
-    {
-        return $this->getType();
-    }
-
-    public function attributes(): array
-    {
-        return $this->getAttributes();
-    }
-
-    public function relationships(): array
-    {
-        return $this->getRelationships();
-    }
-
-    public function attribute(string $attributeName, $default = null): ?string
-    {
-        return $this->getAttribute($attributeName, $default);
-    }
-
-    public function relationship(string $relationName): ?DataMapperInterface
-    {
-        return $this->getRelationship($relationName);
-    }
-
     /**
      * @param $name
      * @param $arguments
@@ -149,19 +128,19 @@ class DataMapper extends Loader implements DataMapperInterface
      */
     public function __call($name, $arguments)
     {
-        $name = $this->_sanitizeName($name);
+        $name = $arguments[0] ?? $name;
 
-        if ($property = $this->getRelationship($name)) {
-            return $property;
-        }
-
-        if ($property = $this->getAttribute($name)) {
+        if ($property = $this->magic($name)) {
             return $property;
         }
 
         return parent::__call($name, $arguments);
     }
 
+    /**
+     * @param $name
+     * @return DataMapperInterface|DataMapper|null|string
+     */
     public function __get($name)
     {
         /**
@@ -171,6 +150,19 @@ class DataMapper extends Loader implements DataMapperInterface
             return $this;
         }
 
+        if ($property = $this->magic($name)) {
+            return $property;
+        }
+
+        return parent::__get($name);
+    }
+
+    /**
+     * @param $name
+     * @return $this|DataMapperInterface|null|string
+     */
+    private function magic($name)
+    {
         $name = $this->_sanitizeName($name);
 
         if ($property = $this->getRelationship($name)) {
@@ -181,6 +173,6 @@ class DataMapper extends Loader implements DataMapperInterface
             return $property;
         }
 
-        return parent::__get($name);
+        return null;
     }
 }

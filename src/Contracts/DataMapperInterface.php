@@ -5,6 +5,16 @@ namespace FreddieGar\JsonApiMapper\Contracts;
 /**
  * Interface DataMapperInterface
  * @package FreddieGar\JsonApiMapper\Contracts
+ *
+ * @method string id() Alias to getId() method
+ * @method string type() Alias to getType() method
+ * @method array  attributes() Alias to getAttributes() method
+ * @method array relationships() Alias to getRelationships() method
+ * @method string attribute(string $attributeName, $default = null) Alias to getAttribute() method
+ * @method DataMapperInterface relationship(string $relationName) ?Alias to getRelationship() method
+ * @method array|string meta(?string $path = null) Alias to getMeta() method
+ * @method LinksMapperInterface links() Alias to getLinks() method
+ *
  * @property string $id Access magic to getId() method
  * @property string $type Access magic to getType() method
  * @property array $attributes Access magic to getAttributes() method
@@ -70,22 +80,4 @@ interface DataMapperInterface extends LoaderInterface
      * @return null|LinksMapperInterface
      */
     public function getLinks(): ?LinksMapperInterface;
-
-    // Alias
-
-    public function id(): ?string;
-
-    public function type(): ?string;
-
-    public function attributes(): array;
-
-    public function relationships(): array;
-
-    public function attribute(string $attributeName, $default = null): ?string;
-
-    public function relationship(string $relationName): ?DataMapperInterface;
-
-    public function meta(?string $path = null);
-
-    public function links(): ?LinksMapperInterface;
 }

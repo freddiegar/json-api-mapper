@@ -34,13 +34,6 @@ class MetaMapper extends Loader implements MetaMapperInterface
 
     public function __get($name)
     {
-        /**
-         * Getting attributes a meta
-         */
-        if ($name === DocumentInterface::KEYWORD_META) {
-            return $this;
-        }
-
         $name = $this->_sanitizeName($name);
 
         if ($property = $this->getMeta($name)) {

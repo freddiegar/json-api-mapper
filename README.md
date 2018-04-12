@@ -2,17 +2,25 @@
 
 It is a mapper in PHP from response [jsonapi.org](http://jsonapi.org).
 
+This library create a object from response json-api. Access to elements in response easily
+
+## Install
+
+```bash
+composer require freddiegar/json-api-mapper
+```
+
 ## Usage
 
 Creating instance of Mapper
 
 ```php
-use PlacetoPay\JsonApiMapper\Mapper;
+use FreddieGar\JsonApiMapper\JsonApiResponse;
 
-$mapper = new Mapper($jsonApi);
+$jsonApiResponse = new JsonApiResponse($jsonApi);
 
-$data = $mapper->getData();
-$included = $mapper->getIncluded();
+$data = $jsonApiResponse->getData();
+$included = $jsonApiResponse->getIncluded();
 ```
 
 By example, get data resource
@@ -37,28 +45,30 @@ By example, get included
 echo $included->get(0); // return DataMapperInterface
 echo $included->get(0)->getType(); // people
 echo $included->get(0)->getId(); // 42
-echo $included->get(1); // null
+echo $included->get(1); // null, it is not defined in response
 ```
 
 By example, get errors
 
 ```php
-$allErrors = $mapper->getErrors();
-$firstError = $mapper->getErrors(0);
-$secondError = $mapper->getErrors(1); // null
+$allErrors = $jsonApiResponse->getErrors();
+$firstError = $jsonApiResponse->getErrors(0);
+$secondError = $jsonApiResponse->getErrors(1); // null, it is not defined in response
 
 echo $firstError->getStatus(); // 422
 echo $firstError->getSource(); // ['pointer' => '/data/attributes/first-name']
 echo $firstError->getTitle(); // Invalid Attribute
 echo $firstError->getDetail(); // First name must contain at least three characters.
 
-// Another options
-echo $firstError->getId(); // null
-echo $firstError->getCode(); // null
-echo $firstError->getAbout(); // null
 ```
 
-## Response [json-api](http://jsonapi.org/examples/#sparse-fieldsets) data used in this example
+## Alias in JsonApiResponse class
+
+|Method          |Alias            |Property         |Description                               |
+|----------------|-----------------|-----------------|------------------------------------------|
+|getData()       |data()           |data             | Return object DataMapper from response   |
+
+## Response [json-api](http://jsonapi.org/examples/#sparse-fieldsets) Resource used in this example
 
 ```json
 {
@@ -91,7 +101,7 @@ echo $firstError->getAbout(); // null
 }
 ```
 
-## Response [json-api](http://jsonapi.org/examples/#sparse-fieldsets) errors used in this example
+## Response [json-api](http://jsonapi.org/examples/#sparse-fieldsets) Errors used in this example
 
 ```json
 {
