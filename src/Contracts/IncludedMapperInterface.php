@@ -2,6 +2,12 @@
 
 namespace FreddieGar\JsonApiMapper\Contracts;
 
+/**
+ * Interface IncludedMapperInterface
+ * @package FreddieGar\JsonApiMapper\Contracts
+ *
+ * @method DataMapperInterface included(int $index) Alias to getIncluded() method
+ */
 interface IncludedMapperInterface extends LoaderInterface
 {
     /**
@@ -21,8 +27,4 @@ interface IncludedMapperInterface extends LoaderInterface
      * @return null|DataMapperInterface
      */
     public function getIncluded(int $index): ?DataMapperInterface;
-
-    // Alias
-
-    public function included(int $index): ?DataMapperInterface;
 }

@@ -9,6 +9,8 @@ use FreddieGar\JsonApiMapper\Contracts\IncludedMapperInterface;
 /**
  * Class IncludedMapper
  * @package FreddieGar\JsonApiMapper\Mappers
+ *
+ * @method DataMapperInterface included(int $index) Alias to getIncluded() method
  */
 class IncludedMapper extends Loader implements IncludedMapperInterface
 {
@@ -42,8 +44,8 @@ class IncludedMapper extends Loader implements IncludedMapperInterface
             : null;
     }
 
-    public function included(int $index): ?DataMapperInterface
+    public function __call($name, $arguments)
     {
-        return $this->getIncluded($index);
+        return $this->getIncluded($arguments[0]);
     }
 }

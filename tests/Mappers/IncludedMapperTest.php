@@ -46,7 +46,7 @@ class IncludedMapperTest extends TestCase
         $this->assertInstanceOf(IncludedMapperInterface::class, $included);
     }
 
-    public function testIncludedMapperSimpleOk()
+    public function testIncludedMapperSimpleGet()
     {
         $included = $this->includedMapper($this->instanceDataWithIncluded());
 

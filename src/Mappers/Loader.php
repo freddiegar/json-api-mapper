@@ -78,10 +78,6 @@ abstract class Loader implements LoaderInterface
 
     public function __call($name, $arguments)
     {
-//        if (method_exists($this, $name)) {
-//            return $this->{$name}($arguments);
-//        }
-
         if (method_exists($this, $method = sprintf('get%s', ucfirst($name)))) {
             return $this->$method($arguments);
         }
