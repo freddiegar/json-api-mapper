@@ -66,11 +66,12 @@ echo $firstError->getDetail(); // First name must contain at least three charact
 
 You can use any option to access to data in that response
 
-| Method[*][link-performance]         | Alias           | Property        |Description                                                     |
-|----------------|-----------------|-----------------|----------------------------------------------------------------|
-| getData()      | data()          | data            | Return object [DataMapper][link-data-mapper] if exists in response, else null      |
-| getErrors()    | errors()        | errors          | Return object [ErrorsMapper][link-errors-mapper] if exists in response, else null   |
-| getIncluded()  | included()      | included        | Return object [IncludedMapper][link-included-mapper] if exists in response, else null   |
+| Method[*][link-performance]         | Alias           | Property        |Description                                                       |
+|----------------|-----------------|-----------------|---------------------------------------------------------------------------------------|
+| getData()      | data()          | data            | Return object [DataMapper][link-data-mapper] if exists in response, else null         |
+| getErrors()    | errors()        | errors          | Return object [ErrorsMapper][link-errors-mapper] if exists in response, else null     |
+| getIncluded()  | included()      | included        | Return object [IncludedMapper][link-included-mapper] if exists in response, else null |
+| getLinks()     | links()         | links           | Return object [LinksMapper][link-links-mapper] if exists in response, else null       |
 
 [link-data-mapper]: https://github.com/freddiegar/json-api-mapper/blob/master/src/Contracts/DataMapperInterface.php
 [link-errors-mapper]: https://github.com/freddiegar/json-api-mapper/blob/master/src/Contracts/ErrorsMapperInterface.php

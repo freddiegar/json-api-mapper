@@ -10,6 +10,8 @@ use FreddieGar\JsonApiMapper\Traits\MetaMapperTrait;
 /**
  * Class LinksMapper
  * @package FreddieGar\JsonApiMapper\Mappers
+ * @method string href() Alias to getHref() method
+ * @method string|array meta(?string $path = null) Alias to getMeta() method
  */
 class RelatedMapper extends Loader implements RelatedMapperInterface
 {
@@ -32,11 +34,5 @@ class RelatedMapper extends Loader implements RelatedMapperInterface
     public function getHref(): ?string
     {
         return Helper::getFromArray($this->current(), DocumentInterface::KEYWORD_HREF, null);
-
-    }
-
-    public function href(): ?string
-    {
-        return $this->getHref();
     }
 }

@@ -5,6 +5,15 @@ namespace FreddieGar\JsonApiMapper\Contracts;
 /**
  * Interface LinksMapperInterface
  * @package FreddieGar\JsonApiMapper\Contracts
+ *
+ * @method string self() Alias to getSelf() method
+ * @method string first() Alias to getFirst() method
+ * @method string prev() Alias to getPrev() method
+ * @method string next() Alias to getNext() method
+ * @method string last() Alias to getLast() method
+ * @method string about() Alias to getAbout() method
+ * @method null|string|RelatedMapperInterface related();
+ *
  * @property string $first Access magic to getFirst() method
  * @property string $prev Access magic to getPrev() method
  * @property string $next Access magic to getNext() method
@@ -55,23 +64,4 @@ interface LinksMapperInterface extends LoaderInterface
      * @return null|string|RelatedMapperInterface
      */
     public function getRelated();
-
-    // Alias
-
-    public function self(): ?string;
-
-    public function first(): ?string;
-
-    public function prev(): ?string;
-
-    public function next(): ?string;
-
-    public function last(): ?string;
-
-    public function about(): ?string;
-
-    /**
-     * @return null|string|RelatedMapperInterface
-     */
-    public function related();
 }

@@ -4,11 +4,20 @@ namespace FreddieGar\JsonApiMapper\Mappers;
 
 use FreddieGar\JsonApiMapper\Contracts\DocumentInterface;
 use FreddieGar\JsonApiMapper\Contracts\LinksMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\RelatedMapperInterface;
 use FreddieGar\JsonApiMapper\Helper;
 
 /**
  * Class LinksMapper
  * @package FreddieGar\JsonApiMapper\Mappers
+ *
+ * @method string self() Alias to getSelf() method
+ * @method string first() Alias to getFirst() method
+ * @method string prev() Alias to getPrev() method
+ * @method string next() Alias to getNext() method
+ * @method string last() Alias to getLast() method
+ * @method string about() Alias to getAbout() method
+ * @method null|string|RelatedMapperInterface related();
  */
 class LinksMapper extends Loader implements LinksMapperInterface
 {
@@ -65,40 +74,5 @@ class LinksMapper extends Loader implements LinksMapperInterface
         }
 
         return null;
-    }
-
-    public function self(): ?string
-    {
-        return $this->getSelf();
-    }
-
-    public function first(): ?string
-    {
-        return $this->getFirst();
-    }
-
-    public function prev(): ?string
-    {
-        return $this->getPrev();
-    }
-
-    public function next(): ?string
-    {
-        return $this->getNext();
-    }
-
-    public function last(): ?string
-    {
-        return $this->getLast();
-    }
-
-    public function about(): ?string
-    {
-        return $this->getAbout();
-    }
-
-    public function related()
-    {
-        return $this->getRelated();
     }
 }
