@@ -4,10 +4,25 @@ namespace FreddieGar\JsonApiMapper\Mappers;
 
 use FreddieGar\JsonApiMapper\Contracts\DocumentInterface;
 use FreddieGar\JsonApiMapper\Contracts\ErrorsMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\LinksMapperInterface;
 use FreddieGar\JsonApiMapper\Helper;
 use FreddieGar\JsonApiMapper\Traits\LinksMapperTrait;
 use FreddieGar\JsonApiMapper\Traits\MetaMapperTrait;
 
+/**
+ * Class ErrorsMapper
+ * @package FreddieGar\JsonApiMapper\Mappers
+ *
+ * @method string id() Alias to getId() method
+ * @method string about() Alias to getAbout() method
+ * @method int status() Alias to getStatus() method
+ * @method string code() Alias to getCode() method
+ * @method string title() Alias to getTitle() method
+ * @method string detail() Alias to getDetail() method
+ * @method array source() Alias to getSource() method
+ * @method string meta(string $path = null)  Alias to getMeta() method
+ * @method LinksMapperInterface links() Alias to getLinks() method
+ */
 class ErrorsMapper extends Loader implements ErrorsMapperInterface
 {
     use LinksMapperTrait,

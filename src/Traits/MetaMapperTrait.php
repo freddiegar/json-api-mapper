@@ -13,9 +13,9 @@ trait MetaMapperTrait
 {
     public function getMeta(?string $path = null)
     {
-        $meta = Helper::getFromArray($this->current(), DocumentInterface::KEYWORD_META, []);
+        $meta = Helper::getFromArray($this->current(), DocumentInterface::KEYWORD_META, null);
 
-        if (!is_null($path)) {
+        if (is_array($meta) && !is_null($path)) {
             $meta = Helper::getFromArray($meta, $path, null);
         }
 

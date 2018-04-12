@@ -5,10 +5,13 @@ namespace FreddieGar\JsonApiMapper\Contracts;
 /**
  * Interface ResponseMapperInterface
  * @package FreddieGar\JsonApiMapper\Contracts
- * @property $meta Access magic to getMeta() method
- * @property $jsonapi Access magic to getJsonApi() method
- * @property LinksMapperInterface $links Access magic to getLinks() method
+ *
+ * @property DataMapperInterface $data Access magic to getData() method
+ * @property ErrorsMapperInterface $errors Access magic to getErrors() method
+ * @property MetaMapperInterface $meta Access magic to getMeta() method
+ * @property JsonApiMapperInterface $jsonapi Access magic to getJsonApi() method
  * @property IncludedMapperInterface $included Access magic to getIncluded() method
+ * @property LinksMapperInterface $links Access magic to getLinks() method
  */
 interface ResponseMapperInterface extends LoaderInterface
 {

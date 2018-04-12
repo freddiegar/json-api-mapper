@@ -3,6 +3,7 @@
 namespace FreddieGar\JsonApiMapper\Tests\Mappers;
 
 use FreddieGar\JsonApiMapper\Contracts\DataMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\ErrorsMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\IncludedMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\JsonApiMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\LinksMapperInterface;
@@ -127,6 +128,42 @@ class ImplementationMapperTest extends TestCase
                 "age":30,
                 "gender":"female"
             }
+        }
+    ]
+}
+JSON;
+    }
+
+    private function dataErrors()
+    {
+        return <<<JSON
+{
+    "errors": [
+        {
+            "id": "A33",
+            "links": {
+                "about": "http://service.org/help/me"
+            },
+            "status": "422",
+            "code": "001-A",
+            "title":  "Invalid Attribute",
+            "detail": "Username is required.",
+            "source": { 
+                "pointer": "/data/attributes/username" 
+            },
+            "meta": {
+                "request-at": "2018-01-24T10:44:44.000Z",
+                "testing": "yes"
+            }
+        },
+        {
+            "id": "53453",
+            "links": {
+                "about": null
+            },
+            "status": "419",
+            "code": "355",
+            "title":  "Too many request"
         }
     ]
 }
@@ -838,6 +875,143 @@ JSON;
         $this->validationTest(get_defined_vars());
     }
 
+    public function testImplementationErrorsMapperSimpleGet()
+    {
+        $mapper = new ResponseMapper($this->dataErrors());
+        $errors = $mapper->getErrors();
+        $errorAll = $errors->all();
+
+        $errorOne = $mapper->getErrors(0);
+        $errorId = $errorOne->getId();
+        $errorAbout = $errorOne->getAbout();
+        $errorStatus = $errorOne->getStatus();
+        $errorCode = $errorOne->getCode();
+        $errorTitle = $errorOne->getTitle();
+        $errorDetail = $errorOne->getDetail();
+        $errorSource = $errorOne->getSource();
+        $errorMeta = $errorOne->getMeta();
+        $errorMetaRequestAt = $errorOne->getMeta('request-at');
+        $errorMetaTesting = $errorOne->getMeta('testing');
+        $errorMetaNull = $errorOne->getMeta('invalid');
+
+        $errorTwo = $mapper->getErrors(1);
+        $errorTwoId = $errorTwo->getId();
+        $errorTwoAbout = $errorTwo->getAbout();
+        $errorTwoStatus = $errorTwo->getStatus();
+        $errorTwoCode = $errorTwo->getCode();
+        $errorTwoTitle = $errorTwo->getTitle();
+        $errorTwoDetail = $errorTwo->getDetail();
+        $errorTwoSource = $errorTwo->getSource();
+        $errorTwoMeta = $errorTwo->getMeta();
+
+        $errorNull = $mapper->getErrors(2);
+
+        $this->validationErrors(get_defined_vars());
+    }
+
+    public function testImplementationErrorsMapperSimpleAlias()
+    {
+        $mapper = new ResponseMapper($this->dataErrors());
+        $errors = $mapper->errors();
+        $errorAll = $errors->all();
+
+        $errorOne = $mapper->errors(0);
+        $errorId = $errorOne->id();
+        $errorAbout = $errorOne->about();
+        $errorStatus = $errorOne->status();
+        $errorCode = $errorOne->code();
+        $errorTitle = $errorOne->title();
+        $errorDetail = $errorOne->detail();
+        $errorSource = $errorOne->source();
+        $errorMeta = $errorOne->meta();
+        $errorMetaRequestAt = $errorOne->meta('request-at');
+        $errorMetaTesting = $errorOne->meta('testing');
+        $errorMetaNull = $errorOne->meta('invalid');
+
+        $errorTwo = $mapper->errors(1);
+        $errorTwoId = $errorTwo->id();
+        $errorTwoAbout = $errorTwo->about();
+        $errorTwoStatus = $errorTwo->status();
+        $errorTwoCode = $errorTwo->code();
+        $errorTwoTitle = $errorTwo->title();
+        $errorTwoDetail = $errorTwo->detail();
+        $errorTwoSource = $errorTwo->source();
+        $errorTwoMeta = $errorTwo->meta();
+
+        $errorNull = $mapper->errors(2);
+
+        $this->validationErrors(get_defined_vars());
+    }
+
+    public function testImplementationErrorsMapperPropertySnakeAccessors()
+    {
+        $mapper = new ResponseMapper($this->dataErrors());
+
+        $errors = $mapper->errors;
+        $errorAll = $errors->all();
+
+        $errorOne = $mapper->errors(0);
+        $errorId = $errorOne->id;
+        $errorAbout = $errorOne->about;
+        $errorStatus = $errorOne->status;
+        $errorCode = $errorOne->code;
+        $errorTitle = $errorOne->title;
+        $errorDetail = $errorOne->detail;
+        $errorSource = $errorOne->source;
+        $errorMeta = $errorOne->meta;
+        $errorMetaRequestAt = $errorOne->meta('request-at');
+        $errorMetaTesting = $errorOne->meta('testing');
+        $errorMetaNull = $errorOne->meta('invalid');
+
+        $errorTwo = $mapper->errors(1);
+        $errorTwoId = $errorTwo->id;
+        $errorTwoAbout = $errorTwo->about;
+        $errorTwoStatus = $errorTwo->status;
+        $errorTwoCode = $errorTwo->code;
+        $errorTwoTitle = $errorTwo->title;
+        $errorTwoDetail = $errorTwo->detail;
+        $errorTwoSource = $errorTwo->source;
+        $errorTwoMeta = $errorTwo->meta();
+
+        $errorNull = $mapper->errors(2);
+
+        $this->validationErrors(get_defined_vars());
+    }
+
+    public function testImplementationErrorsMapperPropertyCamelAccessors()
+    {
+        $mapper = new ResponseMapper($this->dataErrors());
+        $errors = $mapper->errors;
+        $errorAll = $errors->all();
+
+        $errorOne = $mapper->errors(0);
+        $errorId = $errorOne->id;
+        $errorAbout = $errorOne->about;
+        $errorStatus = $errorOne->status;
+        $errorCode = $errorOne->code;
+        $errorTitle = $errorOne->title;
+        $errorDetail = $errorOne->detail;
+        $errorSource = $errorOne->source;
+        $errorMeta = $errorOne->meta();
+        $errorMetaRequestAt = $errorOne->meta('request-at');
+        $errorMetaTesting = $errorOne->meta('testing');
+        $errorMetaNull = $errorOne->meta('invalid');
+
+        $errorTwo = $mapper->errors(1);
+        $errorTwoId = $errorTwo->id;
+        $errorTwoAbout = $errorTwo->about;
+        $errorTwoStatus = $errorTwo->status;
+        $errorTwoCode = $errorTwo->code;
+        $errorTwoTitle = $errorTwo->title;
+        $errorTwoDetail = $errorTwo->detail;
+        $errorTwoSource = $errorTwo->source;
+        $errorTwoMeta = $errorTwo->meta();
+
+        $errorNull = $mapper->errors(2);
+
+        $this->validationErrors(get_defined_vars());
+    }
+
     private function validationTest(array $dataTest)
     {
         /**
@@ -997,5 +1171,67 @@ JSON;
         $this->assertEquals(null, $dataFindNull);
         $this->assertEquals(null, $includedFindNull);
         $this->assertEquals(null, $includedFindInvalid);
+    }
+
+    private function validationErrors(array $dataErrors)
+    {
+        /**
+         * @var $errors
+         * @var $errorAll
+         * @var $errorOne
+         * @var $errorId
+         * @var $errorAbout
+         * @var $errorStatus
+         * @var $errorCode
+         * @var $errorTitle
+         * @var $errorDetail
+         * @var $errorSource
+         * @var $errorMeta
+         * @var $errorMetaRequestAt
+         * @var $errorMetaTesting
+         * @var $errorMetaNull
+         * @var $errorTwo
+         * @var $errorTwoId
+         * @var $errorTwoAbout
+         * @var $errorTwoStatus
+         * @var $errorTwoCode
+         * @var $errorTwoTitle
+         * @var $errorTwoDetail
+         * @var $errorTwoSource
+         * @var $errorTwoMeta
+         * @var $errorTwoMetaRequestAt
+         * @var $errorTwoMetaTesting
+         * @var $errorTwoMetaNull
+         * @var $errorNull
+         */
+        extract($dataErrors);
+
+        $this->assertInstanceOf(ErrorsMapperInterface::class, $errors);
+        $this->assertTrue(is_array($errorAll));
+
+        $this->assertInstanceOf(ErrorsMapperInterface::class, $errorOne);
+        $this->assertEquals("A33", $errorId);
+        $this->assertEquals('http://service.org/help/me', $errorAbout);
+        $this->assertEquals(422, $errorStatus);
+        $this->assertEquals('001-A', $errorCode);
+        $this->assertEquals('Invalid Attribute', $errorTitle);
+        $this->assertEquals('Username is required.', $errorDetail);
+        $this->assertTrue(is_array($errorSource));
+        $this->assertTrue(is_array($errorMeta));
+        $this->assertEquals('2018-01-24T10:44:44.000Z', $errorMetaRequestAt);
+        $this->assertEquals('yes', $errorMetaTesting);
+        $this->assertEquals(null, $errorMetaNull);
+
+        $this->assertInstanceOf(ErrorsMapperInterface::class, $errorTwo);
+        $this->assertEquals(53453, $errorTwoId);
+        $this->assertEquals(null, $errorTwoAbout);
+        $this->assertEquals(419, $errorTwoStatus);
+        $this->assertEquals('355', $errorTwoCode);
+        $this->assertEquals('Too many request', $errorTwoTitle);
+        $this->assertEquals(null, $errorTwoDetail);
+        $this->assertEquals(null, $errorTwoSource);
+        $this->assertEquals(null, $errorTwoMeta);
+
+        $this->assertEquals(null, $errorNull);
     }
 }

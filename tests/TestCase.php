@@ -120,7 +120,8 @@ JSON;
                 "pointer": "/data/attributes/first-name" 
             },
             "meta": {
-                "copyright": "Copyright 2015 Example Corp."
+                "copyright": "Copyright 2015 Example Corp.",
+                "is-test": "no"
             }
         }
     ]

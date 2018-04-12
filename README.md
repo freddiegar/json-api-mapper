@@ -64,9 +64,14 @@ echo $firstError->getDetail(); // First name must contain at least three charact
 
 ## Alias in JsonApiResponse class
 
-|Method          |Alias            |Property         |Description                               |
-|----------------|-----------------|-----------------|------------------------------------------|
-|getData()       |data()           |data             | Return object DataMapper from response   |
+| Method         | Alias           | Property        |Description                                                     |
+|----------------|-----------------|-----------------|----------------------------------------------------------------|
+| getData()      | data()          | data            | Return object [DataMapper][link-data-mapper] if exists in response, else null      |
+| getErrors()    | errors()        | errors          | Return object [ErrorsMapper][link-errors-mapper] if exists in response, else null   |
+
+[link-data-mapper]: https://github.com/freddiegar/json-api-mapper/blob/master/src/Contracts/DataMapperInterface.php
+[link-errors-mapper]: https://github.com/freddiegar/json-api-mapper/blob/master/src/Contracts/ErrorsMapperInterface.php
+[link-meta-mapper]: https://github.com/freddiegar/json-api-mapper/blob/master/src/Contracts/MetaMapperInterface.php
 
 ## Response [json-api](http://jsonapi.org/examples/#sparse-fieldsets) Resource used in this example
 
