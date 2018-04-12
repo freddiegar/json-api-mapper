@@ -4,7 +4,7 @@ namespace FreddieGar\JsonApiMapper;
 
 use FreddieGar\JsonApiMapper\Mappers\ResponseMapper;
 
-class JsonApiResponse extends ResponseMapper
+class JsonApiMapper extends ResponseMapper
 {
 
 }

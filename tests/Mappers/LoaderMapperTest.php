@@ -6,7 +6,7 @@ use FreddieGar\JsonApiMapper\Contracts\DataMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\LinksMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\RelatedMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\ResponseMapperInterface;
-use FreddieGar\JsonApiMapper\JsonApiResponse;
+use FreddieGar\JsonApiMapper\JsonApiMapper;
 use FreddieGar\JsonApiMapper\Mappers\DataMapper;
 use FreddieGar\JsonApiMapper\Mappers\ResponseMapper;
 use FreddieGar\JsonApiMapper\Tests\TestCase;
@@ -62,14 +62,14 @@ class LoaderMapperTest extends TestCase
 
     public function testLoaderMapperFromConstructor()
     {
-        $loader = new JsonApiResponse('{}');
+        $loader = new JsonApiMapper('{}');
 
         $this->assertInstanceOf(ResponseMapperInterface::class, $loader);
     }
 
     public function testLoaderMapperFromLoad()
     {
-        $loader = (new JsonApiResponse())->load('{}');
+        $loader = (new JsonApiMapper())->load('{}');
 
         $this->assertInstanceOf(ResponseMapperInterface::class, $loader);
     }
@@ -77,7 +77,7 @@ class LoaderMapperTest extends TestCase
 
     public function testLoaderMapperWithString()
     {
-        $loader = new JsonApiResponse($this->getDataHow('string'));
+        $loader = new JsonApiMapper($this->getDataHow('string'));
 
         $this->assertInstanceOf(ResponseMapperInterface::class, $loader);
         $this->runTestOn($loader->getData());
@@ -85,7 +85,7 @@ class LoaderMapperTest extends TestCase
 
     public function testLoaderMapperWithObject()
     {
-        $loader = new JsonApiResponse($this->getDataHow('object'));
+        $loader = new JsonApiMapper($this->getDataHow('object'));
 
         $this->assertInstanceOf(ResponseMapperInterface::class, $loader);
         $this->runTestOn($loader->getData());
@@ -93,7 +93,7 @@ class LoaderMapperTest extends TestCase
 
     public function testLoaderMapperWithArray()
     {
-        $loader = new JsonApiResponse($this->getDataHow('array'));
+        $loader = new JsonApiMapper($this->getDataHow('array'));
 
         $this->assertInstanceOf(ResponseMapperInterface::class, $loader);
         $this->runTestOn($loader->getData());
