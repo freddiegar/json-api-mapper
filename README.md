@@ -4,6 +4,10 @@ It is a mapper in PHP from response [jsonapi.org](http://jsonapi.org).
 
 This library create a object from response json-api. Access to elements in response easily
 
+## Requisites
+
+- php >= 7.1.3
+
 ## Install
 
 ```bash
@@ -70,13 +74,17 @@ You can use any option to access to data in that response
 |----------------|-----------------|-----------------|---------------------------------------------------------------------------------------|
 | getData()      | data()          | data            | Return object [DataMapper][link-data-mapper] if exists in response, else null         |
 | getErrors()    | errors()        | errors          | Return object [ErrorsMapper][link-errors-mapper] if exists in response, else null     |
+| getMeta()      | meta()          | meta            | Return object [MetaMapper][link-meta-mapper] if exists in response, else null         |
+| getJsonApi()   | jsonapi()       | jsonapi         | Return object [JsonApiMapper][link-jsonapi-mapper] if exists in response, else null   |
 | getIncluded()  | included()      | included        | Return object [IncludedMapper][link-included-mapper] if exists in response, else null |
 | getLinks()     | links()         | links           | Return object [LinksMapper][link-links-mapper] if exists in response, else null       |
 
 [link-data-mapper]: https://github.com/freddiegar/json-api-mapper/blob/master/src/Contracts/DataMapperInterface.php
 [link-errors-mapper]: https://github.com/freddiegar/json-api-mapper/blob/master/src/Contracts/ErrorsMapperInterface.php
 [link-meta-mapper]: https://github.com/freddiegar/json-api-mapper/blob/master/src/Contracts/MetaMapperInterface.php
+[link-jsonapi-mapper]: https://github.com/freddiegar/json-api-mapper/blob/master/src/Contracts/JsonApiMapperInterface.php
 [link-included-mapper]: https://github.com/freddiegar/json-api-mapper/blob/master/src/Contracts/IncludedMapperInterface.php
+[link-links-mapper]: https://github.com/freddiegar/json-api-mapper/blob/master/src/Contracts/LinksMapperInterface.php
 [link-performance]: #performance
 
 ## Performance

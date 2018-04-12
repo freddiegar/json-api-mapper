@@ -2,6 +2,10 @@
 
 namespace FreddieGar\JsonApiMapper\Contracts;
 
+/**
+ * Interface LoaderInterface
+ * @package FreddieGar\JsonApiMapper\Contracts
+ */
 interface LoaderInterface
 {
     /**

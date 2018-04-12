@@ -4,6 +4,10 @@ namespace FreddieGar\JsonApiMapper\Mappers;
 
 use FreddieGar\JsonApiMapper\Contracts\LoaderInterface;
 
+/**
+ * Class Loader
+ * @package FreddieGar\JsonApiMapper\Mappers
+ */
 abstract class Loader implements LoaderInterface
 {
     /**
@@ -87,9 +91,6 @@ abstract class Loader implements LoaderInterface
 
     public function __get($name)
     {
-        /**
-         * Verify if property exist like methods get except to attributes a relationship, they need arguments
-         */
         if (method_exists($this, $method = sprintf('get%s', ucfirst($name)))
         ) {
             return $this->{$method}();

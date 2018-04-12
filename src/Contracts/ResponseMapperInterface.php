@@ -6,6 +6,13 @@ namespace FreddieGar\JsonApiMapper\Contracts;
  * Interface ResponseMapperInterface
  * @package FreddieGar\JsonApiMapper\Contracts
  *
+ * @method DataMapperInterface data(?int $index = null)
+ * @method ErrorsMapperInterface errors(?int $index = null)
+ * @method MetaMapperInterface meta()
+ * @method JsonApiMapperInterface jsonApi()
+ * @method LinksMapperInterface links()
+ * @method IncludedMapperInterface included()
+ *
  * @property DataMapperInterface $data Access magic to getData() method
  * @property ErrorsMapperInterface $errors Access magic to getErrors() method
  * @property MetaMapperInterface $meta Access magic to getMeta() method
@@ -46,18 +53,4 @@ interface ResponseMapperInterface extends LoaderInterface
      * @return IncludedMapperInterface|null
      */
     public function getIncluded(): ?IncludedMapperInterface;
-
-    // Alias
-
-    public function data(?int $index = null): ?DataMapperInterface;
-
-    public function errors(?int $index = null): ?ErrorsMapperInterface;
-
-    public function meta(): ?MetaMapperInterface;
-
-    public function jsonApi(): ?JsonApiMapperInterface;
-
-    public function links(): ?LinksMapperInterface;
-
-    public function included(): ?IncludedMapperInterface;
 }

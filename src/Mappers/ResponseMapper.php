@@ -4,6 +4,7 @@ namespace FreddieGar\JsonApiMapper\Mappers;
 
 use Exception;
 use FreddieGar\JsonApiMapper\Contracts\DataMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\DocumentInterface;
 use FreddieGar\JsonApiMapper\Contracts\ErrorsMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\IncludedMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\JsonApiMapperInterface;
@@ -15,6 +16,13 @@ use InvalidArgumentException;
 /**
  * Class ResponseMapper
  * @package FreddieGar\JsonApiMapper\Mappers
+ *
+ * @method DataMapperInterface data(?int $index = null)
+ * @method ErrorsMapperInterface errors(?int $index = null)
+ * @method MetaMapperInterface meta()
+ * @method JsonApiMapperInterface jsonApi()
+ * @method LinksMapperInterface links()
+ * @method IncludedMapperInterface included()
  */
 class ResponseMapper extends Loader implements ResponseMapperInterface
 {
@@ -127,33 +135,12 @@ class ResponseMapper extends Loader implements ResponseMapperInterface
             : null;
     }
 
-    public function data(?int $index = null): ?DataMapperInterface
+    public function __call($name, $arguments)
     {
-        return $this->getData($index);
-    }
+        if (in_array($name, [DocumentInterface::KEYWORD_DATA, DocumentInterface::KEYWORD_ERRORS, DocumentInterface::KEYWORD_META])) {
+            return parent::__call($name, $argument = $arguments[0] ?? null);
+        }
 
-    public function errors(?int $index = null): ?ErrorsMapperInterface
-    {
-        return $this->getErrors($index);
-    }
-
-    public function meta(): MetaMapperInterface
-    {
-        return $this->getMeta();
-    }
-
-    public function jsonApi(): JsonApiMapperInterface
-    {
-        return $this->getJsonApi();
-    }
-
-    public function links(): LinksMapperInterface
-    {
-        return $this->getLinks();
-    }
-
-    public function included(): IncludedMapperInterface
-    {
-        return $this->getIncluded();
+        return parent::__call($name, $arguments);
     }
 }
