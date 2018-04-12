@@ -1,4 +1,4 @@
-# placetopay/json-api-mapper
+# JSON Api Mapper
 
 It is a mapper in PHP from response [jsonapi.org](http://jsonapi.org).
 
@@ -49,6 +49,7 @@ By example, get included
 echo $included->get(0); // return DataMapperInterface
 echo $included->get(0)->getType(); // people
 echo $included->get(0)->getId(); // 42
+echo $included->get(0)->getName(); // John
 echo $included->get(1); // null, it is not defined in response
 ```
 
@@ -63,7 +64,20 @@ echo $firstError->getStatus(); // 422
 echo $firstError->getSource(); // ['pointer' => '/data/attributes/first-name']
 echo $firstError->getTitle(); // Invalid Attribute
 echo $firstError->getDetail(); // First name must contain at least three characters.
+```
 
+## Find
+
+### Get data with `id` = 2
+
+```php
+$dataWithIdTwo = $data->find(2); Return DataMapperInterface if exist else null
+```
+
+### Get included with `type` = people and `id` = 36
+
+```php
+$data = $included->find('people', 36); Return DataMapperInterface if exist else null
 ```
 
 ## Alias in JsonApiResponse class
@@ -90,9 +104,9 @@ You can use any option to access to data in that response
 ## Performance
 <a name="performance"></a>
 
-I recommend to use get* (getData(), getErrors()) methods accessors, they are direct call, any other ways are overloading (`__call`  and `__get`), this [are](https://gist.github.com/bwaidelich/7334680) __slower__
+You will prefer to use get* (getData(), getErrors()) methods accessors, they are direct call, any other ways are overloading (`__call`  and `__get`), this [are](https://gist.github.com/bwaidelich/7334680) __slower__
 
-## Example Response
+## Response Used In Example
 
 ### Response [json-api](http://jsonapi.org/examples/#sparse-fieldsets) Resource used in this example
 
