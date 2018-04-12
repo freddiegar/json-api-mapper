@@ -71,13 +71,13 @@ echo $firstError->getDetail(); // First name must contain at least three charact
 ### Get data with `id` = 2
 
 ```php
-$dataWithIdTwo = $data->find(2); Return DataMapperInterface if exist else null
+$dataWithIdTwo = $data->find(2); // Return DataMapperInterface if exist else null
 ```
 
-### Get included with `type` = people and `id` = 36
+### Get included with `type` = people and `id` = 3
 
 ```php
-$data = $included->find('people', 36); Return DataMapperInterface if exist else null
+$dataWithIdThree = $included->find('people', 3); // Return DataMapperInterface if exist else null
 ```
 
 ## Alias in JsonApiResponse class
