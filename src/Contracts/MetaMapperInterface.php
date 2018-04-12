@@ -5,9 +5,10 @@ namespace FreddieGar\JsonApiMapper\Contracts;
 /**
  * Interface MetaMapperInterface
  * @package FreddieGar\JsonApiMapper\Contracts
+ *
+ * @method array|string meta(string $path) Alias to getMeta() method
+ *
  * @property object $meta
- * @property JsonApiMapperInterface $jsonapi
- * @property LinksMapperInterface $links
  */
 interface MetaMapperInterface extends LoaderInterface
 {
@@ -22,8 +23,4 @@ interface MetaMapperInterface extends LoaderInterface
      * @return null|int|string|array
      */
     public function getMeta(string $path);
-
-    // Alias
-
-    public function meta(string $path);
 }

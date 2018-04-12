@@ -9,6 +9,8 @@ use FreddieGar\JsonApiMapper\Helper;
 /**
  * Class MetaMapper
  * @package FreddieGar\JsonApiMapper\Mappers
+ *
+ * @method array|string meta() Alias to getMeta() method
  */
 class MetaMapper extends Loader implements MetaMapperInterface
 {
@@ -27,9 +29,9 @@ class MetaMapper extends Loader implements MetaMapperInterface
         return Helper::getFromArray($this->current(), $path, null);
     }
 
-    public function meta(string $path)
+    public function __call($name, $arguments)
     {
-        return $this->getMeta($path);
+        return $this->getMeta($arguments[0]);
     }
 
     public function __get($name)
