@@ -1,6 +1,16 @@
 {
     "name": "freddiegar/json-api-mapper",
     "description": "It is a mapper in PHP from response json-api",
+    "keywords": [
+        "jsonapi.org",
+        "json-api",
+        "jsonapi",
+        "json",
+        "mapping",
+        "mapper",
+        "map",
+        "api"
+    ],
     "type": "library",
     "require": {
         "php": ">=7.1.3",

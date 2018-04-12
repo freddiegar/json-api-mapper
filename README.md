@@ -19,12 +19,12 @@ composer require freddiegar/json-api-mapper
 Creating instance of Mapper
 
 ```php
-use FreddieGar\JsonApiMapper\JsonApiResponse;
+use FreddieGar\JsonApiMapper\JsonApiResource;
 
-$jsonApiResponse = new JsonApiResponse($jsonApi);
+$jsonApi = new JsonApiResource($jsonApi);
 
-$data = $jsonApiResponse->getData();
-$included = $jsonApiResponse->getIncluded();
+$data = $jsonApi->getData();
+$included = $jsonApi->getIncluded();
 ```
 
 By example, get data resource
@@ -56,9 +56,9 @@ echo $included->get(1); // null, it is not defined in response
 By example, get errors
 
 ```php
-$allErrors = $jsonApiResponse->getErrors();
-$firstError = $jsonApiResponse->getErrors(0);
-$secondError = $jsonApiResponse->getErrors(1); // null, it is not defined in response
+$allErrors = $jsonApi->getErrors();
+$firstError = $jsonApi->getErrors(0);
+$secondError = $jsonApi->getErrors(1); // null, it is not defined in response
 
 echo $firstError->getStatus(); // 422
 echo $firstError->getSource(); // ['pointer' => '/data/attributes/first-name']
