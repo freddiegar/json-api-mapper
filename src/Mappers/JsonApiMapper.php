@@ -9,6 +9,8 @@ use FreddieGar\JsonApiMapper\Helper;
 /**
  * Class JsonApiMapper
  * @package FreddieGar\JsonApiMapper\Mappers
+ *
+ * @method string version() Alias to getVersion() method
  */
 class JsonApiMapper extends Loader implements JsonApiMapperInterface
 {
@@ -25,10 +27,5 @@ class JsonApiMapper extends Loader implements JsonApiMapperInterface
     public function getVersion(): ?string
     {
         return Helper::getFromArray($this->current(), DocumentInterface::KEYWORD_VERSION, null);
-    }
-
-    public function version(): ?string
-    {
-        return $this->getVersion();
     }
 }
