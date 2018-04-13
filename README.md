@@ -19,9 +19,9 @@ composer require freddiegar/json-api-mapper
 Creating instance of Mapper
 
 ```php
-use FreddieGar\JsonApiMapper\JsonApiResource;
+use FreddieGar\JsonApiMapper\JsonApiMapper;
 
-$jsonApi = new JsonApiResource($jsonApi);
+$jsonApi = new JsonApiMapper($jsonApi);
 
 $data = $jsonApi->getData();
 $included = $jsonApi->getIncluded();

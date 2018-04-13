@@ -6,7 +6,7 @@ use Exception;
 use FreddieGar\JsonApiMapper\Contracts\DataMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\ErrorsMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\IncludedMapperInterface;
-use FreddieGar\JsonApiMapper\Contracts\JsonApiMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\ObjectJsonApiMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\LinksMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\MetaMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\ResourceMapperInterface;
@@ -111,7 +111,7 @@ class ResourceMapperTest extends TestCase
     {
         $resource = $this->resourceMapper($this->instanceJsonApi());
 
-        $this->assertInstanceOf(JsonApiMapperInterface::class, $resource->getJsonApi());
+        $this->assertInstanceOf(ObjectJsonApiMapperInterface::class, $resource->getJsonApi());
     }
 
     public function testResourceLinksOk()

@@ -9,12 +9,12 @@ namespace FreddieGar\JsonApiMapper\Contracts;
  * @method string version() Alias to getVersion() method
  * @property string $version Access magic to getVersion() method
  */
-interface JsonApiMapperInterface extends LoaderInterface
+interface ObjectJsonApiMapperInterface extends LoaderInterface
 {
     /**
-     * @return JsonApiMapperInterface
+     * @return ObjectJsonApiMapperInterface
      */
-    public function get(): JsonApiMapperInterface;
+    public function get(): ObjectJsonApiMapperInterface;
 
     /**
      * @return null|string

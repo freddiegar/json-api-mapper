@@ -3,7 +3,7 @@
 namespace FreddieGar\JsonApiMapper\Mappers;
 
 use FreddieGar\JsonApiMapper\Contracts\DocumentInterface;
-use FreddieGar\JsonApiMapper\Contracts\JsonApiMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\ObjectJsonApiMapperInterface;
 use FreddieGar\JsonApiMapper\Helper;
 
 /**
@@ -12,14 +12,14 @@ use FreddieGar\JsonApiMapper\Helper;
  *
  * @method string version() Alias to getVersion() method
  */
-class JsonApiMapper extends Loader implements JsonApiMapperInterface
+class ObjectJsonApiMapper extends Loader implements ObjectJsonApiMapperInterface
 {
     public function load($input, ?string $tag = DocumentInterface::KEYWORD_JSON_API)
     {
         return parent::load($input, $tag);
     }
 
-    public function get(): JsonApiMapperInterface
+    public function get(): ObjectJsonApiMapperInterface
     {
         return $this;
     }

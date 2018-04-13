@@ -7,7 +7,7 @@ use FreddieGar\JsonApiMapper\Contracts\DataMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\DocumentInterface;
 use FreddieGar\JsonApiMapper\Contracts\ErrorsMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\IncludedMapperInterface;
-use FreddieGar\JsonApiMapper\Contracts\JsonApiMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\ObjectJsonApiMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\LinksMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\MetaMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\ResourceMapperInterface;
@@ -20,7 +20,7 @@ use InvalidArgumentException;
  * @method DataMapperInterface data(?int $index = null)
  * @method ErrorsMapperInterface errors(?int $index = null)
  * @method MetaMapperInterface meta()
- * @method JsonApiMapperInterface jsonApi()
+ * @method ObjectJsonApiMapperInterface jsonApi()
  * @method LinksMapperInterface links()
  * @method IncludedMapperInterface included()
  */
@@ -52,7 +52,7 @@ class ResourceMapper extends Loader implements ResourceMapperInterface
     private $linksMapper;
 
     /**
-     * @var JsonApiMapperInterface
+     * @var ObjectJsonApiMapperInterface
      */
     private $jsonApiMapper;
 
@@ -86,7 +86,7 @@ class ResourceMapper extends Loader implements ResourceMapperInterface
         $this->dataMapper = new DataMapper($this->response);
         $this->errorsMapper = new ErrorsMapper($this->response);
         $this->metaMapper = new MetaMapper($this->response);
-        $this->jsonApiMapper = new JsonApiMapper($this->response);
+        $this->jsonApiMapper = new ObjectJsonApiMapper($this->response);
         $this->linksMapper = new LinksMapper($this->response);
         $this->includedMapper = new IncludedMapper($this->response);
 
@@ -114,7 +114,7 @@ class ResourceMapper extends Loader implements ResourceMapperInterface
             : null;
     }
 
-    public function getJsonApi(): ?JsonApiMapperInterface
+    public function getJsonApi(): ?ObjectJsonApiMapperInterface
     {
         return $this->jsonApiMapper->count() > 0
             ? $this->jsonApiMapper->get()

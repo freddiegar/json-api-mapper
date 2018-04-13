@@ -5,7 +5,7 @@ namespace FreddieGar\JsonApiMapper\Tests\Mappers;
 use FreddieGar\JsonApiMapper\Contracts\DataMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\ErrorsMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\IncludedMapperInterface;
-use FreddieGar\JsonApiMapper\Contracts\JsonApiMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\ObjectJsonApiMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\LinksMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\MetaMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\RelatedMapperInterface;
@@ -1094,7 +1094,7 @@ JSON;
         $this->assertEquals(2, $metaTotalCount);
         $this->assertEquals(null, $metaNull);
 
-        $this->assertInstanceOf(JsonApiMapperInterface::class, $jsonApi);
+        $this->assertInstanceOf(ObjectJsonApiMapperInterface::class, $jsonApi);
         $this->assertEquals('1.0', $jsonApiVersion);
 
         $this->assertInstanceOf(LinksMapperInterface::class, $links);

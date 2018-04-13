@@ -3,22 +3,22 @@
 namespace FreddieGar\JsonApiMapper\Tests\Mappers;
 
 use Exception;
-use FreddieGar\JsonApiMapper\Contracts\JsonApiMapperInterface;
-use FreddieGar\JsonApiMapper\Mappers\JsonApiMapper;
+use FreddieGar\JsonApiMapper\Contracts\ObjectJsonApiMapperInterface;
+use FreddieGar\JsonApiMapper\Mappers\ObjectJsonApiMapper;
 use FreddieGar\JsonApiMapper\Tests\TestCase;
 
-class JsonApiMapperTest extends TestCase
+class ObjectJsonApiMapperTest extends TestCase
 {
     /**
      * @param null $input
-     * @return JsonApiMapperInterface
+     * @return ObjectJsonApiMapperInterface
      */
     protected function jsonApiMapper($input = null)
     {
-        return new JsonApiMapper($input);
+        return new ObjectJsonApiMapper($input);
     }
 
-    public function testJsonApiMapperInvalid()
+    public function testObjectJsonApiMapperInvalid()
     {
         foreach (['', null, false, true, 'data', []] as $input) {
             try {
@@ -30,28 +30,28 @@ class JsonApiMapperTest extends TestCase
         }
     }
 
-    public function testJsonApiMapperFromConstructor()
+    public function testObjectJsonApiMapperFromConstructor()
     {
         $jsonApi = $this->jsonApiMapper('{}');
 
-        $this->assertInstanceOf(JsonApiMapperInterface::class, $jsonApi);
+        $this->assertInstanceOf(ObjectJsonApiMapperInterface::class, $jsonApi);
     }
 
-    public function testJsonApiMapperFromLoad()
+    public function testObjectJsonApiMapperFromLoad()
     {
         $jsonApi = $this->jsonApiMapper()->load('{}');
 
-        $this->assertInstanceOf(JsonApiMapperInterface::class, $jsonApi);
+        $this->assertInstanceOf(ObjectJsonApiMapperInterface::class, $jsonApi);
     }
 
-    public function testJsonApiMapperSimpleOk()
+    public function testObjectJsonApiMapperSimpleOk()
     {
         $meta = $this->jsonApiMapper($this->instanceJsonApi());
 
         $this->assertEquals('1.0', $meta->getVersion());
     }
 
-    public function testJsonApiMapperSimpleBad()
+    public function testObjectJsonApiMapperSimpleBad()
     {
         $meta = $this->jsonApiMapper('{}');
 
