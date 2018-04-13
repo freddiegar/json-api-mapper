@@ -4,7 +4,7 @@ namespace FreddieGar\JsonApiMapper\Mappers;
 
 use FreddieGar\JsonApiMapper\Contracts\DocumentInterface;
 use FreddieGar\JsonApiMapper\Contracts\MetaMapperInterface;
-use FreddieGar\JsonApiMapper\Helper;
+use FreddieGar\JsonApiMapper\Helpers\Helper;
 
 /**
  * Class MetaMapper

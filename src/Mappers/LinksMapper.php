@@ -5,7 +5,7 @@ namespace FreddieGar\JsonApiMapper\Mappers;
 use FreddieGar\JsonApiMapper\Contracts\DocumentInterface;
 use FreddieGar\JsonApiMapper\Contracts\LinksMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\RelatedMapperInterface;
-use FreddieGar\JsonApiMapper\Helper;
+use FreddieGar\JsonApiMapper\Helpers\Helper;
 
 /**
  * Class LinksMapper

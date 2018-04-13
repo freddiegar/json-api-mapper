@@ -3,7 +3,7 @@
 namespace FreddieGar\JsonApiMapper\Traits;
 
 use FreddieGar\JsonApiMapper\Contracts\DocumentInterface;
-use FreddieGar\JsonApiMapper\Helper;
+use FreddieGar\JsonApiMapper\Helpers\Helper;
 
 /**
  * Trait MetaMapperTrait
