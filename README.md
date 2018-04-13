@@ -140,7 +140,7 @@ You can see all example [here][link-example]
 }
 ```
 
-### Response [json-api](http://jsonapi.org/examples/#sparse-fieldsets) Errors used in this example
+### Response [json-api](http://jsonapi.org/examples/#error-objects-basics) Errors used in this example
 <a name="response-errors"></a>
 
 ```json
