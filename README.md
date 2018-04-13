@@ -16,12 +16,12 @@ composer require freddiegar/json-api-mapper
 
 ## Usage
 
-Creating instance of Mapper
+Creating instance of Mapper, see $jsonApiResponse [here][link-response-data]
 
 ```php
 use FreddieGar\JsonApiMapper\JsonApiMapper;
 
-$jsonApi = new JsonApiMapper($jsonApiResponse); // See $jsonApiResponse [here][link-response-data]
+$jsonApi = new JsonApiMapper($jsonApiResponse);
 
 $data = $jsonApi->getData(0);
 $included = $jsonApi->getIncluded();
@@ -53,10 +53,10 @@ echo $included->getIncluded(0)->getName(); // John
 echo $included->getIncluded(1); // null, it is not defined in response
 ```
 
-By example, get errors
+By example, get errors, see $jsonApiResponse [here][link-response-errors]
 
 ```php
-$jsonApi = new JsonApiMapper($jsonApiResponse); // See $jsonApiResponse [here][link-response-errors]
+$jsonApi = new JsonApiMapper($jsonApiResponse);
 
 echo get_class($jsonApi->getErrors()); // Return ErrorsMapperInterface
 
