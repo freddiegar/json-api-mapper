@@ -21,9 +21,9 @@ Creating instance of Mapper
 ```php
 use FreddieGar\JsonApiMapper\JsonApiMapper;
 
-$jsonApi = new JsonApiMapper($jsonApi);
+$jsonApi = new JsonApiMapper($jsonApiResponse); // See $jsonApiResponse [here][link-response-data]
 
-$data = $jsonApi->getData();
+$data = $jsonApi->getData(0);
 $included = $jsonApi->getIncluded();
 ```
 
@@ -33,12 +33,12 @@ By example, get data resource
 echo $data->getType(); // articles
 echo $data->getId(); // 1
 
-echo $data->getAttributes(); // ['title' => 'JSON API paints my bikeshed!', 'body' => '...']
+echo print_r($data->getAttributes(), true); // ['title' => 'JSON API paints my bikeshed!', 'body' => '...']
 echo $data->getAttribute('created'); // 2015-05-22T14:56:29.000Z
 echo $data->getAttribute('description'); // If not exist, return: null
 
-echo $data->getRelationships(); // ['author' => ['id' => '1', 'type' => 'people']]
-echo $data->getRelationship('author'); // ['id' => '1', 'type' => 'people']
+echo print_r($data->getRelationships(), true); // ['author' => ['id' => '1', 'type' => 'people']]
+echo get_class($data->getRelationship('author')); // return DataMapperInterface
 echo $data->getRelationship('author')->getType(); // people
 echo $data->getRelationship('author')->getId(); // 1
 ```
@@ -46,24 +46,28 @@ echo $data->getRelationship('author')->getId(); // 1
 By example, get included
 
 ```php
-echo $included->get(0); // return DataMapperInterface
-echo $included->get(0)->getType(); // people
-echo $included->get(0)->getId(); // 42
-echo $included->get(0)->getName(); // John
-echo $included->get(1); // null, it is not defined in response
+echo get_class($included->getIncluded(0)); // return DataMapperInterface
+echo $included->getIncluded(0)->getType(); // people
+echo $included->getIncluded(0)->getId(); // 42
+echo $included->getIncluded(0)->getName(); // John
+echo $included->getIncluded(1); // null, it is not defined in response
 ```
 
 By example, get errors
 
 ```php
-$allErrors = $jsonApi->getErrors();
-$firstError = $jsonApi->getErrors(0);
-$secondError = $jsonApi->getErrors(1); // null, it is not defined in response
+$jsonApi = new JsonApiMapper($jsonApiResponse); // See $jsonApiResponse [here][link-response-errors]
+
+echo get_class($jsonApi->getErrors()); // Return ErrorsMapperInterface
+
+$firstError = $jsonApi->getErrors(0); // Get first error
 
 echo $firstError->getStatus(); // 422
-echo $firstError->getSource(); // ['pointer' => '/data/attributes/first-name']
+echo print_r($firstError->getSource(), true); // ['pointer' => '/data/attributes/first-name']
 echo $firstError->getTitle(); // Invalid Attribute
 echo $firstError->getDetail(); // First name must contain at least three characters.
+
+$secondError = $jsonApi->getErrors(1); // null, it is not defined in response
 ```
 
 ## Find
@@ -93,14 +97,6 @@ You can use any option to access to data in that response
 | getIncluded()  | included()      | included        | Return object [IncludedMapper][link-included-mapper] if exists in response, else null |
 | getLinks()     | links()         | links           | Return object [LinksMapper][link-links-mapper] if exists in response, else null       |
 
-[link-data-mapper]: https://github.com/freddiegar/json-api-mapper/blob/master/src/Contracts/DataMapperInterface.php
-[link-errors-mapper]: https://github.com/freddiegar/json-api-mapper/blob/master/src/Contracts/ErrorsMapperInterface.php
-[link-meta-mapper]: https://github.com/freddiegar/json-api-mapper/blob/master/src/Contracts/MetaMapperInterface.php
-[link-jsonapi-mapper]: https://github.com/freddiegar/json-api-mapper/blob/master/src/Contracts/JsonApiMapperInterface.php
-[link-included-mapper]: https://github.com/freddiegar/json-api-mapper/blob/master/src/Contracts/IncludedMapperInterface.php
-[link-links-mapper]: https://github.com/freddiegar/json-api-mapper/blob/master/src/Contracts/LinksMapperInterface.php
-[link-performance]: #performance
-
 ## Performance
 <a name="performance"></a>
 
@@ -108,7 +104,10 @@ You will prefer to use get* (getData(), getErrors()) methods accessors, they are
 
 ## Response Used In Example
 
+You can see all example [here][link-example]
+
 ### Response [json-api](http://jsonapi.org/examples/#sparse-fieldsets) Resource used in this example
+<a name="response-data"></a>
 
 ```json
 {
@@ -142,6 +141,7 @@ You will prefer to use get* (getData(), getErrors()) methods accessors, they are
 ```
 
 ### Response [json-api](http://jsonapi.org/examples/#sparse-fieldsets) Errors used in this example
+<a name="response-errors"></a>
 
 ```json
 {
@@ -155,3 +155,14 @@ You will prefer to use get* (getData(), getErrors()) methods accessors, they are
     ]
 }
 ```
+
+[link-data-mapper]: https://github.com/freddiegar/json-api-mapper/blob/master/src/Contracts/DataMapperInterface.php
+[link-errors-mapper]: https://github.com/freddiegar/json-api-mapper/blob/master/src/Contracts/ErrorsMapperInterface.php
+[link-meta-mapper]: https://github.com/freddiegar/json-api-mapper/blob/master/src/Contracts/MetaMapperInterface.php
+[link-jsonapi-mapper]: https://github.com/freddiegar/json-api-mapper/blob/master/src/Contracts/ObjectJsonApiMapperInterface.php
+[link-included-mapper]: https://github.com/freddiegar/json-api-mapper/blob/master/src/Contracts/IncludedMapperInterface.php
+[link-links-mapper]: https://github.com/freddiegar/json-api-mapper/blob/master/src/Contracts/LinksMapperInterface.php
+[link-performance]: #performance
+[link-response-data]: #response-data
+[link-response-errors]: #response-errors
+[link-example]: https://github.com/freddiegar/json-api-mapper/blob/master/test/Mappers/ReadmeExample.php
