@@ -2,13 +2,13 @@
 
 namespace FreddieGar\JsonApiMapper;
 
-use FreddieGar\JsonApiMapper\Mappers\ResponseMapper;
+use FreddieGar\JsonApiMapper\Mappers\ResourceMapper;
 
 /**
  * Class JsonApiMapper
  * @package FreddieGar\JsonApiMapper
  */
-class JsonApiResource extends ResponseMapper
+class JsonApiResource extends ResourceMapper
 {
 
 }

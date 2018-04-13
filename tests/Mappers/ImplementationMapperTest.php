@@ -9,8 +9,8 @@ use FreddieGar\JsonApiMapper\Contracts\JsonApiMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\LinksMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\MetaMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\RelatedMapperInterface;
-use FreddieGar\JsonApiMapper\Contracts\ResponseMapperInterface;
-use FreddieGar\JsonApiMapper\Mappers\ResponseMapper;
+use FreddieGar\JsonApiMapper\Contracts\ResourceMapperInterface;
+use FreddieGar\JsonApiMapper\Mappers\ResourceMapper;
 use FreddieGar\JsonApiMapper\Tests\TestCase;
 
 class ImplementationMapperTest extends TestCase
@@ -172,7 +172,7 @@ JSON;
 
     public function testImplementationMapperMethodGet()
     {
-        $mapper = new ResponseMapper($this->dataTest());
+        $mapper = new ResourceMapper($this->dataTest());
 
         $meta = $mapper->getMeta();
         $metaTotalCount = $meta->getMeta('total-count');
@@ -260,7 +260,7 @@ JSON;
 
     public function testImplementationMapperMethodAlias()
     {
-        $mapper = new ResponseMapper($this->dataTest());
+        $mapper = new ResourceMapper($this->dataTest());
 
         $meta = $mapper->meta();
         $metaTotalCount = $meta->meta('total-count');
@@ -348,7 +348,7 @@ JSON;
 
     public function testImplementationMapperMethodWithAttributesGetAccessors()
     {
-        $mapper = new ResponseMapper($this->dataTest());
+        $mapper = new ResourceMapper($this->dataTest());
 
         $meta = $mapper->meta();
         $metaTotalCount = $meta->meta('total-count');
@@ -437,7 +437,7 @@ JSON;
 
     public function testImplementationMapperMethodWithoutAttributesAndRelationshipAccessorsMagic()
     {
-        $mapper = new ResponseMapper($this->dataTest());
+        $mapper = new ResourceMapper($this->dataTest());
 
         $meta = $mapper->meta();
         $metaTotalCount = $meta->meta('total-count');
@@ -525,7 +525,7 @@ JSON;
 
     public function testImplementationMapperPropertySnakeAccessors()
     {
-        $mapper = new ResponseMapper($this->dataTest());
+        $mapper = new ResourceMapper($this->dataTest());
 
         $meta = $mapper->meta;
         $metaTotalCount = $meta->total_count;
@@ -613,7 +613,7 @@ JSON;
 
     public function testImplementationMapperPropertyCamelAccessors()
     {
-        $mapper = new ResponseMapper($this->dataTest());
+        $mapper = new ResourceMapper($this->dataTest());
 
         $meta = $mapper->meta;
         $metaTotalCount = $meta->totalCount;
@@ -701,7 +701,7 @@ JSON;
 
     public function testImplementationMapperPropertyWithoutAttributesAndRelationshipsSnakeAccessors()
     {
-        $mapper = new ResponseMapper($this->dataTest());
+        $mapper = new ResourceMapper($this->dataTest());
 
         $meta = $mapper->meta;
         $metaTotalCount = $meta->total_count;
@@ -789,7 +789,7 @@ JSON;
 
     public function testImplementationMapperPropertyWithoutAttributesAndRelationshipsCamelAccessors()
     {
-        $mapper = new ResponseMapper($this->dataTest());
+        $mapper = new ResourceMapper($this->dataTest());
 
         $meta = $mapper->meta;
         $metaTotalCount = $meta->totalCount;
@@ -877,7 +877,7 @@ JSON;
 
     public function testImplementationErrorsMapperSimpleGet()
     {
-        $mapper = new ResponseMapper($this->dataErrors());
+        $mapper = new ResourceMapper($this->dataErrors());
         $errors = $mapper->getErrors();
         $errorAll = $errors->all();
 
@@ -911,7 +911,7 @@ JSON;
 
     public function testImplementationErrorsMapperSimpleAlias()
     {
-        $mapper = new ResponseMapper($this->dataErrors());
+        $mapper = new ResourceMapper($this->dataErrors());
         $errors = $mapper->errors();
         $errorAll = $errors->all();
 
@@ -945,7 +945,7 @@ JSON;
 
     public function testImplementationErrorsMapperPropertySnakeAccessors()
     {
-        $mapper = new ResponseMapper($this->dataErrors());
+        $mapper = new ResourceMapper($this->dataErrors());
 
         $errors = $mapper->errors;
         $errorAll = $errors->all();
@@ -980,7 +980,7 @@ JSON;
 
     public function testImplementationErrorsMapperPropertyCamelAccessors()
     {
-        $mapper = new ResponseMapper($this->dataErrors());
+        $mapper = new ResourceMapper($this->dataErrors());
         $errors = $mapper->errors;
         $errorAll = $errors->all();
 
@@ -1088,7 +1088,7 @@ JSON;
          */
         extract($dataTest);
 
-        $this->assertInstanceOf(ResponseMapperInterface::class, $mapper);
+        $this->assertInstanceOf(ResourceMapperInterface::class, $mapper);
 
         $this->assertInstanceOf(MetaMapperInterface::class, $meta);
         $this->assertEquals(2, $metaTotalCount);

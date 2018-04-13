@@ -3,7 +3,7 @@
 namespace FreddieGar\JsonApiMapper\Contracts;
 
 /**
- * Interface ResponseMapperInterface
+ * Interface ResourceMapperInterface
  * @package FreddieGar\JsonApiMapper\Contracts
  *
  * @method DataMapperInterface data(?int $index = null)
@@ -20,7 +20,7 @@ namespace FreddieGar\JsonApiMapper\Contracts;
  * @property IncludedMapperInterface $included Access magic to getIncluded() method
  * @property LinksMapperInterface $links Access magic to getLinks() method
  */
-interface ResponseMapperInterface extends LoaderInterface
+interface ResourceMapperInterface extends LoaderInterface
 {
     /**
      * @param int|null $index

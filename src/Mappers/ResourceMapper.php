@@ -10,11 +10,11 @@ use FreddieGar\JsonApiMapper\Contracts\IncludedMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\JsonApiMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\LinksMapperInterface;
 use FreddieGar\JsonApiMapper\Contracts\MetaMapperInterface;
-use FreddieGar\JsonApiMapper\Contracts\ResponseMapperInterface;
+use FreddieGar\JsonApiMapper\Contracts\ResourceMapperInterface;
 use InvalidArgumentException;
 
 /**
- * Class ResponseMapper
+ * Class ResourceMapper
  * @package FreddieGar\JsonApiMapper\Mappers
  *
  * @method DataMapperInterface data(?int $index = null)
@@ -24,7 +24,7 @@ use InvalidArgumentException;
  * @method LinksMapperInterface links()
  * @method IncludedMapperInterface included()
  */
-class ResponseMapper extends Loader implements ResponseMapperInterface
+class ResourceMapper extends Loader implements ResourceMapperInterface
 {
     /**
      * @var null
