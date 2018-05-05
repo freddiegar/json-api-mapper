@@ -13,7 +13,7 @@ class DataMapperTest extends TestCase
 {
     /**
      * @param null $input
-     * @return DataMapperInterface
+     * @return DataMapperInterface|mixed
      */
     protected function dataMapper($input = null)
     {

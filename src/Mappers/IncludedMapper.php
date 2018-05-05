@@ -10,7 +10,7 @@ use FreddieGar\JsonApiMapper\Contracts\IncludedMapperInterface;
  * Class IncludedMapper
  * @package FreddieGar\JsonApiMapper\Mappers
  *
- * @method DataMapperInterface included(int $index) Alias to getIncluded() method
+ * @method DataMapperInterface|mixed included(int $index) Alias to getIncluded() method
  */
 class IncludedMapper extends Loader implements IncludedMapperInterface
 {

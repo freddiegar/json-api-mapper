@@ -17,12 +17,12 @@ use InvalidArgumentException;
  * Class ResourceMapper
  * @package FreddieGar\JsonApiMapper\Mappers
  *
- * @method DataMapperInterface data(?int $index = null)
- * @method ErrorsMapperInterface errors(?int $index = null)
- * @method MetaMapperInterface meta()
- * @method ObjectJsonApiMapperInterface jsonApi()
- * @method LinksMapperInterface links()
- * @method IncludedMapperInterface included()
+ * @method DataMapperInterface|mixed data(?int $index = null)
+ * @method ErrorsMapperInterface|mixed errors(?int $index = null)
+ * @method MetaMapperInterface|mixed meta()
+ * @method ObjectJsonApiMapperInterface|mixed jsonApi()
+ * @method LinksMapperInterface|mixed links()
+ * @method IncludedMapperInterface|mixed included()
  */
 class ResourceMapper extends Loader implements ResourceMapperInterface
 {

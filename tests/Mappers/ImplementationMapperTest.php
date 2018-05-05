@@ -243,7 +243,7 @@ JSON;
         $includedOneAttributesNull = $includedOne->getAttribute('invalid');
 
         $includedById = $included->find('people', 4);
-        $includedOneType = $includedById->getType();
+        $includedByIdType = $includedById->getType();
         $includedByIdId = $includedById->getId();
         $includedByIdAttributes = $includedById->getAttributes();
         $includedByIdAttributesName = $includedById->getAttribute('name');
@@ -316,6 +316,7 @@ JSON;
             $includedOneAttributesGender,
             $includedOneAttributesNull,
             $includedById,
+            $includedByIdType,
             $includedByIdId,
             $includedByIdAttributes,
             $includedByIdAttributesName,
@@ -401,7 +402,7 @@ JSON;
         $includedOneAttributesNull = $includedOne->attribute('invalid');
 
         $includedById = $included->find('people', 4);
-        $includedOneType = $includedById->type();
+        $includedByIdType = $includedById->type();
         $includedByIdId = $includedById->id();
         $includedByIdAttributes = $includedById->attributes();
         $includedByIdAttributesName = $includedById->attribute('name');
@@ -474,6 +475,7 @@ JSON;
             $includedOneAttributesGender,
             $includedOneAttributesNull,
             $includedById,
+            $includedByIdType,
             $includedByIdId,
             $includedByIdAttributes,
             $includedByIdAttributesName,
@@ -560,7 +562,7 @@ JSON;
         $includedOneAttributesNull = $includedOne->getInvalid();
 
         $includedById = $included->find('people', 4);
-        $includedOneType = $includedById->type();
+        $includedByIdType = $includedById->type();
         $includedByIdId = $includedById->id();
         $includedByIdAttributes = $includedById->attributes();
         $includedByIdAttributesName = $includedById->getName();
@@ -633,6 +635,7 @@ JSON;
             $includedOneAttributesGender,
             $includedOneAttributesNull,
             $includedById,
+            $includedByIdType,
             $includedByIdId,
             $includedByIdAttributes,
             $includedByIdAttributesName,
@@ -718,7 +721,7 @@ JSON;
         $includedOneAttributesNull = $includedOne->invalid();
 
         $includedById = $included->find('people', 4);
-        $includedOneType = $includedById->type();
+        $includedByIdType = $includedById->type();
         $includedByIdId = $includedById->id();
         $includedByIdAttributes = $includedById->attributes();
         $includedByIdAttributesName = $includedById->name();
@@ -791,6 +794,7 @@ JSON;
             $includedOneAttributesGender,
             $includedOneAttributesNull,
             $includedById,
+            $includedByIdType,
             $includedByIdId,
             $includedByIdAttributes,
             $includedByIdAttributesName,
@@ -876,7 +880,7 @@ JSON;
         $includedOneAttributesNull = $includedOne->attribute->invalid;
 
         $includedById = $included->find('people', 4);
-        $includedOneType = $includedById->type;
+        $includedByIdType = $includedById->type;
         $includedByIdId = $includedById->id;
         $includedByIdAttributes = $includedById->attributes;
         $includedByIdAttributesName = $includedById->attribute->name;
@@ -949,6 +953,7 @@ JSON;
             $includedOneAttributesGender,
             $includedOneAttributesNull,
             $includedById,
+            $includedByIdType,
             $includedByIdId,
             $includedByIdAttributes,
             $includedByIdAttributesName,
@@ -1034,7 +1039,7 @@ JSON;
         $includedOneAttributesNull = $includedOne->attribute->invalid;
 
         $includedById = $included->find('people', 4);
-        $includedOneType = $includedById->type;
+        $includedByIdType = $includedById->type;
         $includedByIdId = $includedById->id;
         $includedByIdAttributes = $includedById->attributes;
         $includedByIdAttributesName = $includedById->attribute->name;
@@ -1107,6 +1112,7 @@ JSON;
             $includedOneAttributesGender,
             $includedOneAttributesNull,
             $includedById,
+            $includedByIdType,
             $includedByIdId,
             $includedByIdAttributes,
             $includedByIdAttributesName,
@@ -1192,7 +1198,7 @@ JSON;
         $includedOneAttributesNull = $includedOne->invalid;
 
         $includedById = $included->find('people', 4);
-        $includedOneType = $includedById->type;
+        $includedByIdType = $includedById->type;
         $includedByIdId = $includedById->id;
         $includedByIdAttributes = $includedById->attributes;
         $includedByIdAttributesName = $includedById->name;
@@ -1265,6 +1271,7 @@ JSON;
             $includedOneAttributesGender,
             $includedOneAttributesNull,
             $includedById,
+            $includedByIdType,
             $includedByIdId,
             $includedByIdAttributes,
             $includedByIdAttributesName,
@@ -1350,7 +1357,7 @@ JSON;
         $includedOneAttributesNull = $includedOne->invalid;
 
         $includedById = $included->find('people', 4);
-        $includedOneType = $includedById->type;
+        $includedByIdType = $includedById->type;
         $includedByIdId = $includedById->id;
         $includedByIdAttributes = $includedById->attributes;
         $includedByIdAttributesName = $includedById->name;
@@ -1423,6 +1430,7 @@ JSON;
             $includedOneAttributesGender,
             $includedOneAttributesNull,
             $includedById,
+            $includedByIdType,
             $includedByIdId,
             $includedByIdAttributes,
             $includedByIdAttributesName,
@@ -1733,6 +1741,7 @@ JSON;
         $includedOneAttributesGender,
         $includedOneAttributesNull,
         $includedById,
+        $includedByIdType,
         $includedByIdId,
         $includedByIdAttributes,
         $includedByIdAttributesName,
@@ -1815,7 +1824,7 @@ JSON;
         $this->assertEquals(null, $includedOneAttributesNull);
 
         $this->assertInstanceOf(DataMapperInterface::class, $includedById);
-        $this->assertEquals('people', $includedOneType);
+        $this->assertEquals('people', $includedByIdType);
         $this->assertEquals(4, $includedByIdId);
         $this->assertTrue(is_array($includedByIdAttributes));
         $this->assertEquals('Sam', $includedByIdAttributesName);

@@ -20,6 +20,10 @@ abstract class Loader implements LoaderInterface
      */
     protected $current = null;
 
+    /**
+     * Loader constructor.
+     * @param object|string|array|null $input
+     */
     public function __construct($input = null)
     {
         $this->load($input);
