@@ -6,8 +6,8 @@ This library create a object from response json-api. Access to elements in respo
 
 ## Status Branch
 
-<a href="https://travis-ci.org/freddiegar/json-api-mapper"><img src="https://travis-ci.org/freddiegar/json-api-mapper.svg?branch=master" alt="Master Branch"></a>
-<a href="https://travis-ci.org/freddiegar/json-api-mapper"><img src="https://travis-ci.org/freddiegar/json-api-mapper.svg?branch=develop" alt="Develop Branch"></a>
+[![Build Status](https://travis-ci.org/freddiegar/json-api-mapper.svg?branch=master)](https://travis-ci.org/freddiegar/json-api-mapper)
+[![Build Status](https://travis-ci.org/freddiegar/json-api-mapper.svg?branch=develop)](https://travis-ci.org/freddiegar/json-api-mapper)
 
 ## Requisites
 
@@ -183,4 +183,4 @@ You can see all example [here][link-example]
 [link-response-data]: #response-data
 [link-response-errors]: #response-errors
 [link-example]: https://github.com/freddiegar/json-api-mapper/blob/master/test/Mappers/ReadmeExample.php
-[link-license]: https://en.wikipedia.org/wiki/MIT_License
+[link-license]: https://opensource.org/licenses/MIT
