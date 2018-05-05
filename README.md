@@ -4,9 +4,15 @@ It is a mapper in PHP from response [jsonapi.org](http://jsonapi.org).
 
 This library create a object from response json-api. Access to elements in response easily
 
+## Status release
+
+<p align="center">
+[![Build Status](https://travis-ci.org/freddiegar/json-api-mapper.svg?branch=master)](https://travis-ci.org/freddiegar/json-api-mapper)
+</p>
+
 ## Requisites
 
-- php >= 7.1.3
+- php >= 7.0
 
 ## Install
 
