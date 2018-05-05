@@ -6,14 +6,12 @@ This library create a object from response json-api. Access to elements in respo
 
 ## Status Branch
 
-<p align="center">
 <a href="https://travis-ci.org/freddiegar/json-api-mapper"><img src="https://travis-ci.org/freddiegar/json-api-mapper.svg?branch=master" alt="Master Branch"></a>
 <a href="https://travis-ci.org/freddiegar/json-api-mapper"><img src="https://travis-ci.org/freddiegar/json-api-mapper.svg?branch=develop" alt="Develop Branch"></a>
-</p>
 
 ## Requisites
 
-- php >= 7.0
+- php >= 7.1.3
 
 ## Install
 
@@ -171,6 +169,10 @@ You can see all example [here][link-example]
 }
 ```
 
+## License
+
+[MIT][link-license]
+
 [link-data-mapper]: https://github.com/freddiegar/json-api-mapper/blob/master/src/Contracts/DataMapperInterface.php
 [link-errors-mapper]: https://github.com/freddiegar/json-api-mapper/blob/master/src/Contracts/ErrorsMapperInterface.php
 [link-meta-mapper]: https://github.com/freddiegar/json-api-mapper/blob/master/src/Contracts/MetaMapperInterface.php
@@ -181,3 +183,4 @@ You can see all example [here][link-example]
 [link-response-data]: #response-data
 [link-response-errors]: #response-errors
 [link-example]: https://github.com/freddiegar/json-api-mapper/blob/master/test/Mappers/ReadmeExample.php
+[link-license]: https://en.wikipedia.org/wiki/MIT_License
