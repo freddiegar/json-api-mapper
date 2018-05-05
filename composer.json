@@ -1,30 +1,35 @@
 {
-    "name": "freddiegar/json-api-mapper",
-    "description": "It is a mapper in PHP from response json-api",
-    "keywords": [
-        "jsonapi.org",
-        "json-api",
-        "jsonapi",
-        "json",
-        "mapping",
-        "mapper",
-        "map",
-        "api"
-    ],
-    "type": "library",
-    "require": {
-        "php": ">=7.1.3",
-        "dflydev/dot-access-data": "v2.0.*"
-    },
-    "autoload": {
-        "psr-4": {
-            "FreddieGar\\JsonApiMapper\\": "src/",
-            "FreddieGar\\JsonApiMapper\\Tests\\": "tests/"
-        }
-    },
-    "license": "MIT",
-    "minimum-stability": "dev",
-    "require-dev": {
-        "phpunit/phpunit": "^7.1"
+  "name": "freddiegar/json-api-mapper",
+  "description": "Mapper response json-api in PHP",
+  "keywords": [
+    "jsonapi.org",
+    "json-api",
+    "jsonapi",
+    "json",
+    "mapping",
+    "mapper",
+    "map",
+    "api"
+  ],
+  "type": "library",
+  "require": {
+    "php": ">=7.1.3",
+    "dflydev/dot-access-data": "v2.0.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "FreddieGar\\JsonApiMapper\\": "src/"
     }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "FreddieGar\\JsonApiMapper\\Tests\\": "tests/"
+    }
+  },
+  "license": "MIT",
+  "prefer-stable": true,
+  "minimum-stability": "dev",
+  "require-dev": {
+    "phpunit/phpunit": "^7.1"
+  }
 }
