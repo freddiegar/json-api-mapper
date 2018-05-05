@@ -4,10 +4,11 @@ It is a mapper in PHP from response [jsonapi.org](http://jsonapi.org).
 
 This library create a object from response json-api. Access to elements in response easily
 
-## Status release
+## Status Branch
 
 <p align="center">
-[![Build Status](https://travis-ci.org/freddiegar/json-api-mapper.svg?branch=master)](https://travis-ci.org/freddiegar/json-api-mapper)
+<a href="https://travis-ci.org/freddiegar/json-api-mapper"><img src="https://travis-ci.org/freddiegar/json-api-mapper.svg?branch=master" alt="Master Branch"></a>
+<a href="https://travis-ci.org/freddiegar/json-api-mapper"><img src="https://travis-ci.org/freddiegar/json-api-mapper.svg?branch=develop" alt="Develop Branch"></a>
 </p>
 
 ## Requisites
