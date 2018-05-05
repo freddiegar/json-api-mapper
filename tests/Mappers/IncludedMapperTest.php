@@ -50,6 +50,22 @@ class IncludedMapperTest extends TestCase
     {
         $included = $this->includedMapper($this->instanceDataWithIncluded());
 
+        $dataPeople = $included->find('people');
+        $dataComments = $included->find('comments');
+        $dataNotValid = $included->find('');
+
+        $this->assertEquals(3, $included->count());
+        $this->assertEquals(1, $dataPeople->count());
+        $this->assertEquals(2, $dataComments->count());
+        $this->assertEquals(null, $dataNotValid);
+
+        $this->assertInstanceOf(DataMapperInterface::class, $dataPeople->find(9));
+        $this->assertEquals(null, $dataPeople->find(10));
+
+        $this->assertInstanceOf(DataMapperInterface::class, $dataComments->find(5));
+        $this->assertInstanceOf(DataMapperInterface::class, $dataComments->find(12));
+        $this->assertEquals(null, $dataComments->find(13));
+
         $data = $included->getIncluded(0);
         $this->assertInstanceOf(DataMapperInterface::class, $data);
         $this->assertEquals('people', $data->getType());

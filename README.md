@@ -78,10 +78,16 @@ $secondError = $jsonApi->getErrors(1); // null, it is not defined in response
 $dataWithIdTwo = $data->find(2); // Return DataMapperInterface if exist else null
 ```
 
+### Get included by `type` = people
+
+```php
+$dataPeople = $included->find('people'); // Return DataMapperInterface if exist else null
+```
+
 ### Get included with `type` = people and `id` = 3
 
 ```php
-$dataWithIdThree = $included->find('people', 3); // Return DataMapperInterface if exist else null
+$dataPeopleWithIdThree = $included->find('people', 3); // Return DataMapperInterface if exist else null
 ```
 
 ## Alias in JsonApiResponse class

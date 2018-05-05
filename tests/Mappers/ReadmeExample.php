@@ -60,6 +60,7 @@ class ReadmeExample
         echo $included->getIncluded(0)->getType() . PHP_EOL; // people
         echo $included->getIncluded(0)->getId() . PHP_EOL; // 42
         echo $included->getIncluded(0)->getName() . PHP_EOL; // John
+        /** @noinspection PhpToStringImplementationInspection */
         echo $included->getIncluded(1) . PHP_EOL; // null, it is not defined in response
 
         // Finding

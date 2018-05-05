@@ -20,13 +20,26 @@ class IncludedMapper extends Loader implements IncludedMapperInterface
         return parent::load($input, $tag);
     }
 
-    public function find(string $type, string $id): ?DataMapperInterface
+    public function find(string $type, string $id = null): ?DataMapperInterface
     {
+        if (empty($type)) {
+            return null;
+        }
+
+        $data = [];
+
         foreach ($this->all() as $index => $included) {
-            if ($included[DocumentInterface::KEYWORD_TYPE] == $type
-                && $included[DocumentInterface::KEYWORD_ID] == $id) {
-                return $this->getIncluded($index);
+            if ($included[DocumentInterface::KEYWORD_TYPE] == $type) {
+                if (is_null($id) && isset($this->current()[$index])) {
+                    $data[] = $this->current()[$index];
+                } elseif ($included[DocumentInterface::KEYWORD_ID] == $id) {
+                    return $this->getIncluded($index);
+                }
             }
+        }
+
+        if (!empty($data)) {
+            return new DataMapper([DocumentInterface::KEYWORD_DATA => $data]);
         }
 
         return null;

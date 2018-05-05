@@ -15,7 +15,7 @@ interface IncludedMapperInterface extends LoaderInterface
      * @param string $id
      * @return DataMapperInterface|null
      */
-    public function find(string $type, string $id): ?DataMapperInterface;
+    public function find(string $type, string $id = null): ?DataMapperInterface;
 
     /**
      * @return IncludedMapperInterface
