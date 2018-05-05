@@ -518,6 +518,7 @@ JSON;
         $dataUpdated = $data->getUpdatedAt();
         $dataNull = $data->getInvalid();
 
+        /** @var DataMapperInterface|mixed $author */
         $author = $data->author();
         $authorType = $author->type();
         $authorId = $author->id();
@@ -678,6 +679,7 @@ JSON;
         $dataUpdated = $data->updatedAt();
         $dataNull = $data->invalid();
 
+        /** @var DataMapperInterface|mixed $author */
         $author = $data->author();
         $authorType = $author->type();
         $authorId = $author->id();

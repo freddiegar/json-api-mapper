@@ -18,9 +18,9 @@ use FreddieGar\JsonApiMapper\Traits\MetaMapperTrait;
  * @method array  attributes() Alias to getAttributes() method
  * @method array relationships() Alias to getRelationships() method
  * @method string attribute(string $attributeName, $default = null) Alias to getAttribute() method
- * @method DataMapperInterface relationship(string $relationName) ?Alias to getRelationship() method
- * @method array|string meta(?string $path = null) Alias to getMeta() method
- * @method LinksMapperInterface links() Alias to getLinks() method
+ * @method DataMapperInterface|mixed relationship(string $relationName) ?Alias to getRelationship() method
+ * @method array|string|mixed meta(?string $path = null) Alias to getMeta() method
+ * @method LinksMapperInterface|mixed links() Alias to getLinks() method
  */
 class DataMapper extends Loader implements DataMapperInterface
 {

@@ -11,17 +11,17 @@ namespace FreddieGar\JsonApiMapper\Contracts;
  * @method array  attributes() Alias to getAttributes() method
  * @method array relationships() Alias to getRelationships() method
  * @method string attribute(string $attributeName, $default = null) Alias to getAttribute() method
- * @method DataMapperInterface relationship(string $relationName) ?Alias to getRelationship() method
- * @method array|string meta(?string $path = null) Alias to getMeta() method
- * @method LinksMapperInterface links() Alias to getLinks() method
+ * @method DataMapperInterface|mixed relationship(string $relationName) ?Alias to getRelationship() method
+ * @method array|string|mixed meta(?string $path = null) Alias to getMeta() method
+ * @method LinksMapperInterface|mixed links() Alias to getLinks() method
  *
  * @property string $id Access magic to getId() method
  * @property string $type Access magic to getType() method
  * @property array $attributes Access magic to getAttributes() method
- * @property string|object $attribute Access magic to getAttribute() method
+ * @property string|mixed $attribute Access magic to getAttribute() method
  * @property array $relationships Access magic to getRelationships() method
- * @property DataMapperInterface|object $relationship Access magic to getRelationship() method
- * @property LinksMapperInterface $links Access magic to getLinks() method
+ * @property DataMapperInterface|mixed $relationship Access magic to getRelationship() method
+ * @property LinksMapperInterface|mixed $links Access magic to getLinks() method
  */
 interface DataMapperInterface extends LoaderInterface
 {
