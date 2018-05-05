@@ -109,18 +109,6 @@ class DataMapper extends Loader implements DataMapperInterface
         return $data;
     }
 
-//    public function getResource($withAttributes = true): array
-//    {
-//        $resource = [
-//            DocumentInterface::KEYWORD_ID => $this->getId(),
-//            DocumentInterface::KEYWORD_TYPE => $this->getType(),
-//        ];
-//
-//        return $withAttributes
-//            ? $resource + $this->getAttributes()
-//            : $resource;
-//    }
-
     /**
      * @param $name
      * @param $arguments
@@ -163,7 +151,7 @@ class DataMapper extends Loader implements DataMapperInterface
      */
     private function magic($name)
     {
-        $name = $this->_sanitizeName($name);
+        $name = $this->sanitizeName($name);
 
         if ($property = $this->getRelationship($name)) {
             return $property;

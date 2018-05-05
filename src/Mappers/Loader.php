@@ -103,7 +103,7 @@ abstract class Loader implements LoaderInterface
      * @param string $name
      * @return mixed
      */
-    protected function _sanitizeName(string $name)
+    protected function sanitizeName(string $name)
     {
         $temp = strlen($name) > 3 && substr($name, 0, 3) === 'get'
             ? substr($name, 3)

@@ -57,7 +57,7 @@ class LoaderMapperTest extends TestCase
         $this->assertEquals(10, $data->getLinks()->getRelated()->getMeta('count'));
 
         $this->assertEquals(null, $data->getAttribute('attribute-invalid'));
-        $this->assertEquals(null,$data->getRelationship('relationship-invalid'));
+        $this->assertEquals(null, $data->getRelationship('relationship-invalid'));
     }
 
     public function testLoaderMapperFromConstructor()

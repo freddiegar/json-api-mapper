@@ -36,7 +36,7 @@ class MetaMapper extends Loader implements MetaMapperInterface
 
     public function __get($name)
     {
-        $name = $this->_sanitizeName($name);
+        $name = $this->sanitizeName($name);
 
         if ($property = $this->getMeta($name)) {
             return $property;

@@ -47,7 +47,7 @@ class ReadmeExample
         echo $data->getType() . PHP_EOL; // articles
         echo $data->getId() . PHP_EOL; // 1
 
-        echo print_r($data->getAttributes(), true) . PHP_EOL; // ['title' => 'JSON API paints my bikeshed!', 'body' => '...']
+        echo print_r($data->getAttributes(), true) . PHP_EOL; // ['title' => 'JSON API paints my bikeshed!', 'bod...]
         echo $data->getAttribute('created') . PHP_EOL; // 2015-05-22T14:56:29.000Z
         echo $data->getAttribute('description') . PHP_EOL; // If not exist, return: null
 
@@ -60,13 +60,14 @@ class ReadmeExample
         echo $included->getIncluded(0)->getType() . PHP_EOL; // people
         echo $included->getIncluded(0)->getId() . PHP_EOL; // 42
         echo $included->getIncluded(0)->getName() . PHP_EOL; // John
-        /** @noinspection PhpToStringImplementationInspection */
         echo $included->getIncluded(1) . PHP_EOL; // null, it is not defined in response
 
         // Finding
         // $dataWithIdTwo = $data->find(2); // Return DataMapperInterface if exist else null
-        // $dataWithIdThree = $included->find('people', 3); // Return DataMapperInterface if exist else null
-
+        // $dataPeople = $included->find('people'); // Return DataMapperInterface if exist else null
+        // $dataPeopleWithIdThree = $included->find('people', 3); // Return DataMapperInterface if exist else null
+        // OR
+        // $peopleWithIdThree = $dataPeople->find(3); // Return DataMapperInterface if exist else null
     }
 
     public function testReadmeExampleError()

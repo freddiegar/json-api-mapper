@@ -255,7 +255,77 @@ JSON;
         $includedFindNull = $included->find('people', 876);
         $includedFindInvalid = $included->find('invalid', 4);
 
-        $this->validationTest(get_defined_vars());
+        $this->validationTest(
+            $mapper,
+            $meta,
+            $metaTotalCount,
+            $metaNull,
+            $jsonApi,
+            $jsonApiVersion,
+            $links,
+            $linkFirst,
+            $linkPrev,
+            $linkNext,
+            $linkLast,
+            $linkSelf,
+            $linkAbout,
+            $linkRelated,
+            $data,
+            $dataType,
+            $dataId,
+            $dataAttributes,
+            $dataTitle,
+            $dataBody,
+            $dataCreated,
+            $dataUpdated,
+            $dataNull,
+            $author,
+            $authorType,
+            $authorId,
+            $authorAttributes,
+            $authorName,
+            $authorAge,
+            $authorGender,
+            $authorNull,
+            $dataRelationshipNull,
+            $dataLinks,
+            $dataLinkSelf,
+            $dataLinkRelated,
+            $dataLinkRelatedHref,
+            $dataLinkRelatedMeta,
+            $dataLinkRelatedMetaCount,
+            $dataById,
+            $dataByIdType,
+            $dataByIdId,
+            $dataByIdAttributes,
+            $dataByIdTitle,
+            $dataByIdBody,
+            $dataByIdCreated,
+            $dataByIdUpdated,
+            $dataByIdNull,
+            $dataLinksTwo,
+            $dataLinkSelfTwo,
+            $dataLinkRelatedTwo,
+            $included,
+            $includedOne,
+            $includedOneType,
+            $includedOneId,
+            $includedOneAttributes,
+            $includedOneAttributesName,
+            $includedOneAttributesAge,
+            $includedOneAttributesGender,
+            $includedOneAttributesNull,
+            $includedById,
+            $includedByIdId,
+            $includedByIdAttributes,
+            $includedByIdAttributesName,
+            $includedByIdAttributesAge,
+            $includedByIdAttributesGender,
+            $includedByIdAttributesNull,
+            $dataFindNull,
+            $includedFindNull,
+            $includedFindInvalid
+        );
     }
 
     public function testImplementationMapperMethodAlias()
@@ -343,7 +413,77 @@ JSON;
         $includedFindNull = $included->find('people', 876);
         $includedFindInvalid = $included->find('invalid', 4);
 
-        $this->validationTest(get_defined_vars());
+        $this->validationTest(
+            $mapper,
+            $meta,
+            $metaTotalCount,
+            $metaNull,
+            $jsonApi,
+            $jsonApiVersion,
+            $links,
+            $linkFirst,
+            $linkPrev,
+            $linkNext,
+            $linkLast,
+            $linkSelf,
+            $linkAbout,
+            $linkRelated,
+            $data,
+            $dataType,
+            $dataId,
+            $dataAttributes,
+            $dataTitle,
+            $dataBody,
+            $dataCreated,
+            $dataUpdated,
+            $dataNull,
+            $author,
+            $authorType,
+            $authorId,
+            $authorAttributes,
+            $authorName,
+            $authorAge,
+            $authorGender,
+            $authorNull,
+            $dataRelationshipNull,
+            $dataLinks,
+            $dataLinkSelf,
+            $dataLinkRelated,
+            $dataLinkRelatedHref,
+            $dataLinkRelatedMeta,
+            $dataLinkRelatedMetaCount,
+            $dataById,
+            $dataByIdType,
+            $dataByIdId,
+            $dataByIdAttributes,
+            $dataByIdTitle,
+            $dataByIdBody,
+            $dataByIdCreated,
+            $dataByIdUpdated,
+            $dataByIdNull,
+            $dataLinksTwo,
+            $dataLinkSelfTwo,
+            $dataLinkRelatedTwo,
+            $included,
+            $includedOne,
+            $includedOneType,
+            $includedOneId,
+            $includedOneAttributes,
+            $includedOneAttributesName,
+            $includedOneAttributesAge,
+            $includedOneAttributesGender,
+            $includedOneAttributesNull,
+            $includedById,
+            $includedByIdId,
+            $includedByIdAttributes,
+            $includedByIdAttributesName,
+            $includedByIdAttributesAge,
+            $includedByIdAttributesGender,
+            $includedByIdAttributesNull,
+            $dataFindNull,
+            $includedFindNull,
+            $includedFindInvalid
+        );
     }
 
     public function testImplementationMapperMethodWithAttributesGetAccessors()
@@ -432,7 +572,77 @@ JSON;
         $includedFindNull = $included->find('people', 876);
         $includedFindInvalid = $included->find('invalid', 4);
 
-        $this->validationTest(get_defined_vars());
+        $this->validationTest(
+            $mapper,
+            $meta,
+            $metaTotalCount,
+            $metaNull,
+            $jsonApi,
+            $jsonApiVersion,
+            $links,
+            $linkFirst,
+            $linkPrev,
+            $linkNext,
+            $linkLast,
+            $linkSelf,
+            $linkAbout,
+            $linkRelated,
+            $data,
+            $dataType,
+            $dataId,
+            $dataAttributes,
+            $dataTitle,
+            $dataBody,
+            $dataCreated,
+            $dataUpdated,
+            $dataNull,
+            $author,
+            $authorType,
+            $authorId,
+            $authorAttributes,
+            $authorName,
+            $authorAge,
+            $authorGender,
+            $authorNull,
+            $dataRelationshipNull,
+            $dataLinks,
+            $dataLinkSelf,
+            $dataLinkRelated,
+            $dataLinkRelatedHref,
+            $dataLinkRelatedMeta,
+            $dataLinkRelatedMetaCount,
+            $dataById,
+            $dataByIdType,
+            $dataByIdId,
+            $dataByIdAttributes,
+            $dataByIdTitle,
+            $dataByIdBody,
+            $dataByIdCreated,
+            $dataByIdUpdated,
+            $dataByIdNull,
+            $dataLinksTwo,
+            $dataLinkSelfTwo,
+            $dataLinkRelatedTwo,
+            $included,
+            $includedOne,
+            $includedOneType,
+            $includedOneId,
+            $includedOneAttributes,
+            $includedOneAttributesName,
+            $includedOneAttributesAge,
+            $includedOneAttributesGender,
+            $includedOneAttributesNull,
+            $includedById,
+            $includedByIdId,
+            $includedByIdAttributes,
+            $includedByIdAttributesName,
+            $includedByIdAttributesAge,
+            $includedByIdAttributesGender,
+            $includedByIdAttributesNull,
+            $dataFindNull,
+            $includedFindNull,
+            $includedFindInvalid
+        );
     }
 
     public function testImplementationMapperMethodWithoutAttributesAndRelationshipAccessorsMagic()
@@ -520,7 +730,77 @@ JSON;
         $includedFindNull = $included->find('people', 876);
         $includedFindInvalid = $included->find('invalid', 4);
 
-        $this->validationTest(get_defined_vars());
+        $this->validationTest(
+            $mapper,
+            $meta,
+            $metaTotalCount,
+            $metaNull,
+            $jsonApi,
+            $jsonApiVersion,
+            $links,
+            $linkFirst,
+            $linkPrev,
+            $linkNext,
+            $linkLast,
+            $linkSelf,
+            $linkAbout,
+            $linkRelated,
+            $data,
+            $dataType,
+            $dataId,
+            $dataAttributes,
+            $dataTitle,
+            $dataBody,
+            $dataCreated,
+            $dataUpdated,
+            $dataNull,
+            $author,
+            $authorType,
+            $authorId,
+            $authorAttributes,
+            $authorName,
+            $authorAge,
+            $authorGender,
+            $authorNull,
+            $dataRelationshipNull,
+            $dataLinks,
+            $dataLinkSelf,
+            $dataLinkRelated,
+            $dataLinkRelatedHref,
+            $dataLinkRelatedMeta,
+            $dataLinkRelatedMetaCount,
+            $dataById,
+            $dataByIdType,
+            $dataByIdId,
+            $dataByIdAttributes,
+            $dataByIdTitle,
+            $dataByIdBody,
+            $dataByIdCreated,
+            $dataByIdUpdated,
+            $dataByIdNull,
+            $dataLinksTwo,
+            $dataLinkSelfTwo,
+            $dataLinkRelatedTwo,
+            $included,
+            $includedOne,
+            $includedOneType,
+            $includedOneId,
+            $includedOneAttributes,
+            $includedOneAttributesName,
+            $includedOneAttributesAge,
+            $includedOneAttributesGender,
+            $includedOneAttributesNull,
+            $includedById,
+            $includedByIdId,
+            $includedByIdAttributes,
+            $includedByIdAttributesName,
+            $includedByIdAttributesAge,
+            $includedByIdAttributesGender,
+            $includedByIdAttributesNull,
+            $dataFindNull,
+            $includedFindNull,
+            $includedFindInvalid
+        );
     }
 
     public function testImplementationMapperPropertySnakeAccessors()
@@ -608,7 +888,77 @@ JSON;
         $includedFindNull = $included->find('people', 876);
         $includedFindInvalid = $included->find('invalid', 4);
 
-        $this->validationTest(get_defined_vars());
+        $this->validationTest(
+            $mapper,
+            $meta,
+            $metaTotalCount,
+            $metaNull,
+            $jsonApi,
+            $jsonApiVersion,
+            $links,
+            $linkFirst,
+            $linkPrev,
+            $linkNext,
+            $linkLast,
+            $linkSelf,
+            $linkAbout,
+            $linkRelated,
+            $data,
+            $dataType,
+            $dataId,
+            $dataAttributes,
+            $dataTitle,
+            $dataBody,
+            $dataCreated,
+            $dataUpdated,
+            $dataNull,
+            $author,
+            $authorType,
+            $authorId,
+            $authorAttributes,
+            $authorName,
+            $authorAge,
+            $authorGender,
+            $authorNull,
+            $dataRelationshipNull,
+            $dataLinks,
+            $dataLinkSelf,
+            $dataLinkRelated,
+            $dataLinkRelatedHref,
+            $dataLinkRelatedMeta,
+            $dataLinkRelatedMetaCount,
+            $dataById,
+            $dataByIdType,
+            $dataByIdId,
+            $dataByIdAttributes,
+            $dataByIdTitle,
+            $dataByIdBody,
+            $dataByIdCreated,
+            $dataByIdUpdated,
+            $dataByIdNull,
+            $dataLinksTwo,
+            $dataLinkSelfTwo,
+            $dataLinkRelatedTwo,
+            $included,
+            $includedOne,
+            $includedOneType,
+            $includedOneId,
+            $includedOneAttributes,
+            $includedOneAttributesName,
+            $includedOneAttributesAge,
+            $includedOneAttributesGender,
+            $includedOneAttributesNull,
+            $includedById,
+            $includedByIdId,
+            $includedByIdAttributes,
+            $includedByIdAttributesName,
+            $includedByIdAttributesAge,
+            $includedByIdAttributesGender,
+            $includedByIdAttributesNull,
+            $dataFindNull,
+            $includedFindNull,
+            $includedFindInvalid
+        );
     }
 
     public function testImplementationMapperPropertyCamelAccessors()
@@ -696,7 +1046,77 @@ JSON;
         $includedFindNull = $included->find('people', 876);
         $includedFindInvalid = $included->find('invalid', 4);
 
-        $this->validationTest(get_defined_vars());
+        $this->validationTest(
+            $mapper,
+            $meta,
+            $metaTotalCount,
+            $metaNull,
+            $jsonApi,
+            $jsonApiVersion,
+            $links,
+            $linkFirst,
+            $linkPrev,
+            $linkNext,
+            $linkLast,
+            $linkSelf,
+            $linkAbout,
+            $linkRelated,
+            $data,
+            $dataType,
+            $dataId,
+            $dataAttributes,
+            $dataTitle,
+            $dataBody,
+            $dataCreated,
+            $dataUpdated,
+            $dataNull,
+            $author,
+            $authorType,
+            $authorId,
+            $authorAttributes,
+            $authorName,
+            $authorAge,
+            $authorGender,
+            $authorNull,
+            $dataRelationshipNull,
+            $dataLinks,
+            $dataLinkSelf,
+            $dataLinkRelated,
+            $dataLinkRelatedHref,
+            $dataLinkRelatedMeta,
+            $dataLinkRelatedMetaCount,
+            $dataById,
+            $dataByIdType,
+            $dataByIdId,
+            $dataByIdAttributes,
+            $dataByIdTitle,
+            $dataByIdBody,
+            $dataByIdCreated,
+            $dataByIdUpdated,
+            $dataByIdNull,
+            $dataLinksTwo,
+            $dataLinkSelfTwo,
+            $dataLinkRelatedTwo,
+            $included,
+            $includedOne,
+            $includedOneType,
+            $includedOneId,
+            $includedOneAttributes,
+            $includedOneAttributesName,
+            $includedOneAttributesAge,
+            $includedOneAttributesGender,
+            $includedOneAttributesNull,
+            $includedById,
+            $includedByIdId,
+            $includedByIdAttributes,
+            $includedByIdAttributesName,
+            $includedByIdAttributesAge,
+            $includedByIdAttributesGender,
+            $includedByIdAttributesNull,
+            $dataFindNull,
+            $includedFindNull,
+            $includedFindInvalid
+        );
     }
 
     public function testImplementationMapperPropertyWithoutAttributesAndRelationshipsSnakeAccessors()
@@ -784,7 +1204,77 @@ JSON;
         $includedFindNull = $included->find('people', 876);
         $includedFindInvalid = $included->find('invalid', 4);
 
-        $this->validationTest(get_defined_vars());
+        $this->validationTest(
+            $mapper,
+            $meta,
+            $metaTotalCount,
+            $metaNull,
+            $jsonApi,
+            $jsonApiVersion,
+            $links,
+            $linkFirst,
+            $linkPrev,
+            $linkNext,
+            $linkLast,
+            $linkSelf,
+            $linkAbout,
+            $linkRelated,
+            $data,
+            $dataType,
+            $dataId,
+            $dataAttributes,
+            $dataTitle,
+            $dataBody,
+            $dataCreated,
+            $dataUpdated,
+            $dataNull,
+            $author,
+            $authorType,
+            $authorId,
+            $authorAttributes,
+            $authorName,
+            $authorAge,
+            $authorGender,
+            $authorNull,
+            $dataRelationshipNull,
+            $dataLinks,
+            $dataLinkSelf,
+            $dataLinkRelated,
+            $dataLinkRelatedHref,
+            $dataLinkRelatedMeta,
+            $dataLinkRelatedMetaCount,
+            $dataById,
+            $dataByIdType,
+            $dataByIdId,
+            $dataByIdAttributes,
+            $dataByIdTitle,
+            $dataByIdBody,
+            $dataByIdCreated,
+            $dataByIdUpdated,
+            $dataByIdNull,
+            $dataLinksTwo,
+            $dataLinkSelfTwo,
+            $dataLinkRelatedTwo,
+            $included,
+            $includedOne,
+            $includedOneType,
+            $includedOneId,
+            $includedOneAttributes,
+            $includedOneAttributesName,
+            $includedOneAttributesAge,
+            $includedOneAttributesGender,
+            $includedOneAttributesNull,
+            $includedById,
+            $includedByIdId,
+            $includedByIdAttributes,
+            $includedByIdAttributesName,
+            $includedByIdAttributesAge,
+            $includedByIdAttributesGender,
+            $includedByIdAttributesNull,
+            $dataFindNull,
+            $includedFindNull,
+            $includedFindInvalid
+        );
     }
 
     public function testImplementationMapperPropertyWithoutAttributesAndRelationshipsCamelAccessors()
@@ -872,7 +1362,77 @@ JSON;
         $includedFindNull = $included->find('people', 876);
         $includedFindInvalid = $included->find('invalid', 4);
 
-        $this->validationTest(get_defined_vars());
+        $this->validationTest(
+            $mapper,
+            $meta,
+            $metaTotalCount,
+            $metaNull,
+            $jsonApi,
+            $jsonApiVersion,
+            $links,
+            $linkFirst,
+            $linkPrev,
+            $linkNext,
+            $linkLast,
+            $linkSelf,
+            $linkAbout,
+            $linkRelated,
+            $data,
+            $dataType,
+            $dataId,
+            $dataAttributes,
+            $dataTitle,
+            $dataBody,
+            $dataCreated,
+            $dataUpdated,
+            $dataNull,
+            $author,
+            $authorType,
+            $authorId,
+            $authorAttributes,
+            $authorName,
+            $authorAge,
+            $authorGender,
+            $authorNull,
+            $dataRelationshipNull,
+            $dataLinks,
+            $dataLinkSelf,
+            $dataLinkRelated,
+            $dataLinkRelatedHref,
+            $dataLinkRelatedMeta,
+            $dataLinkRelatedMetaCount,
+            $dataById,
+            $dataByIdType,
+            $dataByIdId,
+            $dataByIdAttributes,
+            $dataByIdTitle,
+            $dataByIdBody,
+            $dataByIdCreated,
+            $dataByIdUpdated,
+            $dataByIdNull,
+            $dataLinksTwo,
+            $dataLinkSelfTwo,
+            $dataLinkRelatedTwo,
+            $included,
+            $includedOne,
+            $includedOneType,
+            $includedOneId,
+            $includedOneAttributes,
+            $includedOneAttributesName,
+            $includedOneAttributesAge,
+            $includedOneAttributesGender,
+            $includedOneAttributesNull,
+            $includedById,
+            $includedByIdId,
+            $includedByIdAttributes,
+            $includedByIdAttributesName,
+            $includedByIdAttributesAge,
+            $includedByIdAttributesGender,
+            $includedByIdAttributesNull,
+            $dataFindNull,
+            $includedFindNull,
+            $includedFindInvalid
+        );
     }
 
     public function testImplementationErrorsMapperSimpleGet()
@@ -906,7 +1466,32 @@ JSON;
 
         $errorNull = $mapper->getErrors(2);
 
-        $this->validationErrors(get_defined_vars());
+        $this->validationErrors(
+            $errors,
+            $errorAll,
+            $errorOne,
+            $errorId,
+            $errorAbout,
+            $errorStatus,
+            $errorCode,
+            $errorTitle,
+            $errorDetail,
+            $errorSource,
+            $errorMeta,
+            $errorMetaRequestAt,
+            $errorMetaTesting,
+            $errorMetaNull,
+            $errorTwo,
+            $errorTwoId,
+            $errorTwoAbout,
+            $errorTwoStatus,
+            $errorTwoCode,
+            $errorTwoTitle,
+            $errorTwoDetail,
+            $errorTwoSource,
+            $errorTwoMeta,
+            $errorNull
+        );
     }
 
     public function testImplementationErrorsMapperSimpleAlias()
@@ -940,7 +1525,32 @@ JSON;
 
         $errorNull = $mapper->errors(2);
 
-        $this->validationErrors(get_defined_vars());
+        $this->validationErrors(
+            $errors,
+            $errorAll,
+            $errorOne,
+            $errorId,
+            $errorAbout,
+            $errorStatus,
+            $errorCode,
+            $errorTitle,
+            $errorDetail,
+            $errorSource,
+            $errorMeta,
+            $errorMetaRequestAt,
+            $errorMetaTesting,
+            $errorMetaNull,
+            $errorTwo,
+            $errorTwoId,
+            $errorTwoAbout,
+            $errorTwoStatus,
+            $errorTwoCode,
+            $errorTwoTitle,
+            $errorTwoDetail,
+            $errorTwoSource,
+            $errorTwoMeta,
+            $errorNull
+        );
     }
 
     public function testImplementationErrorsMapperPropertySnakeAccessors()
@@ -975,7 +1585,32 @@ JSON;
 
         $errorNull = $mapper->errors(2);
 
-        $this->validationErrors(get_defined_vars());
+        $this->validationErrors(
+            $errors,
+            $errorAll,
+            $errorOne,
+            $errorId,
+            $errorAbout,
+            $errorStatus,
+            $errorCode,
+            $errorTitle,
+            $errorDetail,
+            $errorSource,
+            $errorMeta,
+            $errorMetaRequestAt,
+            $errorMetaTesting,
+            $errorMetaNull,
+            $errorTwo,
+            $errorTwoId,
+            $errorTwoAbout,
+            $errorTwoStatus,
+            $errorTwoCode,
+            $errorTwoTitle,
+            $errorTwoDetail,
+            $errorTwoSource,
+            $errorTwoMeta,
+            $errorNull
+        );
     }
 
     public function testImplementationErrorsMapperPropertyCamelAccessors()
@@ -1009,85 +1644,105 @@ JSON;
 
         $errorNull = $mapper->errors(2);
 
-        $this->validationErrors(get_defined_vars());
+        $this->validationErrors(
+            $errors,
+            $errorAll,
+            $errorOne,
+            $errorId,
+            $errorAbout,
+            $errorStatus,
+            $errorCode,
+            $errorTitle,
+            $errorDetail,
+            $errorSource,
+            $errorMeta,
+            $errorMetaRequestAt,
+            $errorMetaTesting,
+            $errorMetaNull,
+            $errorTwo,
+            $errorTwoId,
+            $errorTwoAbout,
+            $errorTwoStatus,
+            $errorTwoCode,
+            $errorTwoTitle,
+            $errorTwoDetail,
+            $errorTwoSource,
+            $errorTwoMeta,
+            $errorNull
+        );
     }
 
-    private function validationTest(array $dataTest)
-    {
-        /**
-         * @var $mapper
-         * @var $meta
-         * @var $metaTotalCount
-         * @var $metaNull
-         * @var $jsonApi
-         * @var $jsonApiVersion
-         * @var $links
-         * @var $linkFirst
-         * @var $linkPrev
-         * @var $linkNext
-         * @var $linkLast
-         * @var $linkSelf
-         * @var $linkAbout
-         * @var $linkRelated
-         * @var $data
-         * @var $dataType
-         * @var $dataId
-         * @var $dataAttributes
-         * @var $dataTitle
-         * @var $dataBody
-         * @var $dataCreated
-         * @var $dataUpdated
-         * @var $dataNull
-         * @var $author
-         * @var $authorType
-         * @var $authorId
-         * @var $authorAttributes
-         * @var $authorName
-         * @var $authorAge
-         * @var $authorGender
-         * @var $authorNull
-         * @var $dataRelationshipNull
-         * @var $dataLinks
-         * @var $dataLinkSelf
-         * @var $dataLinkRelated
-         * @var $dataLinkRelatedHref
-         * @var $dataLinkRelatedMeta
-         * @var $dataLinkRelatedMetaCount
-         * @var $dataById
-         * @var $dataByIdType
-         * @var $dataByIdId
-         * @var $dataByIdAttributes
-         * @var $dataByIdTitle
-         * @var $dataByIdBody
-         * @var $dataByIdCreated
-         * @var $dataByIdUpdated
-         * @var $dataByIdNull
-         * @var $dataLinksTwo
-         * @var $dataLinkSelfTwo
-         * @var $dataLinkRelatedTwo
-         * @var $included
-         * @var $includedOne
-         * @var $includedOneType
-         * @var $includedOneId
-         * @var $includedOneAttributes
-         * @var $includedOneAttributesName
-         * @var $includedOneAttributesAge
-         * @var $includedOneAttributesGender
-         * @var $includedOneAttributesNull
-         * @var $includedById
-         * @var $includedOneType
-         * @var $includedByIdId
-         * @var $includedByIdAttributes
-         * @var $includedByIdAttributesName
-         * @var $includedByIdAttributesAge
-         * @var $includedByIdAttributesGender
-         * @var $includedByIdAttributesNull
-         * @var $dataFindNull
-         * @var $includedFindNull
-         * @var $includedFindInvalid
-         */
-        extract($dataTest);
-
+    private function validationTest(
+        $mapper,
+        $meta,
+        $metaTotalCount,
+        $metaNull,
+        $jsonApi,
+        $jsonApiVersion,
+        $links,
+        $linkFirst,
+        $linkPrev,
+        $linkNext,
+        $linkLast,
+        $linkSelf,
+        $linkAbout,
+        $linkRelated,
+        $data,
+        $dataType,
+        $dataId,
+        $dataAttributes,
+        $dataTitle,
+        $dataBody,
+        $dataCreated,
+        $dataUpdated,
+        $dataNull,
+        $author,
+        $authorType,
+        $authorId,
+        $authorAttributes,
+        $authorName,
+        $authorAge,
+        $authorGender,
+        $authorNull,
+        $dataRelationshipNull,
+        $dataLinks,
+        $dataLinkSelf,
+        $dataLinkRelated,
+        $dataLinkRelatedHref,
+        $dataLinkRelatedMeta,
+        $dataLinkRelatedMetaCount,
+        $dataById,
+        $dataByIdType,
+        $dataByIdId,
+        $dataByIdAttributes,
+        $dataByIdTitle,
+        $dataByIdBody,
+        $dataByIdCreated,
+        $dataByIdUpdated,
+        $dataByIdNull,
+        $dataLinksTwo,
+        $dataLinkSelfTwo,
+        $dataLinkRelatedTwo,
+        $included,
+        $includedOne,
+        $includedOneType,
+        $includedOneId,
+        $includedOneAttributes,
+        $includedOneAttributesName,
+        $includedOneAttributesAge,
+        $includedOneAttributesGender,
+        $includedOneAttributesNull,
+        $includedById,
+        $includedByIdId,
+        $includedByIdAttributes,
+        $includedByIdAttributesName,
+        $includedByIdAttributesAge,
+        $includedByIdAttributesGender,
+        $includedByIdAttributesNull,
+        $dataFindNull,
+        $includedFindNull,
+        $includedFindInvalid
+    ) {
         $this->assertInstanceOf(ResourceMapperInterface::class, $mapper);
 
         $this->assertInstanceOf(MetaMapperInterface::class, $meta);
@@ -1173,39 +1828,32 @@ JSON;
         $this->assertEquals(null, $includedFindInvalid);
     }
 
-    private function validationErrors(array $dataErrors)
-    {
-        /**
-         * @var $errors
-         * @var $errorAll
-         * @var $errorOne
-         * @var $errorId
-         * @var $errorAbout
-         * @var $errorStatus
-         * @var $errorCode
-         * @var $errorTitle
-         * @var $errorDetail
-         * @var $errorSource
-         * @var $errorMeta
-         * @var $errorMetaRequestAt
-         * @var $errorMetaTesting
-         * @var $errorMetaNull
-         * @var $errorTwo
-         * @var $errorTwoId
-         * @var $errorTwoAbout
-         * @var $errorTwoStatus
-         * @var $errorTwoCode
-         * @var $errorTwoTitle
-         * @var $errorTwoDetail
-         * @var $errorTwoSource
-         * @var $errorTwoMeta
-         * @var $errorTwoMetaRequestAt
-         * @var $errorTwoMetaTesting
-         * @var $errorTwoMetaNull
-         * @var $errorNull
-         */
-        extract($dataErrors);
-
+    private function validationErrors(
+        $errors,
+        $errorAll,
+        $errorOne,
+        $errorId,
+        $errorAbout,
+        $errorStatus,
+        $errorCode,
+        $errorTitle,
+        $errorDetail,
+        $errorSource,
+        $errorMeta,
+        $errorMetaRequestAt,
+        $errorMetaTesting,
+        $errorMetaNull,
+        $errorTwo,
+        $errorTwoId,
+        $errorTwoAbout,
+        $errorTwoStatus,
+        $errorTwoCode,
+        $errorTwoTitle,
+        $errorTwoDetail,
+        $errorTwoSource,
+        $errorTwoMeta,
+        $errorNull
+    ) {
         $this->assertInstanceOf(ErrorsMapperInterface::class, $errors);
         $this->assertTrue(is_array($errorAll));
 

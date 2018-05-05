@@ -44,23 +44,19 @@ class ErrorsMapperTest extends TestCase
         $this->assertInstanceOf(ErrorsMapperInterface::class, $errors);
     }
 
-    private function runTestOn(array $data)
-    {
-        /**
-         * @var $errorId
-         * @var $errorAbout
-         * @var $errorStatus
-         * @var $errorCode
-         * @var $errorTitle
-         * @var $errorDetail
-         * @var $errorSource
-         * @var $errorMeta
-         * @var $errorMetaCopyright
-         * @var $errorMetaIsTest
-         * @var $errorMetaNull
-         */
-        extract($data);
-
+    private function runTestOn(
+        $errorId,
+        $errorAbout,
+        $errorStatus,
+        $errorCode,
+        $errorTitle,
+        $errorDetail,
+        $errorSource,
+        $errorMeta,
+        $errorMetaCopyright,
+        $errorMetaIsTest,
+        $errorMetaNull
+    ) {
         $this->assertEquals(3452435234, $errorId);
         $this->assertEquals('http://example.com/help/me', $errorAbout);
         $this->assertEquals(422, $errorStatus);
@@ -91,7 +87,19 @@ class ErrorsMapperTest extends TestCase
         $errorMetaIsTest = $error->getMeta('is-test');
         $errorMetaNull = $error->getMeta('invalid');
 
-        $this->runTestOn(get_defined_vars());
+        $this->runTestOn(
+            $errorId,
+            $errorAbout,
+            $errorStatus,
+            $errorCode,
+            $errorTitle,
+            $errorDetail,
+            $errorSource,
+            $errorMeta,
+            $errorMetaCopyright,
+            $errorMetaIsTest,
+            $errorMetaNull
+        );
     }
 
     public function testErrorsMapperSimpleAlias()
@@ -111,7 +119,19 @@ class ErrorsMapperTest extends TestCase
         $errorMetaIsTest = $error->meta('is-test');
         $errorMetaNull = $error->meta('invalid');
 
-        $this->runTestOn(get_defined_vars());
+        $this->runTestOn(
+            $errorId,
+            $errorAbout,
+            $errorStatus,
+            $errorCode,
+            $errorTitle,
+            $errorDetail,
+            $errorSource,
+            $errorMeta,
+            $errorMetaCopyright,
+            $errorMetaIsTest,
+            $errorMetaNull
+        );
     }
 
     public function testErrorsMapperPropertySnakeAccessors()
@@ -126,16 +146,24 @@ class ErrorsMapperTest extends TestCase
         $errorTitle = $error->title;
         $errorDetail = $error->detail;
         $errorSource = $error->source;
-//        $errorMeta = $error->meta;
-//        $errorMetaCopyright = $error->meta->copyright;
-//        $errorMetaIsTest = $error->meta->is_test;
-//        $errorMetaNull = $error->invalid;
         $errorMeta = $error->meta();
         $errorMetaCopyright = $error->meta('copyright');
         $errorMetaIsTest = $error->meta('is-test');
         $errorMetaNull = $error->meta('invalid');
 
-        $this->runTestOn(get_defined_vars());
+        $this->runTestOn(
+            $errorId,
+            $errorAbout,
+            $errorStatus,
+            $errorCode,
+            $errorTitle,
+            $errorDetail,
+            $errorSource,
+            $errorMeta,
+            $errorMetaCopyright,
+            $errorMetaIsTest,
+            $errorMetaNull
+        );
     }
 
     public function testErrorsMapperPropertyCamelAccessors()
@@ -150,16 +178,24 @@ class ErrorsMapperTest extends TestCase
         $errorTitle = $error->title;
         $errorDetail = $error->detail;
         $errorSource = $error->source;
-//        $errorMeta = $error->meta;
-//        $errorMetaCopyright = $error->meta->copyright;
-//        $errorMetaIsTest = $error->meta->isTest;
-//        $errorMetaNull = $error->invalid;
         $errorMeta = $error->meta();
         $errorMetaCopyright = $error->meta('copyright');
         $errorMetaIsTest = $error->meta('is-test');
         $errorMetaNull = $error->meta('invalid');
 
-        $this->runTestOn(get_defined_vars());
+        $this->runTestOn(
+            $errorId,
+            $errorAbout,
+            $errorStatus,
+            $errorCode,
+            $errorTitle,
+            $errorDetail,
+            $errorSource,
+            $errorMeta,
+            $errorMetaCopyright,
+            $errorMetaIsTest,
+            $errorMetaNull
+        );
     }
 
     public function testErrorsMapperMultiple()

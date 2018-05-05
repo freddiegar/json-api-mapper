@@ -46,30 +46,26 @@ class DataMapperTest extends TestCase
         $this->assertInstanceOf(DataMapperInterface::class, $data);
     }
 
-    private function runTestOnSimple(array $data)
-    {
-        /**
-         * @var $dataType
-         * @var $dataId
-         * @var $dataAttributes
-         * @var $dataRelationships
-         * @var $dataAttributeName
-         * @var $dataAttributeLanguageId
-         * @var $dataAttributeDescription
-         * @var $dataAttributeCreatedAt
-         * @var $dataAttributeUpdatedAt
-         * @var $dataRelationshipLanguage
-         * @var $dataLinks
-         * @var $dataLinksSelf
-         * @var $dataLinksRelated
-         * @var $dataLinksRelatedHref
-         * @var $dataLinksRelatedMeta
-         * @var $dataLinksRelatedMetaCount
-         * @var $dataAttributeInvalid
-         * @var $dataRelationshipInvalid
-         */
-        extract($data);
-
+    private function runTestOnSimple(
+        $dataType,
+        $dataId,
+        $dataAttributes,
+        $dataRelationships,
+        $dataAttributeName,
+        $dataAttributeLanguageId,
+        $dataAttributeDescription,
+        $dataAttributeCreatedAt,
+        $dataAttributeUpdatedAt,
+        $dataRelationshipLanguage,
+        $dataLinks,
+        $dataLinksSelf,
+        $dataLinksRelated,
+        $dataLinksRelatedHref,
+        $dataLinksRelatedMeta,
+        $dataLinksRelatedMetaCount,
+        $dataAttributeInvalid,
+        $dataRelationshipInvalid
+    ) {
         $this->assertEquals('users', $dataType);
         $this->assertEquals(1449216560, $dataId);
         $this->assertTrue(is_array($dataAttributes));
@@ -114,7 +110,26 @@ class DataMapperTest extends TestCase
         $dataAttributeInvalid = $data->getAttribute('attribute-invalid');
         $dataRelationshipInvalid = $data->getRelationship('relationship-invalid');
 
-        $this->runTestOnSimple(get_defined_vars());
+        $this->runTestOnSimple(
+            $dataType,
+            $dataId,
+            $dataAttributes,
+            $dataRelationships,
+            $dataAttributeName,
+            $dataAttributeLanguageId,
+            $dataAttributeDescription,
+            $dataAttributeCreatedAt,
+            $dataAttributeUpdatedAt,
+            $dataRelationshipLanguage,
+            $dataLinks,
+            $dataLinksSelf,
+            $dataLinksRelated,
+            $dataLinksRelatedHref,
+            $dataLinksRelatedMeta,
+            $dataLinksRelatedMetaCount,
+            $dataAttributeInvalid,
+            $dataRelationshipInvalid
+        );
     }
 
     public function testDataMapperAlias()
@@ -140,7 +155,26 @@ class DataMapperTest extends TestCase
         $dataAttributeInvalid = $data->attribute('attribute-invalid');
         $dataRelationshipInvalid = $data->relationship('relationship-invalid');
 
-        $this->runTestOnSimple(get_defined_vars());
+        $this->runTestOnSimple(
+            $dataType,
+            $dataId,
+            $dataAttributes,
+            $dataRelationships,
+            $dataAttributeName,
+            $dataAttributeLanguageId,
+            $dataAttributeDescription,
+            $dataAttributeCreatedAt,
+            $dataAttributeUpdatedAt,
+            $dataRelationshipLanguage,
+            $dataLinks,
+            $dataLinksSelf,
+            $dataLinksRelated,
+            $dataLinksRelatedHref,
+            $dataLinksRelatedMeta,
+            $dataLinksRelatedMetaCount,
+            $dataAttributeInvalid,
+            $dataRelationshipInvalid
+        );
     }
 
     public function testDataMapperWithAttributesGetAccessors()
@@ -166,7 +200,26 @@ class DataMapperTest extends TestCase
         $dataAttributeInvalid = $data->getAttributeInvalid();
         $dataRelationshipInvalid = $data->relationship('relationship-invalid');
 
-        $this->runTestOnSimple(get_defined_vars());
+        $this->runTestOnSimple(
+            $dataType,
+            $dataId,
+            $dataAttributes,
+            $dataRelationships,
+            $dataAttributeName,
+            $dataAttributeLanguageId,
+            $dataAttributeDescription,
+            $dataAttributeCreatedAt,
+            $dataAttributeUpdatedAt,
+            $dataRelationshipLanguage,
+            $dataLinks,
+            $dataLinksSelf,
+            $dataLinksRelated,
+            $dataLinksRelatedHref,
+            $dataLinksRelatedMeta,
+            $dataLinksRelatedMetaCount,
+            $dataAttributeInvalid,
+            $dataRelationshipInvalid
+        );
     }
 
     public function testDataMapperMethodWithoutAttributesAndRelationshipAccessorsMagic()
@@ -192,7 +245,26 @@ class DataMapperTest extends TestCase
         $dataAttributeInvalid = $data->attributeInvalid();
         $dataRelationshipInvalid = $data->relationship('relationship-invalid');
 
-        $this->runTestOnSimple(get_defined_vars());
+        $this->runTestOnSimple(
+            $dataType,
+            $dataId,
+            $dataAttributes,
+            $dataRelationships,
+            $dataAttributeName,
+            $dataAttributeLanguageId,
+            $dataAttributeDescription,
+            $dataAttributeCreatedAt,
+            $dataAttributeUpdatedAt,
+            $dataRelationshipLanguage,
+            $dataLinks,
+            $dataLinksSelf,
+            $dataLinksRelated,
+            $dataLinksRelatedHref,
+            $dataLinksRelatedMeta,
+            $dataLinksRelatedMetaCount,
+            $dataAttributeInvalid,
+            $dataRelationshipInvalid
+        );
     }
 
     public function testDataMapperPropertySnakeAccessors()
@@ -218,7 +290,26 @@ class DataMapperTest extends TestCase
         $dataAttributeInvalid = $data->attributeInvalid;
         $dataRelationshipInvalid = $data->relationship->relationship_invalid;
 
-        $this->runTestOnSimple(get_defined_vars());
+        $this->runTestOnSimple(
+            $dataType,
+            $dataId,
+            $dataAttributes,
+            $dataRelationships,
+            $dataAttributeName,
+            $dataAttributeLanguageId,
+            $dataAttributeDescription,
+            $dataAttributeCreatedAt,
+            $dataAttributeUpdatedAt,
+            $dataRelationshipLanguage,
+            $dataLinks,
+            $dataLinksSelf,
+            $dataLinksRelated,
+            $dataLinksRelatedHref,
+            $dataLinksRelatedMeta,
+            $dataLinksRelatedMetaCount,
+            $dataAttributeInvalid,
+            $dataRelationshipInvalid
+        );
     }
 
     public function testDataMapperPropertyCamelAccessors()
@@ -244,7 +335,26 @@ class DataMapperTest extends TestCase
         $dataAttributeInvalid = $data->attributeInvalid;
         $dataRelationshipInvalid = $data->relationship->relationship_invalid;
 
-        $this->runTestOnSimple(get_defined_vars());
+        $this->runTestOnSimple(
+            $dataType,
+            $dataId,
+            $dataAttributes,
+            $dataRelationships,
+            $dataAttributeName,
+            $dataAttributeLanguageId,
+            $dataAttributeDescription,
+            $dataAttributeCreatedAt,
+            $dataAttributeUpdatedAt,
+            $dataRelationshipLanguage,
+            $dataLinks,
+            $dataLinksSelf,
+            $dataLinksRelated,
+            $dataLinksRelatedHref,
+            $dataLinksRelatedMeta,
+            $dataLinksRelatedMetaCount,
+            $dataAttributeInvalid,
+            $dataRelationshipInvalid
+        );
     }
 
     public function testDataMapperMultiple()

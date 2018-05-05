@@ -23,7 +23,6 @@ namespace FreddieGar\JsonApiMapper\Contracts;
  * @property string title Access magic to getTitle() method
  * @property string detail Access magic to getDetail() method
  * @property array source Access magic to getSource() method
-// * @property string meta Access magic $path = null)  Alias to getMeta() method
  * @property LinksMapperInterface links Access magic to getLinks() method
  */
 interface ErrorsMapperInterface extends LoaderInterface

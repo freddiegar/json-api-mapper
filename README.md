@@ -88,6 +88,8 @@ $dataPeople = $included->find('people'); // Return DataMapperInterface if exist 
 
 ```php
 $dataPeopleWithIdThree = $included->find('people', 3); // Return DataMapperInterface if exist else null
+// OR
+$peopleWithIdThree = $dataPeople->find(3); // Return DataMapperInterface if exist else null
 ```
 
 ## Alias in JsonApiResponse class

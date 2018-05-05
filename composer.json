@@ -38,7 +38,7 @@
       "@phpunit"
     ],
     "phpcs": "phpcs --standard=PSR2 --ignore=tests/coverage src/ tests/",
-    "phpstan": "phpstan analyse -l 1 src/ tests/ helpers.php",
+    "phpstan": "phpstan analyse -l 1 src/ tests/",
     "phpunit": "phpunit --bootstrap vendor/autoload.php --testdox tests/"
   },
   "license": "MIT",

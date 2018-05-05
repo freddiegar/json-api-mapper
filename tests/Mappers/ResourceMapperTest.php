@@ -58,7 +58,6 @@ class ResourceMapperTest extends TestCase
         $resource = $this->resourceMapper()->load('{}');
 
         $this->runTestResourceInstance($resource);
-
     }
 
     public function testResourceMapperDataSimpleOk()

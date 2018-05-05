@@ -137,7 +137,11 @@ class ResourceMapper extends Loader implements ResourceMapperInterface
 
     public function __call($name, $arguments)
     {
-        if (in_array($name, [DocumentInterface::KEYWORD_DATA, DocumentInterface::KEYWORD_ERRORS, DocumentInterface::KEYWORD_META])) {
+        if (in_array($name, [
+            DocumentInterface::KEYWORD_DATA,
+            DocumentInterface::KEYWORD_ERRORS,
+            DocumentInterface::KEYWORD_META
+        ])) {
             return parent::__call($name, $argument = $arguments[0] ?? null);
         }
 

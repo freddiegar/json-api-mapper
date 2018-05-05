@@ -10,7 +10,7 @@ use Dflydev\DotAccessData\Data;
  */
 class Helper
 {
-    static public function getFromArray(?array $array, $pathKey, $default = null)
+    public static function getFromArray(?array $array, $pathKey, $default = null)
     {
         return is_array($array)
             ? (new Data($array))->get($pathKey, $default)
