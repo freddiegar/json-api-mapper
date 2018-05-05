@@ -6,8 +6,10 @@ This library create a object from response json-api. Access to elements in respo
 
 ## Status Branch
 
-[![Build Status](https://travis-ci.org/freddiegar/json-api-mapper.svg?branch=master)](https://travis-ci.org/freddiegar/json-api-mapper)
-[![Build Status](https://travis-ci.org/freddiegar/json-api-mapper.svg?branch=develop)](https://travis-ci.org/freddiegar/json-api-mapper)
+`master`: [![Build Status](https://travis-ci.org/freddiegar/json-api-mapper.svg?branch=master)](https://travis-ci.org/freddiegar/json-api-mapper)
+`develop`: [![Build Status](https://travis-ci.org/freddiegar/json-api-mapper.svg?branch=develop)](https://travis-ci.org/freddiegar/json-api-mapper)
+`v1.0.0`: [![Build Status](https://travis-ci.org/freddiegar/json-api-mapper.svg?branch=v1.0.0)](https://travis-ci.org/freddiegar/json-api-mapper)
+
 
 ## Requisites
 
