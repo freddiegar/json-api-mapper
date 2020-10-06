@@ -40,10 +40,10 @@ class DataMapper extends Loader implements DataMapperInterface
         return parent::load($input, $tag);
     }
 
-    public function find(string $id): ?DataMapperInterface
+    public function find(string $uuid): ?DataMapperInterface
     {
         foreach ($this->all() as $index => $data) {
-            if ($data[DocumentInterface::KEYWORD_ID] == $id) {
+            if ($data[DocumentInterface::KEYWORD_ID] == $uuid) {
                 return $this->get($index);
             }
         }

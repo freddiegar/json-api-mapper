@@ -29,7 +29,7 @@ interface DataMapperInterface extends LoaderInterface
      * @param string $id
      * @return null|DataMapperInterface|mixed
      */
-    public function find(string $id): ?DataMapperInterface;
+    public function find(string $uuid): ?DataMapperInterface;
 
     /**
      * @param int|null $index
