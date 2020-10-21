@@ -142,7 +142,7 @@ class ResourceMapper extends Loader implements ResourceMapperInterface
             DocumentInterface::KEYWORD_ERRORS,
             DocumentInterface::KEYWORD_META
         ])) {
-            return parent::__call($name, $argument = $arguments[0] ?? null);
+            return parent::__call($name, $arguments[0] ?? null);
         }
 
         return parent::__call($name, $arguments);
